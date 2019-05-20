@@ -15,10 +15,10 @@ Module Overview:
  For further infos please read the Documentation_.
 
 .. _LASSO GmbH: https://www.lasso.de/en
-.. _Documentation: https://lasso-gmbh.io/lasso-python/build/html/index.html
-.. _lasso.ansa: https://lasso-gmbh.io/lasso-python/build/html/ansa/ansa.html
-.. _lasso.dyna: https://lasso-gmbh.io/lasso-python/build/html/dyna/dyna.html
-.. _lasso.diffcrash: https://lasso-gmbh.io/lasso-python/build/html/diffcrash/diffcrash.html
+.. _Documentation: https://lasso-gmbh.github.io/lasso-python/build/html/index.html
+.. _lasso.ansa: https://lasso-gmbh.github.io/lasso-python/build/html/ansa/ansa.html
+.. _lasso.dyna: https://lasso-gmbh.github.io/lasso-python/build/html/dyna/dyna.html
+.. _lasso.diffcrash: https://lasso-gmbh.github.io/lasso-python/build/html/diffcrash/diffcrash.html
 
 Contact
 -------
