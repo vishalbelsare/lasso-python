@@ -1,0 +1,289 @@
+
+grpc
+----
+
+This is the ANSA GRPC module.
+
+AnsaClient
+``````````
+
+.. autoclass:: lasso.ansa.grpc.AnsaClient
+    :members:
+    :inherited-members:
+
+    .. automethod:: __init__
+    
+
+
+What is RPC?
+````````````
+
+    Remote Procedure Call (RPC) is used to call a function on another process
+    often on another machine. The remote process might additionaly be 
+    implemented in a different programming language. The compatability 
+    is ensured by using an interface definition file with a  
+    library-specific syntax. From this interface file client implementations 
+    can be generated for other programming languages automatically. 
+    The generated code for servers though requires the user to implement 
+    of course the function calls himself. Since we already implemented the
+    ANSA server though, there is no need to do this.
+
+
+Then what is GRPC?
+``````````````````
+
+    While RPC is the principle, GRPC is an implementation from Google.
+
+
+What data exchange format is used?
+``````````````````````````````````
+
+    The exchange format is Protobuf, which is a binary format. The exchangable
+    datatypes are usually specified in an interface file (.proto) and this 
+    file can be used to generate code for many different languages. Proto 
+    files can also be composed from JSON. For being binary, its 'relatively' 
+    fast though there is better juice out there but also often more 
+    complicated or less well supported.
+
+
+If RPC is generic, why can only another Python connect to ANSA RPC?
+```````````````````````````````````````````````````````````````````
+
+    Because we are lazy. We simply send Python binary data objects 
+    (pickled) by using grpc. We could generalize it, but we didn't require
+    it yet. Also generalization requires some effort.
+
+
+How to install the requirements for a server?
+`````````````````````````````````````````````
+
+    The installation of all requirements is unfortunately quite difficult 
+    since ANSA is stuck at python 3.3 which requires several tricks. 
+    
+    .. INFO:: 
+    
+        ``grpc`` can not be installed on Windows since it requires python 
+        3.4 or higher. 
+    
+    1. Download and install `Anaconda Python`_. 
+
+    2. Create a python 3.3 environment. 
+        
+        :: 
+
+            conda create -n py33 python=3.3
+
+    3. Activate the environment
+
+        ::
+
+            conda activate py33
+
+    4. Install requirement ``enum34``
+
+        ::
+
+            python -m pip install enum34
+
+    5. Install requirement ``protobuf`` and ``protobuf3``
+
+        ::
+
+            conda install protobuf protobuf3
+
+    6. Install ``grpc``
+
+        Clone the repo:
+
+        ::
+        
+            git clone -b v1.20.0 https://github.com/grpc/grpc
+            cd grpc
+
+
+        Clone the required submodules:
+
+        ::
+
+            git submodules update --init --recursive
+
+        Edit the file `setup.py` as follows:
+
+        .. code-block:: python
+
+            INSTALL_REQUIRES = (
+                "six>=1.5.2",
+                # "futures>=2.2.0; python_version<'3.2'",
+                "futures>=2.2.0",
+                # "enum34>=1.0.4; python_version<'3.4'",
+                "enum34>=1.0.4",
+            ) 
+
+        Run the installation:
+
+        ::
+            
+            python setup.py install
+
+        .. WARNING::
+
+            The compilation may require certain system libraries to be
+            installed already.
+
+
+    .. _Anaconda Python: https://www.anaconda.com/distribution/ 
+
+
+How to start the service?
+`````````````````````````
+    The entire package is wrapped as a command-line utility. The service 
+    info can be called as follows:
+
+    ::
+
+        > python -m lasso.ansa.grpc.server --help
+
+        usage: server.py [-h] [--ansa-filepath ANSA_FILEPATH]
+                        [--python33-path PYTHON33_PATH] [--port PORT]
+                        [--interactive INTERACTIVE] [--show-gui SHOW_GUI]
+                        [--enable-logging ENABLE_LOGGING]
+
+        GRPC Server for ANSA Remote Scripting from LASSO GmbH
+        -----------------------------------------------------
+
+        optional arguments:
+        -h, --help            show this help message and exit
+        --ansa-filepath ANSA_FILEPATH
+                                Filepath to ANSA.
+        --python33-path PYTHON33_PATH
+                                Path to the python 3.3 installation whose site-
+                                packages contains packages for ANSA.
+        --port PORT           Port on which the remote scripting will be served.
+        --interactive INTERACTIVE
+                                Whether to run the server in interactive mode.
+        --show-gui SHOW_GUI   Whether to show a gui or run in batch mode only.
+        --enable-logging ENABLE_LOGGING
+                                Whether to actively log activities to the console.
+
+    The arguments are:
+
+        - ``--ansa-filepath`` ansa command or path to the executable
+        - ``--python33-path`` path to a python 3.3 installation holding required modules for ansa
+        - ``--port`` to run the service on
+        - ``--interactive`` enables an interactive command line shell on the server
+        - ``--show-gui`` enable the gui, causes usually trouble, believe me
+        - ``--enable-logging`` display server actions in the command line
+
+    :: 
+
+        > python -m lasso.ansa.grpc.server
+            --ansa-filepath ansa 
+            --python33-path ~/sw/anaconda3/envs/py33/
+
+        [/] Running: ansa -nolauncher -nogui -execscript
+            ~/programming/python/lasso-python/lasso/ansa/grpc/server_ansa.py
+            -execpy "serve(16135,False,False)"
+
+        DISPLAY=:0.0
+
+        ... ANSA stuff ...
+
+        Generating code...
+        Code generation completed.
+
+            ANSA Remote Scripting Server by LASSO GmbH
+            ------------------------------------------
+
+
+How to test the connection?
+```````````````````````````
+
+    You can test the connection by opening an interactive python
+    shell with a connected client as follows (address is optional):
+
+    ::
+
+        > python -m lasso.ansa.grpc.client --address localhost:16135
+
+            ANSA Remote Scripting Client by LASSO GmbH
+            ------------------------------------------
+
+        Python 3.7.0 (default, Jun 28 2018, 13:15:42)
+        [GCC 7.2.0] on linux
+        Type "help", "copyright", "credits" or "license" for more information.
+        (InteractiveConsole)
+        > client.run("ansa.base.CreateEntity", deck=1, element_type="POINT")
+        <Entity: 0x7f1240e8ac18 type: POINT id:1>
+        > client.shutdown()
+
+    The client has the method called `client.run` and works similar to the 
+    REST API. All arguments entered behind the function name are forwarded 
+    to ANSA on the other side. The entity object returned can be used
+    for further calls. The server (not client!) can be shut down with
+    ``client.shutdown()``.
+
+ 
+How to connect from a script?
+`````````````````````````````
+
+    This example script is located at `lasso/ansa/grpc/example_client.py`.
+
+    .. code-block:: python
+
+        import grpc
+        from lasso.ansa.grpc import (
+            LassoAnsaDriverStub,
+            AnsaClient,
+            get_grpc_connection_options,
+        )
+
+        # important
+        address = "localhost:16135"
+        options = get_grpc_connection_options()
+
+        # open channel
+        with grpc.insecure_channel(address, options) as channel:
+            stub = LassoAnsaDriverStub(channel)
+
+            # create client
+            client = AnsaClient(stub)
+
+            # do the thing
+            entity = client.run("ansa.base.CreateEntity",
+                                deck=1,
+                                element_type="POINT")
+
+            client.run("ansa.base.SetEntityCardValues",
+                    deck=1,
+                    entity=entity,
+                    fields={
+                        "X": 4
+                    })
+
+    The ``options`` ensure that the low default memory limit is raised.
+    Also the ``channel`` needs to be opened and managed by the user due 
+    to pythons IO and memory management. In consequence it would not 
+    make sense to open the channel hidden within the ``AnsaClient``. 
+
+
+I'm having trouble when enabling the GUI
+````````````````````````````````````````
+
+    Yeah, we sometimes have too. It depends on several factors. Simply leave
+    it closed.
+
+
+How to shut down the service?
+`````````````````````````````
+
+    Either hit Ctrl+C in the command line or run `client.shutdown()`. Ctrl+C 
+    may occasionally cause ANSA to dump crash while terminating for an
+    unknown reason (possibly multithreading). We are happy for hints.
+
+
+Seems awfully complex, can you make it simpler?
+```````````````````````````````````````````````
+
+    Maybe, but we already hide stuff we shouldn't so I guess it's ok for
+    the moment. 
+

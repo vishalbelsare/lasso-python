@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rest &mdash; LASSO Python Library</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/lasso-favicon.gif"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="grpc" href="grpc.html" />
+    <link rel="prev" title="lasso.ansa" href="ansa.html" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ansa.html">lasso.ansa</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-the-rest-api">What is the REST API?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-the-ansa-rest-api-used-for">What is the ANSA REST API used for?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-data-exchange-format-is-used">What data exchange format is used?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-start-the-service">How to start the service?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-check-for-a-running-server">How to check for a running server?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-communicate-from-the-outside-world">How to communicate from the outside world?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-if-i-have-to-call-a-function-with-an-ansa-entity">What if I have to call a function with an ANSA entity?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wheres-the-ansa-window-gui">Wheres the ANSA Window (GUI)?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-shut-down-the-service">How to shut down the service?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#this-all-confuses-me-why-do-i-need-it-again">This all confuses me, why do I need it again?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grpc.html">grpc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dyna/dyna.html">lasso.dyna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="ansa.html">lasso.ansa</a> &raquo;</li>
+        
+      <li>rest</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rest">
+<h1>rest<a class="headerlink" href="#rest" title="Permalink to this headline">¶</a></h1>
+<p>This is the ANSA REST module.</p>
+<div class="section" id="what-is-the-rest-api">
+<h2>What is the REST API?<a class="headerlink" href="#what-is-the-rest-api" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Representational State Transfer (REST) is a type of data transfer.
+REST itself does not specify any exchange format and simply represents
+an umbrella term. Nonetheless nowadays the name REST is frequently used
+as a term for web-based interfaces with a text-based exchange format
+such as JSON (or less popular XML and HTML). The transfer is usually
+performed via the HTTP protocol, thus relying on HTTP methods such as
+‘GET’, ‘POST’, ‘DELETE’, etc. For running ANSA functions ‘POST’ is used.</div></blockquote>
+</div>
+<div class="section" id="what-is-the-ansa-rest-api-used-for">
+<h2>What is the ANSA REST API used for?<a class="headerlink" href="#what-is-the-ansa-rest-api-used-for" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The REST API turns ANSA into a microservice, allowing you to perform
+actions from an outside program written in an arbitrary language.
+Since ANSA is stuck in Python 3.3 which was released in 2012, this
+is a big relieve. This opens up the entire ecosystem since certain
+libraries are often only available for certain languages. Also heavy
+computations such as machine learning can be performed in other languages.</div></blockquote>
+</div>
+<div class="section" id="what-data-exchange-format-is-used">
+<h2>What data exchange format is used?<a class="headerlink" href="#what-data-exchange-format-is-used" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The dataformat is JSON, which is a text-based format. Text-based formats
+are not efficient but simple to use. Also JSON is very established
+in the entire programming community. For higher performance RPC can be
+used, which is also much safer, but the current implementation in
+<code class="docutils literal"><span class="pre">lasso.ansa.grpc</span></code> is limited to communication with another python program
+outside of ANSA.</div></blockquote>
+</div>
+<div class="section" id="how-to-start-the-service">
+<h2>How to start the service?<a class="headerlink" href="#how-to-start-the-service" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The entire package is wrapped as a command-line utility. The service
+info can be called as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">help</span>
+
+<span class="n">REST</span> <span class="n">JSON</span> <span class="n">Server</span> <span class="k">for</span> <span class="n">ANSA</span> <span class="n">Remote</span> <span class="n">Scripting</span> <span class="kn">from</span> <span class="nn">LASSO</span> <span class="n">GmbH</span>
+<span class="o">----------------------------------------------------------</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+<span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+<span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">ANSA_FILEPATH</span>
+                        <span class="n">Filepath</span> <span class="n">to</span> <span class="n">ANSA</span><span class="o">.</span>
+<span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="n">PYTHON33_PATH</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">python</span> <span class="mf">3.3</span> <span class="n">installation</span> <span class="n">whose</span> <span class="n">site</span><span class="o">-</span>
+                        <span class="n">packages</span> <span class="n">contains</span> <span class="n">packages</span> <span class="k">for</span> <span class="n">ANSA</span><span class="o">.</span>
+<span class="o">--</span><span class="n">port</span> <span class="n">PORT</span>           <span class="n">Port</span> <span class="n">on</span> <span class="n">which</span> <span class="n">the</span> <span class="n">remote</span> <span class="n">scripting</span> <span class="n">will</span> <span class="n">be</span> <span class="n">served</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The required arguments are the filepath or command of the ANSA executable
+as well as a path to a Python 3.3 distribution (usually an Anaconda
+environment). The REST API requires a package called <code class="docutils literal"><span class="pre">flask</span></code>, which
+should be copied either into the ANSA installation or preferably
+installed by using an Anaconda environment and specifying the path
+as an argument here. If <code class="docutils literal"><span class="pre">flask</span></code> can not be found the program will `
+yell at you and tell you how to install it.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span>
+    <span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="o">.</span><span class="mf">1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
+    <span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">envs</span>\<span class="n">py33</span>
+
+<span class="p">[</span><span class="o">/</span><span class="p">]</span> <span class="n">Running</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="o">.</span><span class="mf">1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
+    <span class="o">-</span><span class="n">nolauncher</span> <span class="o">-</span><span class="n">nogui</span> <span class="o">-</span><span class="n">execscript</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">lasso</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">6.</span><span class="n">egg</span>\<span class="n">lasso</span>\<span class="n">ansa</span>\<span class="n">rest</span>\<span class="n">server_ansa</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">-</span><span class="n">execpy</span> <span class="s2">&quot;serve(16136)&quot;</span>
+
+<span class="o">...</span>
+<span class="n">ANSA</span> <span class="n">startup</span> <span class="n">info</span> <span class="o">...</span>
+<span class="o">...</span>
+
+<span class="n">Generating</span> <span class="n">code</span><span class="o">...</span>
+<span class="n">Code</span> <span class="n">generation</span> <span class="n">completed</span><span class="o">.</span>
+
+    <span class="n">ANSA</span> <span class="n">Remote</span> <span class="n">Scripting</span> <span class="n">Server</span> <span class="n">by</span> <span class="n">LASSO</span> <span class="n">GmbH</span>
+    <span class="o">------------------------------------------</span>
+
+<span class="o">*</span> <span class="n">Serving</span> <span class="n">Flask</span> <span class="n">app</span> <span class="s2">&quot;ansa-rest&quot;</span> <span class="p">(</span><span class="n">lazy</span> <span class="n">loading</span><span class="p">)</span>
+<span class="o">*</span> <span class="n">Environment</span><span class="p">:</span> <span class="n">production</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">the</span> <span class="n">development</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">production</span> <span class="n">environment</span><span class="o">.</span>
+<span class="n">Use</span> <span class="n">a</span> <span class="n">production</span> <span class="n">WSGI</span> <span class="n">server</span> <span class="n">instead</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">Debug</span> <span class="n">mode</span><span class="p">:</span> <span class="n">off</span>
+<span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">16136</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span> <span class="c1">#</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-check-for-a-running-server">
+<h2>How to check for a running server?<a class="headerlink" href="#how-to-check-for-a-running-server" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Visit the website shown at startup and you will see an info page. Also
+there is a test section allowing you to test ANSA commands from within
+the browser (internally its of course Javascript).</p>
+<img alt="../_images/rest_server_info_page.png" src="../_images/rest_server_info_page.png" />
+</div></blockquote>
+</div>
+<div class="section" id="how-to-communicate-from-the-outside-world">
+<h2>How to communicate from the outside world?<a class="headerlink" href="#how-to-communicate-from-the-outside-world" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Simply trigger a ‘POST’ request in JSON format from an outside program
+on the specified run-address displayed by the info page. The format JSON
+exchange format requires three arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">function_name</span></code> Name of the ANSA scripting function with the
+entire module path</li>
+<li><code class="docutils literal"><span class="pre">args</span></code>
+Argument list supplied to the function</li>
+<li><code class="docutils literal"><span class="pre">kwargs</span></code>
+Named arguments for the function mentioned previously</li>
+</ul>
+</div></blockquote>
+<p>These three pieces will be translated within ANSA into a python
+function call.
+Error messages will be thrown back into your face from the python side
+such as missing arguments.</p>
+<p>Example payload for a POST request.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;kwargs&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;deck&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;element_type&quot;</span><span class="o">:</span> <span class="s2">&quot;POINT&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The response always has two components:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">success</span></code> indicating whether an error was thrown by ANSA</li>
+<li><code class="docutils literal"><span class="pre">payload</span></code> whatever the function call returned or the error message</li>
+</ul>
+</div></blockquote>
+<p>The return values are automatically converted to JSON before transfer.
+ANSA entites are an ANSA specific class thus not directly available
+in JSON. We transfer all of the entities properties into a JSON
+object in such cases. See the response for the pervious function call below:</p>
+<blockquote>
+<div><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;__doc__&quot;</span><span class="o">:</span> <span class="s2">&quot;ANSA Entity object&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_bcomment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_bname&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_edge_index&quot;</span><span class="o">:</span> <span class="mi">220135424</span><span class="p">,</span>
+        <span class="s2">&quot;_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="mi">3911</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;ansa_type&quot;</span><span class="o">:</span> <span class="s2">&quot;POINT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;module&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="mi">0</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Here is an example for sending JSON requests from Javascript:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// build the request</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;kwargs&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;deck&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;element_type&quot;</span><span class="o">:</span> <span class="s2">&quot;POINT&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// call remotely</span>
+<span class="kd">let</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;http://127.0.0.1:16136/run/&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&quot;Content-type&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">request</span><span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="what-if-i-have-to-call-a-function-with-an-ansa-entity">
+<h2>What if I have to call a function with an ANSA entity?<a class="headerlink" href="#what-if-i-have-to-call-a-function-with-an-ansa-entity" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>An ANSA entity is identified by a JSON object having 2 properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code> of the entity</li>
+<li><code class="docutils literal"><span class="pre">ansa_type</span></code> type of the entity</li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<blockquote>
+<div><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.SetEntityCardValues&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;kwargs&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;deck&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;entity&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;ansa_type&quot;</span><span class="o">:</span> <span class="s2">&quot;POINT&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;X&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;Y&quot;</span><span class="o">:</span> <span class="mi">3</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="wheres-the-ansa-window-gui">
+<h2>Wheres the ANSA Window (GUI)?<a class="headerlink" href="#wheres-the-ansa-window-gui" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The GUI is hidden, since for a microservice a GUI is an unneccesary
+slow-down. Also the service blocks ANSA, thus its useless.</div></blockquote>
+</div>
+<div class="section" id="how-to-shut-down-the-service">
+<h2>How to shut down the service?<a class="headerlink" href="#how-to-shut-down-the-service" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Either hit Ctrl+C in the command line or visit the shutdown website link
+displayed in the info.</div></blockquote>
+</div>
+<div class="section" id="this-all-confuses-me-why-do-i-need-it-again">
+<h2>This all confuses me, why do I need it again?<a class="headerlink" href="#this-all-confuses-me-why-do-i-need-it-again" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>It’s future tech so simply get used to it or keep it in mind. You for sure
+will encounter use-cases rather sooner than later.</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="grpc.html" class="btn btn-neutral float-right" title="grpc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ansa.html" class="btn btn-neutral float-left" title="lasso.ansa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright LASSO GmbH
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

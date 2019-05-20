@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Performance Info &mdash; LASSO Python Library</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/lasso-favicon.gif"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lasso.diffcrash" href="../diffcrash/diffcrash.html" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ansa/ansa.html">lasso.ansa</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dyna.html">lasso.dyna</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Binout.html">Binout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="D3plot.html">D3plot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Performance Info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d3plot">D3plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binout">Binout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="dyna.html">lasso.dyna</a> &raquo;</li>
+        
+      <li>Performance Info</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-info">
+<h1>Performance Info<a class="headerlink" href="#performance-info" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="d3plot">
+<h2>D3plot<a class="headerlink" href="#d3plot" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Benchmark:</dt>
+<dd><p class="first">The d3plot reader is bazingly fast by using several memory tricks.
+While postprocessors build up an internal datastructure during reading,
+this reader avoids this and simply references memory within the files.
+In consequence performance benchmarks show that the runtime
+of the code is solely dominated by pulling the files into memory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2108</span> <span class="n">function</span> <span class="n">calls</span> <span class="p">(</span><span class="mi">2099</span> <span class="n">primitive</span> <span class="n">calls</span><span class="p">)</span> <span class="ow">in</span> <span class="mf">43.017</span> <span class="n">seconds</span>
+
+<span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">internal</span> <span class="n">time</span>
+
+<span class="n">ncalls</span>  <span class="n">tottime</span>  <span class="n">percall</span>  <span class="n">cumtime</span>  <span class="n">percall</span> <span class="n">filename</span><span class="p">:</span><span class="n">lineno</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+    <span class="mi">35</span>   <span class="mf">38.960</span>    <span class="mf">1.113</span>   <span class="mf">38.960</span>    <span class="mf">1.113</span> <span class="p">{</span><span class="n">method</span> <span class="s1">&#39;readinto&#39;</span> <span class="n">of</span> <span class="s1">&#39;_io.BufferedReader&#39;</span> <span class="n">objects</span><span class="p">}</span>
+    <span class="mi">35</span>    <span class="mf">2.366</span>    <span class="mf">0.068</span>    <span class="mf">2.366</span>    <span class="mf">0.068</span> <span class="p">{</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">}</span>
+    <span class="mi">1</span>     <span class="mf">1.644</span>    <span class="mf">1.644</span>   <span class="mf">42.959</span>   <span class="mf">42.959</span> <span class="n">D3plot</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2565</span><span class="p">(</span><span class="n">_read_state_bytebuffer</span><span class="p">)</span>
+    <span class="mi">71</span>    <span class="mf">0.043</span>    <span class="mf">0.001</span>    <span class="mf">0.043</span>    <span class="mf">0.001</span> <span class="p">{</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">nt</span><span class="o">.</span><span class="n">stat</span><span class="p">}</span>
+    <span class="mi">2</span>     <span class="mf">0.002</span>    <span class="mf">0.001</span>    <span class="mf">0.057</span>    <span class="mf">0.028</span> <span class="n">BinaryBuffer</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">234</span><span class="p">(</span><span class="n">load</span><span class="p">)</span>
+    <span class="mi">70</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span> <span class="n">ntpath</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">74</span><span class="p">(</span><span class="n">join</span><span class="p">)</span>
+    <span class="mi">142</span>   <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="n">ntpath</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">121</span><span class="p">(</span><span class="n">splitdrive</span><span class="p">)</span>
+    <span class="mi">1</span>     <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.019</span>    <span class="mf">0.019</span> <span class="n">D3plot</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2738</span><span class="p">(</span><span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="mi">1</span>     <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="p">{</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">nt</span><span class="o">.</span><span class="n">listdir</span><span class="p">}</span>
+    <span class="mi">36</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="p">{</span><span class="n">method</span> <span class="s1">&#39;match&#39;</span> <span class="n">of</span> <span class="s1">&#39;_sre.SRE_Pattern&#39;</span> <span class="n">objects</span><span class="p">}</span>
+    <span class="mi">84</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="p">{</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">numpy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">multiarray</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">}</span>
+    <span class="mi">1</span>     <span class="mf">0.000</span>    <span class="mf">0.000</span>   <span class="mf">42.959</span>   <span class="mf">42.959</span> <span class="n">D3plot</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1304</span><span class="p">(</span><span class="n">_read_states</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p class="last">In the table above the largest, first three performance issues are all related
+to loading files into memory, accounting for 99.89% of runtime.
+The routines reading the data arrays (deserialization) have an almost constant
+runtime of a few milliseconds and are independent of the filesize.</p>
+</dd>
+<dt>Efficiency:</dt>
+<dd>Note that writing such efficient and simple code in C or any other language
+is much more challenging than in Python, thus surprisingly this implementation
+can be expected to outperform most native codes and tools. Indeed tests show that
+when reading all results of a d3plot in a postprocessor, this library is
+devastatingly fast. For reading single node-fields this library can be slower
+though (see Improvements below).</dd>
+<dt>Array-based API:</dt>
+<dd>Building objects is useful (e.g. neighbor search) but requires additional
+runtime overhead. By the principle of “don’t pay for what you don’t use”
+it was decided to avoid object orientation, thus providing a majorly
+array-based API. This is perfectly suitable for data analysis as well
+as machine learning.</dd>
+<dt>Improvements:</dt>
+<dd>A speedup ‘could’ be achieved by using memory-mapping, thus pulling only
+fractions of the files into the RAM which hold the required arrays.
+Postprocessors sometimes do this when reading certain fields, outperforming
+this library in such a case (e.g. node displacements). Since dyna litters
+most arrays across the entire file though, this method was not considered
+worth the effort and thus this library always reads everything.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="binout">
+<h2>Binout<a class="headerlink" href="#binout" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The binout is used to store arbitrary binary data at a much higher
+frequency than the d3plot. As a result the data is dumped in an internal
+‘state folder’. Since different results may be dumped at different
+frequencies some state folders might contain more information than
+others.
+This inherently prevents efficient memory reading. The python version used
+here is slower than the original C-based version but one therefore gains
+better portability accross operating systems.</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../diffcrash/diffcrash.html" class="btn btn-neutral float-right" title="lasso.diffcrash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright LASSO GmbH
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

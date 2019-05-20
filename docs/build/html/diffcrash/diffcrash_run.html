@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DiffcrashRun &mdash; LASSO Python Library</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/lasso-favicon.gif"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="lasso.diffcrash" href="diffcrash.html" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ansa/ansa.html">lasso.ansa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dyna/dyna.html">lasso.dyna</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="diffcrash.html">lasso.diffcrash</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DiffcrashRun</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">run</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="diffcrash.html">lasso.diffcrash</a> &raquo;</li>
+        
+      <li>DiffcrashRun</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="diffcrashrun">
+<h1>DiffcrashRun<a class="headerlink" href="#diffcrashrun" title="Permalink to this headline">¶</a></h1>
+<p>This class can be used in order to automate diffcrash runs in
+a hopefully comfortable manner.</p>
+<dl class="class">
+<dt id="lasso.diffcrash.DiffcrashRun">
+<em class="property">class </em><code class="descclassname">lasso.diffcrash.</code><code class="descname">DiffcrashRun</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object handling a diffcrash run</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>directory to put all buffer files etc in</p>
+</div></blockquote>
+<p><strong>crash_code</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>crash code to use.</p>
+</div></blockquote>
+<p><strong>reference_run</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to the reference run</p>
+</div></blockquote>
+<p><strong>simulation_runs: `list` of `str`</strong></p>
+<blockquote>
+<div><p>patterns used to search for simulation runs</p>
+</div></blockquote>
+<p><strong>diffcrash_home</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>home directory of diffcrash installation. Uses environment
+variable DIFFCRASHHOME if not set.</p>
+</div></blockquote>
+<p><strong>use_id_mapping</strong> : <cite>bool</cite></p>
+<blockquote>
+<div><p>whether to use id mapping instead of nearest neighbor mapping</p>
+</div></blockquote>
+<p><strong>config_file</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to a config file</p>
+</div></blockquote>
+<p><strong>parameter_file</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to the parameter file</p>
+</div></blockquote>
+<p><strong>n_processes</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>number of processes to spawn for worker pool</p>
+</div></blockquote>
+<p><strong>logfile_dir</strong> : <cite>str</cite></p>
+<blockquote class="last">
+<div><p>directory to put logfiles in</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success" title="lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success"><code class="xref py py-obj docutils literal"><span class="pre">check_if_logfiles_show_success</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.clear_project_dir" title="lasso.diffcrash.DiffcrashRun.clear_project_dir"><code class="xref py py-obj docutils literal"><span class="pre">clear_project_dir</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.create_project_dirs" title="lasso.diffcrash.DiffcrashRun.create_project_dirs"><code class="xref py py-obj docutils literal"><span class="pre">create_project_dirs</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.is_logfile_successful" title="lasso.diffcrash.DiffcrashRun.is_logfile_successful"><code class="xref py py-obj docutils literal"><span class="pre">is_logfile_successful</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.read_config_file" title="lasso.diffcrash.DiffcrashRun.read_config_file"><code class="xref py py-obj docutils literal"><span class="pre">read_config_file</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_eigen" title="lasso.diffcrash.DiffcrashRun.run_eigen"><code class="xref py py-obj docutils literal"><span class="pre">run_eigen</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_export" title="lasso.diffcrash.DiffcrashRun.run_export"><code class="xref py py-obj docutils literal"><span class="pre">run_export</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_import" title="lasso.diffcrash.DiffcrashRun.run_import"><code class="xref py py-obj docutils literal"><span class="pre">run_import</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_math" title="lasso.diffcrash.DiffcrashRun.run_math"><code class="xref py py-obj docutils literal"><span class="pre">run_math</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_matrix" title="lasso.diffcrash.DiffcrashRun.run_matrix"><code class="xref py py-obj docutils literal"><span class="pre">run_matrix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_merge" title="lasso.diffcrash.DiffcrashRun.run_merge"><code class="xref py py-obj docutils literal"><span class="pre">run_merge</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lasso.diffcrash.DiffcrashRun.run_setup" title="lasso.diffcrash.DiffcrashRun.run_setup"><code class="xref py py-obj docutils literal"><span class="pre">run_setup</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object handling a diffcrash run</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>directory to put all buffer files etc in</p>
+</div></blockquote>
+<p><strong>crash_code</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>crash code to use.</p>
+</div></blockquote>
+<p><strong>reference_run</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to the reference run</p>
+</div></blockquote>
+<p><strong>simulation_runs: `list` of `str`</strong></p>
+<blockquote>
+<div><p>patterns used to search for simulation runs</p>
+</div></blockquote>
+<p><strong>diffcrash_home</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>home directory of diffcrash installation. Uses environment
+variable DIFFCRASHHOME if not set.</p>
+</div></blockquote>
+<p><strong>use_id_mapping</strong> : <cite>bool</cite></p>
+<blockquote>
+<div><p>whether to use id mapping instead of nearest neighbor mapping</p>
+</div></blockquote>
+<p><strong>config_file</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to a config file</p>
+</div></blockquote>
+<p><strong>parameter_file</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to the parameter file</p>
+</div></blockquote>
+<p><strong>n_processes</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>number of processes to spawn for worker pool</p>
+</div></blockquote>
+<p><strong>logfile_dir</strong> : <cite>str</cite></p>
+<blockquote class="last">
+<div><p>directory to put logfiles in</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success">
+<code class="descname">check_if_logfiles_show_success</code><span class="sig-paren">(</span><em>pattern: str</em><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a logfiles with given pattern show success</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pattern</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>file pattern used to search for logfiles</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>messages</strong> : <cite>list</cite></p>
+<blockquote class="last">
+<div><p>list with messages of failed log checks</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.clear_project_dir">
+<code class="descname">clear_project_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.clear_project_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the entire project dir</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.create_project_dirs">
+<code class="descname">create_project_dirs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.create_project_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates all project relevant directores</p>
+<p class="rubric">Notes</p>
+<dl class="docutils">
+<dt>Created dirs:</dt>
+<dd><ul class="first last simple">
+<li>logfile_dir</li>
+<li>project_dir</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.is_logfile_successful">
+<code class="descname">is_logfile_successful</code><span class="sig-paren">(</span><em>logfile: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.is_logfile_successful" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a logfile indicates a success</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>logfile</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>filepath to the logile</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>success</strong> : <cite>bool</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.read_config_file">
+<code class="descname">read_config_file</code><span class="sig-paren">(</span><em>config_file: str</em><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.read_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a diffcrash config file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>config_file</strong> : <cite>str</cite></p>
+<blockquote class="last">
+<div><p>path to the config file</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>From the official diffcrash docs … seriously.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_eigen">
+<code class="descname">run_eigen</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_eigen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash eigen</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_export">
+<code class="descname">run_export</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash export</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_import">
+<code class="descname">run_import</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_import" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash import of runs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_math">
+<code class="descname">run_math</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_math" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash math</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_matrix">
+<code class="descname">run_matrix</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash matrix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_merge">
+<code class="descname">run_merge</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash merge</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.diffcrash.DiffcrashRun.run_setup">
+<code class="descname">run_setup</code><span class="sig-paren">(</span><em>pool: concurrent.futures.thread.ThreadPoolExecutor</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run diffcrash setup</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<blockquote class="last">
+<div><p>multiprocessing pool</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="diffcrash.html" class="btn btn-neutral float-left" title="lasso.diffcrash" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright LASSO GmbH
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
