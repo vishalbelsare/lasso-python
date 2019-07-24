@@ -4,6 +4,7 @@ rest
 
 This is the ANSA REST module.
 
+
 What is the REST API?
 `````````````````````
     
@@ -238,8 +239,3 @@ How to shut down the service?
     displayed in the info.
 
 
-This all confuses me, why do I need it again?
-`````````````````````````````````````````````
-
-    It's future tech so simply get used to it or keep it in mind. You for sure
-    will encounter use-cases rather sooner than later.

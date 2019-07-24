@@ -18,7 +18,7 @@ def main():
           description='A next-generation CAE Python Library.',
           author='Lasso GmbH',
           author_email='lasso@lasso.de',
-          url='https://www.lasso.de/en',
+          url='https://github.com/lasso-gmbh/lasso-python',
           license="BSD-3",
           install_requires=[
               'numpy',
