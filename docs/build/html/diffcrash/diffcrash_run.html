@@ -185,50 +185,56 @@
 a hopefully comfortable manner.</p>
 <dl class="class">
 <dt id="lasso.diffcrash.DiffcrashRun">
-<em class="property">class </em><code class="descclassname">lasso.diffcrash.</code><code class="descname">DiffcrashRun</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lasso.diffcrash.</code><code class="descname">DiffcrashRun</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], exclude_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object handling a diffcrash run</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : <cite>str</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : str</p>
 <blockquote>
 <div><p>directory to put all buffer files etc in</p>
 </div></blockquote>
-<p><strong>crash_code</strong> : <cite>str</cite></p>
+<p><strong>crash_code</strong> : str</p>
 <blockquote>
 <div><p>crash code to use.</p>
 </div></blockquote>
-<p><strong>reference_run</strong> : <cite>str</cite></p>
+<p><strong>reference_run</strong> : str</p>
 <blockquote>
 <div><p>filepath to the reference run</p>
 </div></blockquote>
-<p><strong>simulation_runs: `list` of `str`</strong></p>
+<p><strong>simulation_runs: list of str</strong></p>
 <blockquote>
 <div><p>patterns used to search for simulation runs</p>
 </div></blockquote>
-<p><strong>diffcrash_home</strong> : <cite>str</cite></p>
+<p><strong>exclude_runs: list or str</strong></p>
+<blockquote>
+<div><p>list of runs to exclude from <cite>simulation_runs</cite> argument.
+Useful if one uses general selectors to get e.g. 1000 runs and
+simply wants to remove 1 or 2 (from the command line).</p>
+</div></blockquote>
+<p><strong>diffcrash_home</strong> : str</p>
 <blockquote>
 <div><p>home directory of diffcrash installation. Uses environment
 variable DIFFCRASHHOME if not set.</p>
 </div></blockquote>
-<p><strong>use_id_mapping</strong> : <cite>bool</cite></p>
+<p><strong>use_id_mapping</strong> : bool</p>
 <blockquote>
 <div><p>whether to use id mapping instead of nearest neighbor mapping</p>
 </div></blockquote>
-<p><strong>config_file</strong> : <cite>str</cite></p>
+<p><strong>config_file</strong> : str</p>
 <blockquote>
 <div><p>filepath to a config file</p>
 </div></blockquote>
-<p><strong>parameter_file</strong> : <cite>str</cite></p>
+<p><strong>parameter_file</strong> : str</p>
 <blockquote>
 <div><p>filepath to the parameter file</p>
 </div></blockquote>
-<p><strong>n_processes</strong> : <cite>int</cite></p>
+<p><strong>n_processes</strong> : int</p>
 <blockquote>
 <div><p>number of processes to spawn for worker pool</p>
 </div></blockquote>
-<p><strong>logfile_dir</strong> : <cite>str</cite></p>
+<p><strong>logfile_dir</strong> : str</p>
 <blockquote class="last">
 <div><p>directory to put logfiles in</p>
 </div></blockquote>
@@ -283,50 +289,56 @@ variable DIFFCRASHHOME if not set.</p>
 </table>
 <dl class="method">
 <dt id="lasso.diffcrash.DiffcrashRun.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>project_dir: str, crash_code: str, reference_run: str, simulation_runs: typing.Sequence[str], exclude_runs: typing.Sequence[str], diffcrash_home: str = '', use_id_mapping: bool = False, config_file: str = None, parameter_file: str = None, n_processes: int = 1, logfile_dir: str = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object handling a diffcrash run</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : <cite>str</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>project_dir</strong> : str</p>
 <blockquote>
 <div><p>directory to put all buffer files etc in</p>
 </div></blockquote>
-<p><strong>crash_code</strong> : <cite>str</cite></p>
+<p><strong>crash_code</strong> : str</p>
 <blockquote>
 <div><p>crash code to use.</p>
 </div></blockquote>
-<p><strong>reference_run</strong> : <cite>str</cite></p>
+<p><strong>reference_run</strong> : str</p>
 <blockquote>
 <div><p>filepath to the reference run</p>
 </div></blockquote>
-<p><strong>simulation_runs: `list` of `str`</strong></p>
+<p><strong>simulation_runs: list of str</strong></p>
 <blockquote>
 <div><p>patterns used to search for simulation runs</p>
 </div></blockquote>
-<p><strong>diffcrash_home</strong> : <cite>str</cite></p>
+<p><strong>exclude_runs: list or str</strong></p>
+<blockquote>
+<div><p>list of runs to exclude from <cite>simulation_runs</cite> argument.
+Useful if one uses general selectors to get e.g. 1000 runs and
+simply wants to remove 1 or 2 (from the command line).</p>
+</div></blockquote>
+<p><strong>diffcrash_home</strong> : str</p>
 <blockquote>
 <div><p>home directory of diffcrash installation. Uses environment
 variable DIFFCRASHHOME if not set.</p>
 </div></blockquote>
-<p><strong>use_id_mapping</strong> : <cite>bool</cite></p>
+<p><strong>use_id_mapping</strong> : bool</p>
 <blockquote>
 <div><p>whether to use id mapping instead of nearest neighbor mapping</p>
 </div></blockquote>
-<p><strong>config_file</strong> : <cite>str</cite></p>
+<p><strong>config_file</strong> : str</p>
 <blockquote>
 <div><p>filepath to a config file</p>
 </div></blockquote>
-<p><strong>parameter_file</strong> : <cite>str</cite></p>
+<p><strong>parameter_file</strong> : str</p>
 <blockquote>
 <div><p>filepath to the parameter file</p>
 </div></blockquote>
-<p><strong>n_processes</strong> : <cite>int</cite></p>
+<p><strong>n_processes</strong> : int</p>
 <blockquote>
 <div><p>number of processes to spawn for worker pool</p>
 </div></blockquote>
-<p><strong>logfile_dir</strong> : <cite>str</cite></p>
+<p><strong>logfile_dir</strong> : str</p>
 <blockquote class="last">
 <div><p>directory to put logfiles in</p>
 </div></blockquote>
@@ -344,13 +356,13 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pattern</strong> : <cite>str</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pattern</strong> : str</p>
 <blockquote>
 <div><p>file pattern used to search for logfiles</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>messages</strong> : <cite>list</cite></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>messages</strong> : list</p>
 <blockquote class="last">
 <div><p>list with messages of failed log checks</p>
 </div></blockquote>
@@ -389,13 +401,13 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>logfile</strong> : <cite>str</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>logfile</strong> : str</p>
 <blockquote>
 <div><p>filepath to the logile</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>success</strong> : <cite>bool</cite></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>success</strong> : bool</p>
 </td>
 </tr>
 </tbody>
@@ -410,7 +422,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>config_file</strong> : <cite>str</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>config_file</strong> : str</p>
 <blockquote class="last">
 <div><p>path to the config file</p>
 </div></blockquote>
@@ -430,7 +442,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -448,7 +460,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -466,7 +478,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -484,7 +496,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -502,7 +514,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -520,7 +532,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>
@@ -538,7 +550,7 @@ variable DIFFCRASHHOME if not set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : <cite>concurrent.futures.ThreadPoolExecutor</cite></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pool</strong> : concurrent.futures.ThreadPoolExecutor</p>
 <blockquote class="last">
 <div><p>multiprocessing pool</p>
 </div></blockquote>

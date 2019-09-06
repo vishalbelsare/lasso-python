@@ -184,7 +184,7 @@
 <hr class="docutils" />
 <dl class="class">
 <dt id="lasso.dyna.D3plot.D3plot">
-<em class="property">class </em><code class="descclassname">lasso.dyna.D3plot.</code><code class="descname">D3plot</code><span class="sig-paren">(</span><em>filepath: str = None</em>, <em>use_femzip: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lasso.dyna.D3plot.</code><code class="descname">D3plot</code><span class="sig-paren">(</span><em>filepath: str = None</em>, <em>use_femzip: bool = False</em>, <em>n_files_to_load_at_once=-1</em>, <em>state_array_filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -195,8 +195,19 @@
 <div><p>path to a d3plot file</p>
 </div></blockquote>
 <p><strong>use_femzip</strong> : <cite>bool</cite></p>
-<blockquote class="last">
+<blockquote>
 <div><p>whether to use femzip decompression</p>
+</div></blockquote>
+<p><strong>n_files_to_load_at_once</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>number of d3plot files to load into memory at once. 
+By default -1 means all are loaded at the same time (fastest).
+If femzipped files are read this controles how many states
+are read into RAM at once.</p>
+</div></blockquote>
+<p><strong>state_array_filter</strong> : <cite>list</cite> of <cite>str</cite> or <cite>None</cite></p>
+<blockquote class="last">
+<div><p>names of arrays which will be the only ones loaded from state data.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -204,7 +215,22 @@
 </table>
 <p class="rubric">Notes</p>
 <p>If dyna wrote multiple files for several states,
-only give the path to the first file.</p>
+only give the path to the first file. The argument <cite>state_array_filter</cite>
+is useful in combination with <cite>n_files_to_load_at_once</cite> to lower RAM usage.
+Note though that both demand a copy operation of all requested arrays, lowering 
+the overall performance.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="k">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># read all arrays and states in the fastest way possible</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lower memory demand by loading solely one file at a time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">n_files_to_load_at_once</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># also filter only the state arrays we require</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="go">                    n_files_to_load_at_once=1, </span>
+<span class="go">                    state_array_filter=[ArrayType.node_displacement])</span>
+</pre></div>
+</div>
 <p class="rubric">Attributes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -237,7 +263,7 @@ only give the path to the first file.</p>
 </table>
 <dl class="method">
 <dt id="lasso.dyna.D3plot.D3plot.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>filepath: str = None</em>, <em>use_femzip: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>filepath: str = None</em>, <em>use_femzip: bool = False</em>, <em>n_files_to_load_at_once=-1</em>, <em>state_array_filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -248,8 +274,19 @@ only give the path to the first file.</p>
 <div><p>path to a d3plot file</p>
 </div></blockquote>
 <p><strong>use_femzip</strong> : <cite>bool</cite></p>
-<blockquote class="last">
+<blockquote>
 <div><p>whether to use femzip decompression</p>
+</div></blockquote>
+<p><strong>n_files_to_load_at_once</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>number of d3plot files to load into memory at once. 
+By default -1 means all are loaded at the same time (fastest).
+If femzipped files are read this controles how many states
+are read into RAM at once.</p>
+</div></blockquote>
+<p><strong>state_array_filter</strong> : <cite>list</cite> of <cite>str</cite> or <cite>None</cite></p>
+<blockquote class="last">
+<div><p>names of arrays which will be the only ones loaded from state data.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -257,7 +294,22 @@ only give the path to the first file.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>If dyna wrote multiple files for several states,
-only give the path to the first file.</p>
+only give the path to the first file. The argument <cite>state_array_filter</cite>
+is useful in combination with <cite>n_files_to_load_at_once</cite> to lower RAM usage.
+Note though that both demand a copy operation of all requested arrays, lowering 
+the overall performance.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="k">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># read all arrays and states in the fastest way possible</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lower memory demand by loading solely one file at a time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">n_files_to_load_at_once</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># also filter only the state arrays we require</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="go">                    n_files_to_load_at_once=1, </span>
+<span class="go">                    state_array_filter=[ArrayType.node_displacement])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="attribute">

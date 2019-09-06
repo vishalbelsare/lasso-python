@@ -24,13 +24,16 @@ How to use the utility?
     ::
 
         python -m lasso.diffcrash.run --help
-        
-           ==== D I F F C R A S H ====  
 
-         a LASSO GmbH utility script.
 
-        usage: run.py [-h] --reference-run REFERENCE_RUN --crash-code CRASH_CODE
-                    [--diffcrash-home [DIFFCRASH_HOME]]
+       ==== D I F F C R A S H ====
+
+       a LASSO GmbH utility script
+
+        usage: run.py [-h] --reference-run REFERENCE_RUN
+                    [--exclude-runs [EXCLUDE_RUNS [EXCLUDE_RUNS ...]]] --crash-code
+                    CRASH_CODE [--start-stage [START_STAGE]]
+                    [--end-stage [END_STAGE]] [--diffcrash-home [DIFFCRASH_HOME]]
                     [--use-id-mapping [USE_ID_MAPPING]]
                     [--project-dir [PROJECT_DIR]] [--config-file [CONFIG_FILE]]
                     [--parameter-file [PARAMETER_FILE]]
@@ -47,8 +50,16 @@ How to use the utility?
         -h, --help            show this help message and exit
         --reference-run REFERENCE_RUN
                                 filepath of the reference run.
+        --exclude-runs [EXCLUDE_RUNS [EXCLUDE_RUNS ...]]
+                                Runs to exclude from the analysis.
         --crash-code CRASH_CODE
                                 Which crash code is used ('dyna', 'pam' or 'radioss').
+        --start-stage [START_STAGE]
+                                At which specific stage to start the analysis (SETUP,
+                                IMPORT, MATH, EXPORT, MATRIX, EIGEN, MERGE).
+        --end-stage [END_STAGE]
+                                At which specific stage to stop the analysis (SETUP,
+                                IMPORT, MATH, EXPORT, MATRIX, EIGEN, MERGE).
         --diffcrash-home [DIFFCRASH_HOME]
                                 Home directory where Diffcrash is installed. Uses
                                 environment variable 'DIFFCRASHHOME' if unspecified.
@@ -62,7 +73,7 @@ How to use the utility?
         --parameter-file [PARAMETER_FILE]
                                 Path to the parameter file.
         --n-processes [N_PROCESSES]
-                                Number of processes to use (default: max-1)
+                                Number of processes to use (default: max-1).
 
     It is important to specify a `--reference-run` for the analysis. 
     If the reference run is contained within the rest of the 
@@ -85,30 +96,30 @@ Example
             --project-dir diffcrash_project  
             ./runs/*.fz
 
-        ==== D I F F C R A S H ====
+            
+            ==== D I F F C R A S H ==== 
 
-        a LASSO GmbH utility script.
-
-        [/] diffcrash-home  : /home/user/diffcrash/V6.1.24
-        [/] project-dir     : diffcrash_project
+            a LASSO GmbH utility script
+            
+        [/] diffcrash-home  : /sw/Linux/diffcrash/V6.1.24
+        [/] project-dir     : /raid/lasso/constantin/diffcrash/bus/test-example-project
         [/] crash-code      : dyna
-        [/] reference-run   : ./runs/run_1.fz
+        [/] reference-run   : /raid/lasso/constantin/store/bus/run_1.fz
         [/] use-id-mapping  : False
         [/] # simul.-files  : 37
+        [/] # excluded files: 0
         [/] config-file     : None
-        [!] Config file missing. Consider specifying the path with the option
-        '--config-file'.
+        [!] Config file missing. Consider specifying the path with the option '--config-file'.
         [/] parameter-file  : None
-        [!] Parameter file missing. Consider specifying the path with the option
-        '--parameter-file'.
-        [/] n-processes     : 3
+        [!] Parameter file missing. Consider specifying the path with the option '--parameter-file'.
+        [/] n-processes     : 4
 
-        ---- Running Routines ----
+        ---- Running Routines ----   
 
-        [✔] Running Setup ... done in 3.96s
-        [✔] Running Imports ... done in 75.16s
-        [✔] Running Math ... done in 56.99s
-        [✔] Running Export ... done in 2.17s
-        [✔] Running Matrix ... done in 9.74s
-        [✔] Running Eigen ... done in 0.46s
-        [✔] Running Merge ... done in 22.70s
+        [✔] Running Setup ... done in 3.88s
+        [✔] Running Imports ... done in 58.20s   
+        [✔] Running Math ... done in 56.22s   
+        [✔] Running Export ... done in 2.22s   
+        [✔] Running Matrix ... done in 9.78s   
+        [✔] Running Eigen ... done in 0.46s   
+        [✔] Running Merge ... done in 23.29s
