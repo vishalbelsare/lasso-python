@@ -22,21 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -84,6 +74,10 @@
 
           
             
+            
+              <div class="version">
+                1.1.1
+              </div>
             
           
 
@@ -195,40 +189,43 @@
 <div class="section" id="what-is-the-rest-api">
 <h2>What is the REST API?<a class="headerlink" href="#what-is-the-rest-api" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Representational State Transfer (REST) is a type of data transfer.
+<div><p>Representational State Transfer (REST) is a type of data transfer.
 REST itself does not specify any exchange format and simply represents
 an umbrella term. Nonetheless nowadays the name REST is frequently used
 as a term for web-based interfaces with a text-based exchange format
 such as JSON (or less popular XML and HTML). The transfer is usually
 performed via the HTTP protocol, thus relying on HTTP methods such as
-‘GET’, ‘POST’, ‘DELETE’, etc. For running ANSA functions ‘POST’ is used.</div></blockquote>
+‘GET’, ‘POST’, ‘DELETE’, etc. For running ANSA functions ‘POST’ is used.</p>
+</div></blockquote>
 </div>
 <div class="section" id="what-is-the-ansa-rest-api-used-for">
 <h2>What is the ANSA REST API used for?<a class="headerlink" href="#what-is-the-ansa-rest-api-used-for" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The REST API turns ANSA into a microservice, allowing you to perform
+<div><p>The REST API turns ANSA into a microservice, allowing you to perform
 actions from an outside program written in an arbitrary language.
 Since ANSA is stuck in Python 3.3 which was released in 2012, this
 is a big relieve. This opens up the entire ecosystem since certain
 libraries are often only available for certain languages. Also heavy
-computations such as machine learning can be performed in other languages.</div></blockquote>
+computations such as machine learning can be performed in other languages.</p>
+</div></blockquote>
 </div>
 <div class="section" id="what-data-exchange-format-is-used">
 <h2>What data exchange format is used?<a class="headerlink" href="#what-data-exchange-format-is-used" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The dataformat is JSON, which is a text-based format. Text-based formats
+<div><p>The dataformat is JSON, which is a text-based format. Text-based formats
 are not efficient but simple to use. Also JSON is very established
 in the entire programming community. For higher performance RPC can be
 used, which is also much safer, but the current implementation in
-<code class="docutils literal"><span class="pre">lasso.ansa.grpc</span></code> is limited to communication with another python program
-outside of ANSA.</div></blockquote>
+<code class="docutils literal notranslate"><span class="pre">lasso.ansa.grpc</span></code> is limited to communication with another python program
+outside of ANSA.</p>
+</div></blockquote>
 </div>
 <div class="section" id="how-to-start-the-service">
 <h2>How to start the service?<a class="headerlink" href="#how-to-start-the-service" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>The entire package is wrapped as a command-line utility. The service
 info can be called as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">help</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">help</span>
 
 <span class="n">REST</span> <span class="n">JSON</span> <span class="n">Server</span> <span class="k">for</span> <span class="n">ANSA</span> <span class="n">Remote</span> <span class="n">Scripting</span> <span class="kn">from</span> <span class="nn">LASSO</span> <span class="n">GmbH</span>
 <span class="o">----------------------------------------------------------</span>
@@ -245,13 +242,13 @@ info can be called as follows:</p>
 </div>
 <p>The required arguments are the filepath or command of the ANSA executable
 as well as a path to a Python 3.3 distribution (usually an Anaconda
-environment). The REST API requires a package called <code class="docutils literal"><span class="pre">flask</span></code>, which
+environment). The REST API requires a package called <code class="docutils literal notranslate"><span class="pre">flask</span></code>, which
 should be copied either into the ANSA installation or preferably
 installed by using an Anaconda environment and specifying the path
-as an argument here. If <code class="docutils literal"><span class="pre">flask</span></code> can not be found the program will `
+as an argument here. If <code class="docutils literal notranslate"><span class="pre">flask</span></code> can not be found the program will `
 yell at you and tell you how to install it.</p>
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span>
     <span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="o">.</span><span class="mf">1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
     <span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">envs</span>\<span class="n">py33</span>
 
@@ -296,12 +293,12 @@ on the specified run-address displayed by the info page. The format JSON
 exchange format requires three arguments:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">function_name</span></code> Name of the ANSA scripting function with the
-entire module path</li>
-<li><code class="docutils literal"><span class="pre">args</span></code>
-Argument list supplied to the function</li>
-<li><code class="docutils literal"><span class="pre">kwargs</span></code>
-Named arguments for the function mentioned previously</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function_name</span></code> Name of the ANSA scripting function with the
+entire module path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code>
+Argument list supplied to the function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code>
+Named arguments for the function mentioned previously</p></li>
 </ul>
 </div></blockquote>
 <p>These three pieces will be translated within ANSA into a python
@@ -309,7 +306,7 @@ function call.
 Error messages will be thrown back into your face from the python side
 such as missing arguments.</p>
 <p>Example payload for a POST request.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">],</span>
@@ -323,8 +320,8 @@ such as missing arguments.</p>
 <p>The response always has two components:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">success</span></code> indicating whether an error was thrown by ANSA</li>
-<li><code class="docutils literal"><span class="pre">payload</span></code> whatever the function call returned or the error message</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">success</span></code> indicating whether an error was thrown by ANSA</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">payload</span></code> whatever the function call returned or the error message</p></li>
 </ul>
 </div></blockquote>
 <p>The return values are automatically converted to JSON before transfer.
@@ -332,7 +329,7 @@ ANSA entites are an ANSA specific class thus not directly available
 in JSON. We transfer all of the entities properties into a JSON
 object in such cases. See the response for the pervious function call below:</p>
 <blockquote>
-<div><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;__doc__&quot;</span><span class="o">:</span> <span class="s2">&quot;ANSA Entity object&quot;</span><span class="p">,</span>
         <span class="s2">&quot;_bcomment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -358,7 +355,7 @@ object in such cases. See the response for the pervious function call below:</p>
 </div>
 </div></blockquote>
 <p>Here is an example for sending JSON requests from Javascript:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// build the request</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// build the request</span>
 <span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -384,13 +381,13 @@ object in such cases. See the response for the pervious function call below:</p>
 <div><p>An ANSA entity is identified by a JSON object having 2 properties:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">id</span></code> of the entity</li>
-<li><code class="docutils literal"><span class="pre">ansa_type</span></code> type of the entity</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> of the entity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansa_type</span></code> type of the entity</p></li>
 </ul>
 </div></blockquote>
 <p>Example:</p>
 <blockquote>
-<div><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;function_name&quot;</span><span class="o">:</span> <span class="s2">&quot;ansa.base.SetEntityCardValues&quot;</span><span class="p">,</span>
     <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">],</span>
@@ -414,14 +411,16 @@ object in such cases. See the response for the pervious function call below:</p>
 <div class="section" id="wheres-the-ansa-window-gui">
 <h2>Wheres the ANSA Window (GUI)?<a class="headerlink" href="#wheres-the-ansa-window-gui" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The GUI is hidden, since for a microservice a GUI is an unneccesary
-slow-down. Also the service blocks ANSA, thus its useless.</div></blockquote>
+<div><p>The GUI is hidden, since for a microservice a GUI is an unneccesary
+slow-down. Also the service blocks ANSA, thus its useless.</p>
+</div></blockquote>
 </div>
 <div class="section" id="how-to-shut-down-the-service">
 <h2>How to shut down the service?<a class="headerlink" href="#how-to-shut-down-the-service" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Either hit Ctrl+C in the command line or visit the shutdown website link
-displayed in the info.</div></blockquote>
+<div><p>Either hit Ctrl+C in the command line or visit the shutdown website link
+displayed in the info.</p>
+</div></blockquote>
 </div>
 </div>
 

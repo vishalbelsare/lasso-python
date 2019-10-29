@@ -2260,13 +2260,16 @@ class D3plot:
         logging.debug(
             "_read_states_beams start at var_index {}".format(var_index))
 
+        # beam intergration point vars
+        N_BEAM_IP_VARS = 5
+
         n_states = state_data.shape[0]
         n_beams = self.header["nel2"]
         n_history_vars = self.header["neipb"]
         n_beam_vars = self.header["nv1d"]
         n_layers = int((-3*n_history_vars+n_beam_vars-6)
                        / (n_history_vars+5))
-        n_layer_vars = 6+5*n_layers\
+        n_layer_vars = 6+N_BEAM_IP_VARS*n_layers\
                         + n_history_vars*(3+n_layers)
 
         # beam element data
@@ -2280,16 +2283,18 @@ class D3plot:
         beam_nonlayer_data = beam_data[:, :, :6]
 
         # handle layers
-        beam_dtype_layers = [
-            ('shear_stress', (self.ftype, 2)),
-            ('axial_stress', (self.ftype, 1)),
-            ('plastic_strain', (self.ftype, 1)),
-            ('axial_strain', (self.ftype, 1)),
-            ('history_vars', (self.ftype,
-                              n_history_vars*(3+n_layers))),
-        ]
-        beam_layer_data = np.array(
-            beam_layer_data, copy=False, dtype=beam_dtype_layers)
+        # beam_dtype_layers = [
+        #     ('shear_stress', (self.ftype, 2)),
+        #     ('axial_stress', (self.ftype, 1)),
+        #     ('plastic_strain', (self.ftype, 1)),
+        #     ('axial_strain', (self.ftype, 1)),
+        #     ('history_vars', (self.ftype,
+        #                       n_history_vars*(3+n_layers))),
+        # ]
+        # beam_layer_data = np.array(
+        #     beam_layer_data, copy=False, dtype=beam_dtype_layers)
+        beam_layer_data = beam_layer_data\
+            .reshape((n_states, n_beams, n_layers, N_BEAM_IP_VARS))
 
         # axial force
         array_dict[arraytype.element_beam_axial_force] = \
@@ -2310,25 +2315,20 @@ class D3plot:
         if n_layers:
             # shear stress
             array_dict[arraytype.element_beam_shear_stress] = \
-                beam_layer_data["shear_stress"]\
-                .reshape((n_states, n_beams, n_layers, 2))
+                beam_layer_data[:,:,:,0:2]
             # axial stress
             array_dict[arraytype.element_beam_axial_stress] = \
-                beam_layer_data["axial_stress"]\
-                .reshape((n_states, n_beams, n_layers))
+                beam_layer_data[:,:,:,2]
             # eff. plastic strain
             array_dict[arraytype.element_beam_plastic_strain] = \
-                beam_layer_data["plastic_strain"]\
-                .reshape((n_states, n_beams, n_layers))
+                beam_layer_data[:,:,:,3]
             # axial strain
             array_dict[arraytype.element_beam_axial_strain] = \
-                beam_layer_data["axial_strain"]\
-                .reshape((n_states, n_beams, n_layers, 2))
+                beam_layer_data[:,:,:,4]
             # history vars
             if n_history_vars:
                 array_dict[arraytype.element_beam_history_vars] = \
-                    beam_layer_data["history_vars"]\
-                    .reshape((n_states, n_beams, n_layers, n_history_vars))
+                    beam_layer_data[:,:,:,5:n_history_vars]
 
         logging.debug(
             "_read_states_beams end at var_index {}".format(var_index))
@@ -2353,8 +2353,8 @@ class D3plot:
             updated variable index after reading the section
         '''
 
-        if self.header["nel4"] <= 0 \
-           or self.header["nv2d"]-self.header["numrbe"] <= 0:
+        if self.header["nv2d"] <= 0 \
+           or self.header["nel4"]-self.header["numrbe"] <= 0:
             return var_index
 
         logging.debug(

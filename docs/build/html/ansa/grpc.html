@@ -22,21 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -47,6 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lasso.dyna" href="../dyna/dyna.html" />
     <link rel="prev" title="rest" href="rest.html" />
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -84,6 +75,10 @@
           
             
             
+              <div class="version">
+                1.1.1
+              </div>
+            
           
 
           
@@ -109,9 +104,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="ansa.html">lasso.ansa</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="rest.html">rest</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">grpc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ansaclient">AnsaClient</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#ansaclient">AnsaClient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-rpc">What is RPC?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#then-what-is-grpc">Then what is GRPC?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-data-exchange-format-is-used">What data exchange format is used?</a></li>
@@ -200,54 +193,46 @@
 <h2>AnsaClient<a class="headerlink" href="#ansaclient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="lasso.ansa.grpc.AnsaClient">
-<em class="property">class </em><code class="descclassname">lasso.ansa.grpc.</code><code class="descname">AnsaClient</code><span class="sig-paren">(</span><em>stub: lasso.ansa.grpc.AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lasso.ansa.grpc.</code><code class="sig-name descname">AnsaClient</code><span class="sig-paren">(</span><em class="sig-param">stub: lasso.ansa.grpc.AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an AnsaClient for remote scripting</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stub</strong> : <cite>AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</cite></p>
-<blockquote class="last">
-<div><p>grpc stub from connection</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>stub</strong><span class="classifier"><cite>AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</cite></span></dt><dd><p>grpc stub from connection</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p>Please see the docs or the script:
 ‘lasso/ansa/grpc/example_client.py’</p>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#lasso.ansa.grpc.AnsaClient.run" title="lasso.ansa.grpc.AnsaClient.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>((function_name,&nbsp;*args,&nbsp;**kwargs)&nbsp;-&gt;&nbsp;object)</td>
-<td>Run an arbitrary ANSA function</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.ansa.grpc.AnsaClient.run" title="lasso.ansa.grpc.AnsaClient.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(self, function_name, \*args, \*\*kwargs)</p></td>
+<td><p>Run an arbitrary ANSA function</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lasso.ansa.grpc.AnsaClient.shutdown" title="lasso.ansa.grpc.AnsaClient.shutdown"><code class="xref py py-obj docutils literal"><span class="pre">shutdown</span></code></a>()</td>
-<td>shut down the remote server</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.ansa.grpc.AnsaClient.shutdown" title="lasso.ansa.grpc.AnsaClient.shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shutdown</span></code></a>(self)</p></td>
+<td><p>shut down the remote server</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="lasso.ansa.grpc.AnsaClient.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>stub: lasso.ansa.grpc.AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stub: lasso.ansa.grpc.AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an AnsaClient for remote scripting</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stub</strong> : <cite>AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</cite></p>
-<blockquote class="last">
-<div><p>grpc stub from connection</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>stub</strong><span class="classifier"><cite>AnsaGRPC_pb2_grpc.LassoAnsaDriverStub</cite></span></dt><dd><p>grpc stub from connection</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p>Please see the docs or the script:
 ‘lasso/ansa/grpc/example_client.py’</p>
@@ -255,36 +240,28 @@
 
 <dl class="method">
 <dt id="lasso.ansa.grpc.AnsaClient.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>function_name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function_name</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run an arbitrary ANSA function</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>function_name</strong> : <cite>str</cite></p>
-<blockquote>
-<div><p>full module path of the ansa function to call as string</p>
-</div></blockquote>
-<p><strong>*args</strong> : <cite>object</cite></p>
-<blockquote>
-<div><p>arguments passed to function in ANSA</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : <cite>object</cite></p>
-<blockquote>
-<div><p>named arguments passed to function in ANSA</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>anything</strong> : <cite>object</cite></p>
-<blockquote class="last">
-<div><p>whatever ANSA returns</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>function_name</strong><span class="classifier"><cite>str</cite></span></dt><dd><p>full module path of the ansa function to call as string</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier"><cite>object</cite></span></dt><dd><p>arguments passed to function in ANSA</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier"><cite>object</cite></span></dt><dd><p>named arguments passed to function in ANSA</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>anything</strong><span class="classifier"><cite>object</cite></span></dt><dd><p>whatever ANSA returns</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;POINT&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ansa.base.CreateEntity&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;POINT&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ansa.base.SetEntityCardValues&quot;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">deck</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">entity</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span>
@@ -297,7 +274,7 @@
 
 <dl class="method">
 <dt id="lasso.ansa.grpc.AnsaClient.shutdown">
-<code class="descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.shutdown" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.ansa.grpc.AnsaClient.shutdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>shut down the remote server</p>
 </dd></dl>
 
@@ -307,7 +284,7 @@
 <div class="section" id="what-is-rpc">
 <h2>What is RPC?<a class="headerlink" href="#what-is-rpc" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Remote Procedure Call (RPC) is used to call a function on another process
+<div><p>Remote Procedure Call (RPC) is used to call a function on another process
 often on another machine. The remote process might additionaly be
 implemented in a different programming language. The compatability
 is ensured by using an interface definition file with a
@@ -315,29 +292,33 @@ library-specific syntax. From this interface file client implementations
 can be generated for other programming languages automatically.
 The generated code for servers though requires the user to implement
 of course the function calls himself. Since we already implemented the
-ANSA server though, there is no need to do this.</div></blockquote>
+ANSA server though, there is no need to do this.</p>
+</div></blockquote>
 </div>
 <div class="section" id="then-what-is-grpc">
 <h2>Then what is GRPC?<a class="headerlink" href="#then-what-is-grpc" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>While RPC is the principle, GRPC is an implementation from Google.</div></blockquote>
+<div><p>While RPC is the principle, GRPC is an implementation from Google.</p>
+</div></blockquote>
 </div>
 <div class="section" id="what-data-exchange-format-is-used">
 <h2>What data exchange format is used?<a class="headerlink" href="#what-data-exchange-format-is-used" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The exchange format is Protobuf, which is a binary format. The exchangable
+<div><p>The exchange format is Protobuf, which is a binary format. The exchangable
 datatypes are usually specified in an interface file (.proto) and this
 file can be used to generate code for many different languages. Proto
 files can also be composed from JSON. For being binary, its ‘relatively’
 fast though there is better juice out there but also often more
-complicated or less well supported.</div></blockquote>
+complicated or less well supported.</p>
+</div></blockquote>
 </div>
 <div class="section" id="if-rpc-is-generic-why-can-only-another-python-connect-to-ansa-rpc">
 <h2>If RPC is generic, why can only another Python connect to ANSA RPC?<a class="headerlink" href="#if-rpc-is-generic-why-can-only-another-python-connect-to-ansa-rpc" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Because we are lazy. We simply send Python binary data objects
+<div><p>Because we are lazy. We simply send Python binary data objects
 (pickled) by using grpc. We could generalize it, but we didn’t require
-it yet. Also generalization requires some effort.</div></blockquote>
+it yet. Also generalization requires some effort.</p>
+</div></blockquote>
 </div>
 <div class="section" id="how-to-install-the-requirements-for-a-server">
 <h2>How to install the requirements for a server?<a class="headerlink" href="#how-to-install-the-requirements-for-a-server" title="Permalink to this headline">¶</a></h2>
@@ -345,49 +326,48 @@ it yet. Also generalization requires some effort.</div></blockquote>
 <div><p>The installation of all requirements is unfortunately quite difficult
 since ANSA is stuck at python 3.3 which requires several tricks.</p>
 <ol class="arabic">
-<li><p class="first">Download and install <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda Python</a>.</p>
-</li>
-<li><p class="first">Create a python 3.3 environment.</p>
+<li><p>Download and install <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda Python</a>.</p></li>
+<li><p>Create a python 3.3 environment.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py33</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.3</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py33</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.3</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Activate the environment</p>
+<li><p>Activate the environment</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">py33</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">py33</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Install requirement <code class="docutils literal"><span class="pre">enum34</span></code></p>
+<li><p>Install requirement <code class="docutils literal notranslate"><span class="pre">enum34</span></code></p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">enum34</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">enum34</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Install requirement <code class="docutils literal"><span class="pre">protobuf</span></code> and <code class="docutils literal"><span class="pre">protobuf3</span></code></p>
+<li><p>Install requirement <code class="docutils literal notranslate"><span class="pre">protobuf</span></code> and <code class="docutils literal notranslate"><span class="pre">protobuf3</span></code></p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">protobuf</span> <span class="n">protobuf3</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">protobuf</span> <span class="n">protobuf3</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Install <code class="docutils literal"><span class="pre">grpc</span></code></p>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">grpc</span></code></p>
 <blockquote>
 <div><p>Clone the repo:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v1</span><span class="o">.</span><span class="mf">20.0</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">grpc</span><span class="o">/</span><span class="n">grpc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v1</span><span class="o">.</span><span class="mf">20.0</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">grpc</span><span class="o">/</span><span class="n">grpc</span>
 <span class="n">cd</span> <span class="n">grpc</span>
 </pre></div>
 </div>
 <p>Clone the required submodules:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodules</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodules</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
 </pre></div>
 </div>
 <p>Edit the file <cite>setup.py</cite> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSTALL_REQUIRES</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALL_REQUIRES</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;six&gt;=1.5.2&quot;</span><span class="p">,</span>
     <span class="c1"># &quot;futures&gt;=2.2.0; python_version&lt;&#39;3.2&#39;&quot;,</span>
     <span class="s2">&quot;futures&gt;=2.2.0&quot;</span><span class="p">,</span>
@@ -397,12 +377,12 @@ since ANSA is stuck at python 3.3 which requires several tricks.</p>
 </pre></div>
 </div>
 <p>Run the installation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The compilation may require certain system libraries to be
+<p class="admonition-title">Warning</p>
+<p>The compilation may require certain system libraries to be
 installed already.</p>
 </div>
 </div></blockquote>
@@ -415,7 +395,7 @@ installed already.</p>
 <blockquote>
 <div><p>The entire package is wrapped as a command-line utility. The service
 info can be called as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">help</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">help</span>
 
 <span class="n">usage</span><span class="p">:</span> <span class="n">server</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">ANSA_FILEPATH</span><span class="p">]</span>
                 <span class="p">[</span><span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="n">PYTHON33_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span> <span class="n">PORT</span><span class="p">]</span>
@@ -443,15 +423,15 @@ info can be called as follows:</p>
 <p>The arguments are:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">--ansa-filepath</span></code> ansa command or path to the executable</li>
-<li><code class="docutils literal"><span class="pre">--python33-path</span></code> path to a python 3.3 installation holding required modules for ansa</li>
-<li><code class="docutils literal"><span class="pre">--port</span></code> to run the service on</li>
-<li><code class="docutils literal"><span class="pre">--interactive</span></code> enables an interactive command line shell on the server</li>
-<li><code class="docutils literal"><span class="pre">--show-gui</span></code> enable the gui, causes usually trouble, believe me</li>
-<li><code class="docutils literal"><span class="pre">--enable-logging</span></code> display server actions in the command line</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ansa-filepath</span></code> ansa command or path to the executable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--python33-path</span></code> path to a python 3.3 installation holding required modules for ansa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code> to run the service on</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--interactive</span></code> enables an interactive command line shell on the server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-gui</span></code> enable the gui, causes usually trouble, believe me</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--enable-logging</span></code> display server actions in the command line</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">server</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">server</span>
     <span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">ansa</span>
     <span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="o">~/</span><span class="n">sw</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">py33</span><span class="o">/</span>
 
@@ -477,7 +457,7 @@ info can be called as follows:</p>
 <blockquote>
 <div><p>You can test the connection by opening an interactive python
 shell with a connected client as follows (address is optional):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">client</span> <span class="o">--</span><span class="n">address</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">16135</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">grpc</span><span class="o">.</span><span class="n">client</span> <span class="o">--</span><span class="n">address</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">16135</span>
 
     <span class="n">ANSA</span> <span class="n">Remote</span> <span class="n">Scripting</span> <span class="n">Client</span> <span class="n">by</span> <span class="n">LASSO</span> <span class="n">GmbH</span>
     <span class="o">------------------------------------------</span>
@@ -495,14 +475,14 @@ shell with a connected client as follows (address is optional):</p>
 REST API. All arguments entered behind the function name are forwarded
 to ANSA on the other side. The entity object returned can be used
 for further calls. The server (not client!) can be shut down with
-<code class="docutils literal"><span class="pre">client.shutdown()</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">client.shutdown()</span></code>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="how-to-connect-from-a-script">
 <h2>How to connect from a script?<a class="headerlink" href="#how-to-connect-from-a-script" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>This example script is located at <cite>lasso/ansa/grpc/example_client.py</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grpc</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grpc</span>
 <span class="kn">from</span> <span class="nn">lasso.ansa.grpc</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">LassoAnsaDriverStub</span><span class="p">,</span>
     <span class="n">AnsaClient</span><span class="p">,</span>
@@ -533,30 +513,33 @@ for further calls. The server (not client!) can be shut down with
             <span class="p">})</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">options</span></code> ensure that the low default memory limit is raised.
-Also the <code class="docutils literal"><span class="pre">channel</span></code> needs to be opened and managed by the user due
+<p>The <code class="docutils literal notranslate"><span class="pre">options</span></code> ensure that the low default memory limit is raised.
+Also the <code class="docutils literal notranslate"><span class="pre">channel</span></code> needs to be opened and managed by the user due
 to pythons IO and memory management. In consequence it would not
-make sense to open the channel hidden within the <code class="docutils literal"><span class="pre">AnsaClient</span></code>.</p>
+make sense to open the channel hidden within the <code class="docutils literal notranslate"><span class="pre">AnsaClient</span></code>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="i-m-having-trouble-when-enabling-the-gui">
 <h2>I’m having trouble when enabling the GUI<a class="headerlink" href="#i-m-having-trouble-when-enabling-the-gui" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Yeah, we sometimes have too. It depends on several factors. Simply leave
-it closed.</div></blockquote>
+<div><p>Yeah, we sometimes have too. It depends on several factors. Simply leave
+it closed.</p>
+</div></blockquote>
 </div>
 <div class="section" id="how-to-shut-down-the-service">
 <h2>How to shut down the service?<a class="headerlink" href="#how-to-shut-down-the-service" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Either hit Ctrl+C in the command line or run <cite>client.shutdown()</cite>. Ctrl+C
+<div><p>Either hit Ctrl+C in the command line or run <cite>client.shutdown()</cite>. Ctrl+C
 may occasionally cause ANSA to dump crash while terminating for an
-unknown reason (possibly multithreading). We are happy for hints.</div></blockquote>
+unknown reason (possibly multithreading). We are happy for hints.</p>
+</div></blockquote>
 </div>
 <div class="section" id="seems-awfully-complex-can-you-make-it-simpler">
 <h2>Seems awfully complex, can you make it simpler?<a class="headerlink" href="#seems-awfully-complex-can-you-make-it-simpler" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>Maybe, but we already hide stuff we shouldn’t so I guess it’s ok for
-the moment.</div></blockquote>
+<div><p>Maybe, but we already hide stuff we shouldn’t so I guess it’s ok for
+the moment.</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -567,6 +550,8 @@ the moment.</div></blockquote>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dyna/dyna.html" class="btn btn-neutral float-right" title="lasso.dyna" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="rest.html" class="btn btn-neutral float-left" title="rest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

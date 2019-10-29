@@ -102,9 +102,9 @@ Example
             a LASSO GmbH utility script
             
         [/] diffcrash-home  : /sw/Linux/diffcrash/V6.1.24
-        [/] project-dir     : /raid/lasso/constantin/diffcrash/bus/test-example-project
+        [/] project-dir     : test-example-project
         [/] crash-code      : dyna
-        [/] reference-run   : /raid/lasso/constantin/store/bus/run_1.fz
+        [/] reference-run   : bus/run_1.fz
         [/] use-id-mapping  : False
         [/] # simul.-files  : 37
         [/] # excluded files: 0

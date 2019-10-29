@@ -22,21 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -48,6 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="lasso.diffcrash" href="../diffcrash/diffcrash.html" />
+    <link rel="prev" title="D3plot" href="D3plot.html" />
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -83,6 +74,10 @@
 
           
             
+            
+              <div class="version">
+                1.1.1
+              </div>
             
           
 
@@ -188,14 +183,13 @@
 <div class="section" id="d3plot">
 <h2>D3plot<a class="headerlink" href="#d3plot" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><dl class="docutils">
-<dt>Benchmark:</dt>
-<dd><p class="first">The d3plot reader is bazingly fast by using several memory tricks.
+<div><dl>
+<dt>Benchmark:</dt><dd><p>The d3plot reader is bazingly fast by using several memory tricks.
 While postprocessors build up an internal datastructure during reading,
 this reader avoids this and simply references memory within the files.
 In consequence performance benchmarks show that the runtime
 of the code is solely dominated by pulling the files into memory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2108</span> <span class="n">function</span> <span class="n">calls</span> <span class="p">(</span><span class="mi">2099</span> <span class="n">primitive</span> <span class="n">calls</span><span class="p">)</span> <span class="ow">in</span> <span class="mf">43.017</span> <span class="n">seconds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2108</span> <span class="n">function</span> <span class="n">calls</span> <span class="p">(</span><span class="mi">2099</span> <span class="n">primitive</span> <span class="n">calls</span><span class="p">)</span> <span class="ow">in</span> <span class="mf">43.017</span> <span class="n">seconds</span>
 
 <span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">internal</span> <span class="n">time</span>
 
@@ -215,45 +209,46 @@ of the code is solely dominated by pulling the files into memory.</p>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p class="last">In the table above the largest, first three performance issues are all related
+<p>In the table above the largest, first three performance issues are all related
 to loading files into memory, accounting for 99.89% of runtime.
 The routines reading the data arrays (deserialization) have an almost constant
 runtime of a few milliseconds and are independent of the filesize.</p>
 </dd>
-<dt>Efficiency:</dt>
-<dd>Note that writing such efficient and simple code in C or any other language
+<dt>Efficiency:</dt><dd><p>Note that writing such efficient and simple code in C or any other language
 is much more challenging than in Python, thus surprisingly this implementation
 can be expected to outperform most native codes and tools. Indeed tests show that
 when reading all results of a d3plot in a postprocessor, this library is
 devastatingly fast. For reading single node-fields this library can be slower
-though (see Improvements below).</dd>
-<dt>Array-based API:</dt>
-<dd>Building objects is useful (e.g. neighbor search) but requires additional
+though (see Improvements below).</p>
+</dd>
+<dt>Array-based API:</dt><dd><p>Building objects is useful (e.g. neighbor search) but requires additional
 runtime overhead. By the principle of “don’t pay for what you don’t use”
 it was decided to avoid object orientation, thus providing a majorly
 array-based API. This is perfectly suitable for data analysis as well
-as machine learning.</dd>
-<dt>Improvements:</dt>
-<dd>A speedup ‘could’ be achieved by using memory-mapping, thus pulling only
+as machine learning.</p>
+</dd>
+<dt>Improvements:</dt><dd><p>A speedup ‘could’ be achieved by using memory-mapping, thus pulling only
 fractions of the files into the RAM which hold the required arrays.
 Postprocessors sometimes do this when reading certain fields, outperforming
 this library in such a case (e.g. node displacements). Since dyna litters
 most arrays across the entire file though, this method was not considered
-worth the effort and thus this library always reads everything.</dd>
+worth the effort and thus this library always reads everything.</p>
+</dd>
 </dl>
 </div></blockquote>
 </div>
 <div class="section" id="binout">
 <h2>Binout<a class="headerlink" href="#binout" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The binout is used to store arbitrary binary data at a much higher
+<div><p>The binout is used to store arbitrary binary data at a much higher
 frequency than the d3plot. As a result the data is dumped in an internal
 ‘state folder’. Since different results may be dumped at different
 frequencies some state folders might contain more information than
 others.
 This inherently prevents efficient memory reading. The python version used
 here is slower than the original C-based version but one therefore gains
-better portability accross operating systems.</div></blockquote>
+better portability accross operating systems.</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -267,6 +262,8 @@ better portability accross operating systems.</div></blockquote>
       
         <a href="../diffcrash/diffcrash.html" class="btn btn-neutral float-right" title="lasso.diffcrash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="D3plot.html" class="btn btn-neutral float-left" title="D3plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

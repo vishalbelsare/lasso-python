@@ -178,3 +178,22 @@ class D3plotTest(TestCase):
 
         for name, value in test_header_data.items():
             self.assertEqual(header[name], value, "Invalid var %s" % name)
+
+    def test_beamip(self):
+
+        self.maxDiff = None
+
+        filepath = "test/d3plot_beamip/d3plot"
+        maxmin_test_values = {
+            "element_beam_shear_stress": (-0.007316963, 0.),
+            "element_beam_axial_stress": (0., 0.0056635854),
+            "element_beam_plastic_strain": (0., 0.0056297667),
+            "element_beam_axial_strain": (-0.0073745, 0.),
+        }
+
+        d3plot = D3plot(filepath)
+
+        for array_name, minmax in maxmin_test_values.items():
+            array = d3plot.arrays[array_name]
+            self.assertAlmostEqual(array.min(), minmax[0], msg="{0}: {1} != {2}".format(array_name, array.min(), minmax[0]))
+            self.assertAlmostEqual(array.max(), minmax[1], msg="{0}: {1} != {2}".format(array_name, array.max(), minmax[1]))
