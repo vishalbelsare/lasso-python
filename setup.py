@@ -14,7 +14,7 @@ def collect_tests():
 def main():
 
     setup(name='lasso-python',
-          version='1.1.1',
+          version='1.1.2',
           description='A next-generation CAE Python Library.',
           author='Lasso GmbH',
           author_email='lasso@lasso.de',
@@ -46,7 +46,8 @@ def main():
             'Programming Language :: Python :: 3',
             'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3.7']
+            'Programming Language :: Python :: 3.7',
+            'Programming Language :: Python :: 3.8']
           )
 
 

@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Performance Info" href="dyna_performance_info.html" />
+    <link rel="next" title="ArrayType" href="ArrayType.html" />
     <link rel="prev" title="Binout" href="Binout.html" />
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                1.1.1
+                1.1.2
               </div>
             
           
@@ -105,6 +105,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="dyna.html">lasso.dyna</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Binout.html">Binout</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">D3plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ArrayType.html">ArrayType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyna_performance_info.html">Performance Info</a></li>
 </ul>
 </li>
@@ -213,11 +214,17 @@ only give the path to the first file.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="lasso.dyna.D3plot.D3plot.enable_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_logger</span></code></a>(enable)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.compare" title="lasso.dyna.D3plot.D3plot.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(self, d3plot2)</p></td>
+<td><p>Compare two d3plots and print the info</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="lasso.dyna.D3plot.D3plot.enable_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_logger</span></code></a>(enable)</p></td>
 <td><p>Enable the logger for this class</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep[, field])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep[, field])</p></td>
 <td><p>Plot the d3plot geometry</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(self, filepath, block_size_bytes)</p></td>
+<td><p>Write a d3plot file again</p></td>
 </tr>
 </tbody>
 </table>
@@ -262,6 +269,28 @@ helps with IDE integration and code safety.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">atypes</span><span class="o">.</span><span class="n">node_displacmeent</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.dyna.D3plot.D3plot.compare">
+<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">d3plot2</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare two d3plots and print the info</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>d3plot2</strong><span class="classifier">D3plot</span></dt><dd><p>second d3plot</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>hdr_differences</strong><span class="classifier">dict</span></dt><dd><p>differences in the header</p>
+</dd>
+<dt><strong>array_differences</strong><span class="classifier">dict</span></dt><dd><p>difference between arrays (number of non-matching elements)</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -316,6 +345,23 @@ thus sometimes confusing … but that’s dyna.</p>
 solids the surface needs extraction.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="lasso.dyna.D3plot.D3plot.write_d3plot">
+<code class="sig-name descname">write_d3plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filepath: str</em>, <em class="sig-param">block_size_bytes: int = 2048</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a d3plot file again</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filepath</strong><span class="classifier">str</span></dt><dd><p>filepath of the new d3plot file</p>
+</dd>
+<dt><strong>block_size_bytes</strong><span class="classifier">int</span></dt><dd><p>D3plots are originally written in byte-blocks causing zero-padding at the end of
+files. This can be controlled by this parameter. Set to 0 for no padding.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -328,7 +374,7 @@ solids the surface needs extraction.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dyna_performance_info.html" class="btn btn-neutral float-right" title="Performance Info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ArrayType.html" class="btn btn-neutral float-right" title="ArrayType" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Binout.html" class="btn btn-neutral float-left" title="Binout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

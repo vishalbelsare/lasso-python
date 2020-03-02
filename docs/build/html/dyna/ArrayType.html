@@ -1,0 +1,1049 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ArrayType &mdash; LASSO Python Library</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/lasso-favicon.gif"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance Info" href="dyna_performance_info.html" />
+    <link rel="prev" title="D3plot" href="D3plot.html" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ansa/ansa.html">lasso.ansa</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dyna.html">lasso.dyna</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Binout.html">Binout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="D3plot.html">D3plot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ArrayType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyna_performance_info.html">Performance Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="dyna.html">lasso.dyna</a> &raquo;</li>
+        
+      <li>ArrayType</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arraytype">
+<h1>ArrayType<a class="headerlink" href="#arraytype" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<dl class="class">
+<dt id="lasso.dyna.ArrayType.ArrayType">
+<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.ArrayType.</code><code class="sig-name descname">ArrayType</code><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the names for specific arrays</p>
+<p>Enums from this class shall be used as a preferred practice
+instead of the string array names to ensure compatability.</p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_state_array_names</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_bag_volume">
+<code class="sig-name descname">airbag_bag_volume</code><em class="property"> = 'airbag_bag_volume'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_bag_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_n_active_particles">
+<code class="sig-name descname">airbag_n_active_particles</code><em class="property"> = 'airbag_n_active_particles'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_n_active_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_chamber_id">
+<code class="sig-name descname">airbag_particle_chamber_id</code><em class="property"> = 'airbag_particle_chamber_id'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_chamber_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_gas_id">
+<code class="sig-name descname">airbag_particle_gas_id</code><em class="property"> = 'airbag_particle_gas_id'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_gas_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_leakage">
+<code class="sig-name descname">airbag_particle_leakage</code><em class="property"> = 'airbag_particle_leakage'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_leakage" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_mass">
+<code class="sig-name descname">airbag_particle_mass</code><em class="property"> = 'airbag_particle_mass'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_nearest_segment_distance">
+<code class="sig-name descname">airbag_particle_nearest_segment_distance</code><em class="property"> = 'airbag_particle_nearest_segment_distance'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_nearest_segment_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_position">
+<code class="sig-name descname">airbag_particle_position</code><em class="property"> = 'airbag_particle_position'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_radius">
+<code class="sig-name descname">airbag_particle_radius</code><em class="property"> = 'airbag_particle_radius'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_spin_energy">
+<code class="sig-name descname">airbag_particle_spin_energy</code><em class="property"> = 'airbag_particle_spin_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_spin_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_translation_energy">
+<code class="sig-name descname">airbag_particle_translation_energy</code><em class="property"> = 'airbag_particle_translation_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_translation_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_particle_velocity">
+<code class="sig-name descname">airbag_particle_velocity</code><em class="property"> = 'airbag_particle_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_particle_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_airbag_particles, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_variable_names">
+<code class="sig-name descname">airbag_variable_names</code><em class="property"> = 'airbag_variable_names'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_variable_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_variables)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbag_variable_types">
+<code class="sig-name descname">airbag_variable_types</code><em class="property"> = 'airbag_variable_types'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbag_variable_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_variables)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbags_first_particle_id">
+<code class="sig-name descname">airbags_first_particle_id</code><em class="property"> = 'airbags_first_particle_id'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbags_first_particle_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbags_ids">
+<code class="sig-name descname">airbags_ids</code><em class="property"> = 'airbags_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbags_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbags_n_chambers">
+<code class="sig-name descname">airbags_n_chambers</code><em class="property"> = 'airbags_n_chambers'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbags_n_chambers" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbags_n_gas_mixtures">
+<code class="sig-name descname">airbags_n_gas_mixtures</code><em class="property"> = 'airbags_n_gas_mixtures'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbags_n_gas_mixtures" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.airbags_n_particles">
+<code class="sig-name descname">airbags_n_particles</code><em class="property"> = 'airbags_n_particles'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.airbags_n_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_airbags)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.ale_material_ids">
+<code class="sig-name descname">ale_material_ids</code><em class="property"> = 'ale_material_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.ale_material_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.contact_title_ids">
+<code class="sig-name descname">contact_title_ids</code><em class="property"> = 'contact_title_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.contact_title_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.contact_titles">
+<code class="sig-name descname">contact_titles</code><em class="property"> = 'contact_titles'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.contact_titles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_axial_force">
+<code class="sig-name descname">element_beam_axial_force</code><em class="property"> = 'element_beam_axial_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_axial_force" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_axial_strain">
+<code class="sig-name descname">element_beam_axial_strain</code><em class="property"> = 'element_beam_axial_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_axial_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, n_beams_layers)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_axial_stress">
+<code class="sig-name descname">element_beam_axial_stress</code><em class="property"> = 'element_beam_axial_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_axial_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, n_beams_layers)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_bending_moment">
+<code class="sig-name descname">element_beam_bending_moment</code><em class="property"> = 'element_beam_bending_moment'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_bending_moment" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, s_t)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_history_vars">
+<code class="sig-name descname">element_beam_history_vars</code><em class="property"> = 'element_beam_history_vars'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_history_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, n_beams_layers+3, n_beams_history_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_ids">
+<code class="sig-name descname">element_beam_ids</code><em class="property"> = 'element_beam_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_beams)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_is_alive">
+<code class="sig-name descname">element_beam_is_alive</code><em class="property"> = 'element_beam_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_node_indexes">
+<code class="sig-name descname">element_beam_node_indexes</code><em class="property"> = 'element_beam_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_beams, 5)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_part_indexes">
+<code class="sig-name descname">element_beam_part_indexes</code><em class="property"> = 'element_beam_part_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_part_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_beams)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_plastic_strain">
+<code class="sig-name descname">element_beam_plastic_strain</code><em class="property"> = 'element_beam_plastic_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_plastic_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, n_beams_layers)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_shear_force">
+<code class="sig-name descname">element_beam_shear_force</code><em class="property"> = 'element_beam_shear_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_shear_force" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, s_t)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_shear_stress">
+<code class="sig-name descname">element_beam_shear_stress</code><em class="property"> = 'element_beam_shear_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_shear_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams, n_beams_layers, rs_rt)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_beam_torsion_moment">
+<code class="sig-name descname">element_beam_torsion_moment</code><em class="property"> = 'element_beam_torsion_moment'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_beam_torsion_moment" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_beams)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_bending_moment">
+<code class="sig-name descname">element_shell_bending_moment</code><em class="property"> = 'element_shell_bending_moment'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_bending_moment" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, mx_my_mxy)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_effective_plastic_strain">
+<code class="sig-name descname">element_shell_effective_plastic_strain</code><em class="property"> = 'element_shell_effective_plastic_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_effective_plastic_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, n_shell_layers)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_history_vars">
+<code class="sig-name descname">element_shell_history_vars</code><em class="property"> = 'element_shell_history_vars'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_history_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, n_shell_layers, n_shell_history_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_ids">
+<code class="sig-name descname">element_shell_ids</code><em class="property"> = 'element_shell_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_shells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_internal_energy">
+<code class="sig-name descname">element_shell_internal_energy</code><em class="property"> = 'element_shell_internal_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_internal_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_is_alive">
+<code class="sig-name descname">element_shell_is_alive</code><em class="property"> = 'element_shell_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_node8_element_index">
+<code class="sig-name descname">element_shell_node8_element_index</code><em class="property"> = 'element_shell_node8_element_index'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_node8_element_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_shells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_node8_extra_node_indexes">
+<code class="sig-name descname">element_shell_node8_extra_node_indexes</code><em class="property"> = 'element_shell_node8_extra_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_node8_extra_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_shells, 4)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_node_indexes">
+<code class="sig-name descname">element_shell_node_indexes</code><em class="property"> = 'element_shell_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_shells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_normal_force">
+<code class="sig-name descname">element_shell_normal_force</code><em class="property"> = 'element_shell_normal_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_normal_force" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, nx_ny_nxy)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_part_indexes">
+<code class="sig-name descname">element_shell_part_indexes</code><em class="property"> = 'element_shell_part_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_part_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_shells, 4)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_shear_force">
+<code class="sig-name descname">element_shell_shear_force</code><em class="property"> = 'element_shell_shear_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_shear_force" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, qx_qy)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_strain">
+<code class="sig-name descname">element_shell_strain</code><em class="property"> = 'element_shell_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, upper_lower, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_stress">
+<code class="sig-name descname">element_shell_stress</code><em class="property"> = 'element_shell_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, n_shell_layers, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_thickness">
+<code class="sig-name descname">element_shell_thickness</code><em class="property"> = 'element_shell_thickness'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_thickness" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_unknown_variables">
+<code class="sig-name descname">element_shell_unknown_variables</code><em class="property"> = 'element_shell_unknown_variables'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_unknown_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_shells_non_rigid, 2)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_effective_plastic_strain">
+<code class="sig-name descname">element_solid_effective_plastic_strain</code><em class="property"> = 'element_solid_effective_plastic_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_effective_plastic_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_extra_nodes">
+<code class="sig-name descname">element_solid_extra_nodes</code><em class="property"> = 'element_solid_extra_nodes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_extra_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_solids, 2)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_history_variables">
+<code class="sig-name descname">element_solid_history_variables</code><em class="property"> = 'element_solid_history_variables'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_history_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, n_solids_history_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_ids">
+<code class="sig-name descname">element_solid_ids</code><em class="property"> = 'element_solid_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_is_alive">
+<code class="sig-name descname">element_solid_is_alive</code><em class="property"> = 'element_solid_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node10_extra_node_indexes">
+<code class="sig-name descname">element_solid_node10_extra_node_indexes</code><em class="property"> = 'element_solid_node10_extra_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node10_extra_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_solids, 2)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node20_element_index">
+<code class="sig-name descname">element_solid_node20_element_index</code><em class="property"> = 'element_solid_node20_element_index'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node20_element_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_node20_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node20_extra_node_indexes">
+<code class="sig-name descname">element_solid_node20_extra_node_indexes</code><em class="property"> = 'element_solid_node20_extra_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node20_extra_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_node20_solids, 12)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node27_element_index">
+<code class="sig-name descname">element_solid_node27_element_index</code><em class="property"> = 'element_solid_node27_element_index'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node27_element_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_node27_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node27_extra_node_indexes">
+<code class="sig-name descname">element_solid_node27_extra_node_indexes</code><em class="property"> = 'element_solid_node27_extra_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node27_extra_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_node27_solids, 20)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_node_indexes">
+<code class="sig-name descname">element_solid_node_indexes</code><em class="property"> = 'element_solid_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_solids, 8)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_part_indexes">
+<code class="sig-name descname">element_solid_part_indexes</code><em class="property"> = 'element_solid_part_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_part_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_solids)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_strain">
+<code class="sig-name descname">element_solid_strain</code><em class="property"> = 'element_solid_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_stress">
+<code class="sig-name descname">element_solid_stress</code><em class="property"> = 'element_solid_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_thermal_data">
+<code class="sig-name descname">element_solid_thermal_data</code><em class="property"> = 'element_solid_thermal_data'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_thermal_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, n_solids_thermal_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_effective_plastic_strain">
+<code class="sig-name descname">element_tshell_effective_plastic_strain</code><em class="property"> = 'element_tshell_effective_plastic_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_effective_plastic_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_tshells, n_tshells_layers)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_history_variables">
+<code class="sig-name descname">element_tshell_history_variables</code><em class="property"> = 'element_tshell_history_variables'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_history_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_tshells, n_tshells_layers, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_ids">
+<code class="sig-name descname">element_tshell_ids</code><em class="property"> = 'element_tshell_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_tshells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_is_alive">
+<code class="sig-name descname">element_tshell_is_alive</code><em class="property"> = 'element_tshell_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_tshells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_node_indexes">
+<code class="sig-name descname">element_tshell_node_indexes</code><em class="property"> = 'element_tshell_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_tshells, 8)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_part_indexes">
+<code class="sig-name descname">element_tshell_part_indexes</code><em class="property"> = 'element_tshell_part_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_part_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_tshells)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_strain">
+<code class="sig-name descname">element_tshell_strain</code><em class="property"> = 'element_tshell_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_tshells, upper_lower, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_tshell_stress">
+<code class="sig-name descname">element_tshell_stress</code><em class="property"> = 'element_tshell_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_tshell_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_tshells, n_tshells_layers, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.global_internal_energy">
+<code class="sig-name descname">global_internal_energy</code><em class="property"> = 'global_internal_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.global_internal_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_timesteps)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.global_kinetic_energy">
+<code class="sig-name descname">global_kinetic_energy</code><em class="property"> = 'global_kinetic_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.global_kinetic_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_timesteps)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.global_timesteps">
+<code class="sig-name descname">global_timesteps</code><em class="property"> = 'timesteps'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.global_timesteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_timesteps)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.global_total_energy">
+<code class="sig-name descname">global_total_energy</code><em class="property"> = 'global_total_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.global_total_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_timesteps)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.global_velocity">
+<code class="sig-name descname">global_velocity</code><em class="property"> = 'global_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.global_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_timesteps)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_acceleration">
+<code class="sig-name descname">node_acceleration</code><em class="property"> = 'node_acceleration'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_acceleration" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_coordinates">
+<code class="sig-name descname">node_coordinates</code><em class="property"> = 'node_coordinates'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_nodes, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_displacement">
+<code class="sig-name descname">node_displacement</code><em class="property"> = 'node_displacement'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_displacement" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_heat_flux">
+<code class="sig-name descname">node_heat_flux</code><em class="property"> = 'node_heat_flux'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_heat_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes, 3)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_ids">
+<code class="sig-name descname">node_ids</code><em class="property"> = 'node_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_is_alive">
+<code class="sig-name descname">node_is_alive</code><em class="property"> = 'node_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_mass_scaling">
+<code class="sig-name descname">node_mass_scaling</code><em class="property"> = 'node_mass_scaling'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_mass_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_temperature">
+<code class="sig-name descname">node_temperature</code><em class="property"> = 'node_temperature'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes) or (n_states, n_nodes, 3)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_velocity">
+<code class="sig-name descname">node_velocity</code><em class="property"> = 'node_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_nodes, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_hourglass_energy">
+<code class="sig-name descname">part_hourglass_energy</code><em class="property"> = 'part_hourglass_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_hourglass_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_ids">
+<code class="sig-name descname">part_ids</code><em class="property"> = 'part_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_ids_cross_references">
+<code class="sig-name descname">part_ids_cross_references</code><em class="property"> = 'part_ids_cross_references'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_ids_cross_references" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_ids_unordered">
+<code class="sig-name descname">part_ids_unordered</code><em class="property"> = 'part_ids_unordered'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_ids_unordered" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_internal_energy">
+<code class="sig-name descname">part_internal_energy</code><em class="property"> = 'part_internal_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_internal_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_kinetic_energy">
+<code class="sig-name descname">part_kinetic_energy</code><em class="property"> = 'part_kinetic_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_kinetic_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_mass">
+<code class="sig-name descname">part_mass</code><em class="property"> = 'part_mass'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_material_type">
+<code class="sig-name descname">part_material_type</code><em class="property"> = 'part_material_type'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_material_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_titles">
+<code class="sig-name descname">part_titles</code><em class="property"> = 'part_titles'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_titles" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_titles_ids">
+<code class="sig-name descname">part_titles_ids</code><em class="property"> = 'part_titles_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_titles_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_parts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.part_velocity">
+<code class="sig-name descname">part_velocity</code><em class="property"> = 'part_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.part_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_parts, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_acceleration">
+<code class="sig-name descname">rigid_body_acceleration</code><em class="property"> = 'rigid_body_acceleration'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_acceleration" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_active_node_indexes_list">
+<code class="sig-name descname">rigid_body_active_node_indexes_list</code><em class="property"> = 'rigid_body_active_node_indexes_list'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_active_node_indexes_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_coordinates">
+<code class="sig-name descname">rigid_body_coordinates</code><em class="property"> = 'rigid_body_coordinates'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_n_active_nodes">
+<code class="sig-name descname">rigid_body_n_active_nodes</code><em class="property"> = 'rigid_body_n_active_nodes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_n_active_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_rigid_bodies)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_n_nodes">
+<code class="sig-name descname">rigid_body_n_nodes</code><em class="property"> = 'rigid_body_n_nodes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_n_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_rigid_bodies)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_node_indexes_list">
+<code class="sig-name descname">rigid_body_node_indexes_list</code><em class="property"> = 'rigid_body_node_indexes_list'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_node_indexes_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>list!: (n_rigid_bodies, n_rigid_body_nodes (differs))</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_part_indexes">
+<code class="sig-name descname">rigid_body_part_indexes</code><em class="property"> = 'rigid_body_part_index'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_part_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_rigid_bodies)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_rot_acceleration">
+<code class="sig-name descname">rigid_body_rot_acceleration</code><em class="property"> = 'rigid_body_rotational_acceleration'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_rot_acceleration" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_rot_velocity">
+<code class="sig-name descname">rigid_body_rot_velocity</code><em class="property"> = 'rigid_body_rotational_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_rot_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_rotation_matrix">
+<code class="sig-name descname">rigid_body_rotation_matrix</code><em class="property"> = 'rigid_body_rotation_matrix'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_rotation_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, 9)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_body_velocity">
+<code class="sig-name descname">rigid_body_velocity</code><em class="property"> = 'rigid_body_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_body_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_bodies, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_displacement">
+<code class="sig-name descname">rigid_road_displacement</code><em class="property"> = 'rigid_road_displacement'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_displacement" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_roads, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_ids">
+<code class="sig-name descname">rigid_road_ids</code><em class="property"> = 'rigid_road_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_roads)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_n_segments">
+<code class="sig-name descname">rigid_road_n_segments</code><em class="property"> = 'rigid_road_n_segments'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_n_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_roads)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_node_coordinates">
+<code class="sig-name descname">rigid_road_node_coordinates</code><em class="property"> = 'rigid_road_node_coordinates'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_node_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>#: shape: (rigid_road_n_nodes, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_node_ids">
+<code class="sig-name descname">rigid_road_node_ids</code><em class="property"> = 'rigid_road_node_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_node_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (rigid_road_n_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_segment_node_ids">
+<code class="sig-name descname">rigid_road_segment_node_ids</code><em class="property"> = 'rigid_road_segment_node_ids'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_segment_node_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>list!: (n_roads, 4*n_road_segments)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_segment_road_id">
+<code class="sig-name descname">rigid_road_segment_road_id</code><em class="property"> = 'rigid_road_segment_road_id'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_segment_road_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>list!: (n_raods, n_road_segments)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_road_velocity">
+<code class="sig-name descname">rigid_road_velocity</code><em class="property"> = 'rigid_road_velocity'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_road_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_roads, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_wall_force">
+<code class="sig-name descname">rigid_wall_force</code><em class="property"> = 'rigid_wall_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_wall_force" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_walls)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.rigid_wall_position">
+<code class="sig-name descname">rigid_wall_position</code><em class="property"> = 'rigid_wall_position'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.rigid_wall_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_rigid_walls, x_y_z)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_deletion">
+<code class="sig-name descname">sph_deletion</code><em class="property"> = 'sph_deletion'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_deletion" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_density">
+<code class="sig-name descname">sph_density</code><em class="property"> = 'sph_density'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_effective_plastic_strain">
+<code class="sig-name descname">sph_effective_plastic_strain</code><em class="property"> = 'sph_effective_plastic_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_effective_plastic_strain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_history_vars">
+<code class="sig-name descname">sph_history_vars</code><em class="property"> = 'sph_history_vars'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_history_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles, n_sph_history_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_internal_energy">
+<code class="sig-name descname">sph_internal_energy</code><em class="property"> = 'sph_internal_energy'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_internal_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_is_alive">
+<code class="sig-name descname">sph_is_alive</code><em class="property"> = 'sph_is_alive'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_mass">
+<code class="sig-name descname">sph_mass</code><em class="property"> = 'sph_mass'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_n_neighbors">
+<code class="sig-name descname">sph_n_neighbors</code><em class="property"> = 'sph_n_neighbors'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_n_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_node_indexes">
+<code class="sig-name descname">sph_node_indexes</code><em class="property"> = 'sph_node_indexes'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_node_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_sph_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_node_material_index">
+<code class="sig-name descname">sph_node_material_index</code><em class="property"> = 'sph_node_material_index'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_node_material_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_sph_nodes)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_pressure">
+<code class="sig-name descname">sph_pressure</code><em class="property"> = 'sph_pressure'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_pressure" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_radius">
+<code class="sig-name descname">sph_radius</code><em class="property"> = 'sph_radius'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_strain">
+<code class="sig-name descname">sph_strain</code><em class="property"> = 'sph_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.sph_stress">
+<code class="sig-name descname">sph_stress</code><em class="property"> = 'sph_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_sph_particles, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dyna_performance_info.html" class="btn btn-neutral float-right" title="Performance Info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="D3plot.html" class="btn btn-neutral float-left" title="D3plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright LASSO GmbH
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

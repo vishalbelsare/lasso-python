@@ -10,5 +10,6 @@ Documentation of the LS-Dyna module.
    
    Binout
    D3plot
+   ArrayType
    dyna_performance_info
 

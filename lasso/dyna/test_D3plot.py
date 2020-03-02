@@ -29,7 +29,6 @@ class D3plotTest(TestCase):
             'element_shell_ids': (4696,),
             'element_tshell_ids': (0,),
             'part_titles_ids': (1,),
-            'part_ids': (1,),
             'part_titles': (1,)
         }
 
