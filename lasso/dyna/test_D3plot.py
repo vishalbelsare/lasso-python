@@ -1,6 +1,7 @@
 
-import numpy as np
 from unittest import TestCase
+
+import numpy as np
 from lasso.dyna.D3plot import D3plot
 
 
@@ -194,5 +195,31 @@ class D3plotTest(TestCase):
 
         for array_name, minmax in maxmin_test_values.items():
             array = d3plot.arrays[array_name]
-            self.assertAlmostEqual(array.min(), minmax[0], msg="{0}: {1} != {2}".format(array_name, array.min(), minmax[0]))
-            self.assertAlmostEqual(array.max(), minmax[1], msg="{0}: {1} != {2}".format(array_name, array.max(), minmax[1]))
+            self.assertAlmostEqual(array.min(), minmax[0], msg="{0}: {1} != {2}".format(
+                array_name, array.min(), minmax[0]))
+            self.assertAlmostEqual(array.max(), minmax[1], msg="{0}: {1} != {2}".format(
+                array_name, array.max(), minmax[1]))
+
+    def test_femzip(self):
+
+        self.maxDiff = None
+
+        filepath1 = "test/femzip/d3plot.fz"
+        filepath2 = "test/femzip/d3plot"
+
+        d3plot_kwargs_list = [
+            {},
+            {"n_files_to_load_at_once": 1},
+        ]
+
+        for d3plot_kwargs in d3plot_kwargs_list:
+
+            d3plot1 = D3plot(filepath1, use_femzip=True, **d3plot_kwargs)
+            d3plot2 = D3plot(filepath2, **d3plot_kwargs)
+
+            hdr_diff, array_diff = d3plot1.compare(d3plot2, array_eps=1E-2)
+            if "use_femzip" in hdr_diff:
+                del hdr_diff["use_femzip"]
+
+            self.assertDictEqual(hdr_diff, {})
+            self.assertDictEqual(array_diff, {})

@@ -1,12 +1,13 @@
 
-import traceback
-import sys
-import tempfile
 import ctypes
 import logging
 import os
+import pprint
 import re
 import struct
+import sys
+import tempfile
+import traceback
 import typing
 import webbrowser
 from typing import Any, ByteString, Dict, List, Tuple, Union
@@ -272,6 +273,10 @@ class D3plot:
                           for index in range(0, len(file_infos), n_files)]
 
         n_states = sum(map(lambda info: info["n_states"], file_infos))
+
+        logging.debug("n_files found: {0}".format(n_files))
+        logging.debug("n_states estimated: {0}".format(n_states))
+        logging.debug("files: {0}".format(pprint.pformat([info for info in file_infos])))
 
         # number of states and if buffered reading is used
         yield n_states, len(sub_file_infos) > 1
@@ -2024,11 +2029,15 @@ class D3plot:
 
             # end marker + part section size
             # + 1!! dont why, but one day we will
-            if os.name == "posix":
-                bytes_per_state += (part_titles_size + 1) * self.wordsize
-            elif os.name == "nt":
-                # end marker is always in here
-                bytes_per_state += 1 * self.wordsize
+            # if os.name == "posix":
+            #     bytes_per_state += (part_titles_size + 1) * self.wordsize
+            # elif os.name == "nt":
+            #     # end marker is always in here
+            #     bytes_per_state += 1 * self.wordsize
+            
+            # BUGFIX
+            # femzip version 10 always omits part titles ... finally
+            bytes_per_state += 1*self.wordsize
 
         # (1) READ STATE DATA
         # TODO we load the first file twice which is already in memory!
@@ -2064,12 +2073,17 @@ class D3plot:
             state_data = bb_states.read_ndarray(0, array_length, 1, self.ftype)
             state_data = state_data.reshape((n_states, -1))
 
+
+            # BUGFIX: changed in femzip 10 without telling me :/
+            # parts are not written in front of every state anymore
+
             # here -1, also no idea why
-            if os.name == "nt":
-                var_index = 0
-            else:
-                var_index = 0 if not self.header["use_femzip"] \
-                    else (part_titles_size - 1)
+            # if os.name == "nt":
+            #     var_index = 0
+            # else:
+            #     var_index = 0 if not self.header["use_femzip"] \
+            #         else (part_titles_size - 1)
+            var_index = 0
 
             # global state header
             var_index = self._read_states_global_vars(
@@ -4074,7 +4088,7 @@ class D3plot:
         file_dir = file_dir if len(file_dir) != 0 else '.'
         file_basename = os.path.basename(filepath)
 
-        pattern = "({path})[0-9]+".format(path=file_basename)
+        pattern = "({path})[0-9]+$".format(path=file_basename)
         reg = re.compile(pattern)
 
         filepaths = [os.path.join(file_dir, path) for path in os.listdir(file_dir)
@@ -4222,13 +4236,15 @@ class D3plot:
 
         return last_nonzero_byte_index
 
-    def compare(self, d3plot2):
+    def compare(self, d3plot2, array_eps: Union[float, None] = None):
         ''' Compare two d3plots and print the info
 
         Parameters
         ----------
         d3plot2 : D3plot
             second d3plot
+        array_eps : float or None
+            tolerance for arrays, None by default
 
         Returns
         -------
@@ -4413,7 +4429,14 @@ class D3plot:
                         comparison = "shape mismatch {0} != {1}"\
                             .format(array1.shape, array2.shape)
                     else:
-                        comparison = (array1 != array2).sum()
+                        # comparison = (array1 != array2).sum()
+                        
+                        if array_eps != None and np.issubdtype(array1.dtype, np.number) \
+                           and np.issubdtype(array2.dtype, np.number):
+                            comparison = (np.abs(array1-array2) > array_eps).sum()
+                        else:
+                            comparison = (array1 != array2).sum()
+                            
                 else:
                     comparison = array1 != array2
 
@@ -4423,7 +4446,6 @@ class D3plot:
 
             # missing flag was set
             elif isinstance(array2, str):
-                print(name, array2)
                 array_differences[name] = array2
 
         return hdr_differences, array_differences
