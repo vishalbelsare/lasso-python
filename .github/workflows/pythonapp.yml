@@ -1,4 +1,4 @@
-name: LASSO python library test
+name: LASSO Test
 
 on:
   push:
