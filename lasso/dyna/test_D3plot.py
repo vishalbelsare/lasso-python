@@ -1,4 +1,5 @@
 
+from lasso.dyna.ArrayType import ArrayType
 from unittest import TestCase
 
 import numpy as np
@@ -199,6 +200,17 @@ class D3plotTest(TestCase):
                 array_name, array.min(), minmax[0]))
             self.assertAlmostEqual(array.max(), minmax[1], msg="{0}: {1} != {2}".format(
                 array_name, array.max(), minmax[1]))
+
+    def test_many_d3plots(self):
+
+        filepath = "test/order_d3plot/d3plot"
+
+        d3plot = D3plot(filepath)
+
+        timesteps = d3plot.arrays[ArrayType.global_timesteps]
+        self.assertListEqual(
+            timesteps.astype(np.int).tolist(),
+            [1, 2, 10, 11, 12, 22, 100])
 
     def test_femzip(self):
 

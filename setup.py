@@ -14,7 +14,7 @@ def collect_tests():
 def main():
 
     setup(name='lasso-python',
-          version='1.1.2post1',
+          version='1.1.2post3',
           description='A next-generation CAE Python Library.',
           author='Lasso GmbH',
           author_email='lasso@lasso.de',
@@ -29,6 +29,7 @@ def main():
               'protobuf',
               'flask',
               'h5py',
+              'psutil',
           ],
           packages=find_packages(),
           package_data={

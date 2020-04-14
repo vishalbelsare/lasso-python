@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                1.1.2
+                1.1.2post3
               </div>
             
           
@@ -214,7 +214,7 @@ only give the path to the first file.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.compare" title="lasso.dyna.D3plot.D3plot.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(self, d3plot2)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.compare" title="lasso.dyna.D3plot.D3plot.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(self, d3plot2, array_eps, …)</p></td>
 <td><p>Compare two d3plots and print the info</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="lasso.dyna.D3plot.D3plot.enable_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_logger</span></code></a>(enable)</p></td>
@@ -273,12 +273,14 @@ helps with IDE integration and code safety.</p>
 
 <dl class="method">
 <dt id="lasso.dyna.D3plot.D3plot.compare">
-<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">d3plot2</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">d3plot2</em>, <em class="sig-param">array_eps: Union[float</em>, <em class="sig-param">NoneType] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two d3plots and print the info</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>d3plot2</strong><span class="classifier">D3plot</span></dt><dd><p>second d3plot</p>
+</dd>
+<dt><strong>array_eps</strong><span class="classifier">float or None</span></dt><dd><p>tolerance for arrays, None by default</p>
 </dd>
 </dl>
 </dd>
