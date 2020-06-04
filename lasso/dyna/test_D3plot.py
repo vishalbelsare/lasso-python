@@ -1,9 +1,8 @@
 
-from lasso.dyna.ArrayType import ArrayType
 from unittest import TestCase
 
 import numpy as np
-from lasso.dyna.D3plot import D3plot
+from lasso.dyna.D3plot import D3plot, ArrayType, FilterType
 
 
 class D3plotTest(TestCase):
@@ -235,3 +234,17 @@ class D3plotTest(TestCase):
 
             self.assertDictEqual(hdr_diff, {})
             self.assertDictEqual(array_diff, {})
+
+    def test_part_filter(self):
+
+        self.maxDiff = None
+
+        filepath = "test/simple_d3plot/d3plot"
+        part_ids = [1]
+
+        d3plot = D3plot(filepath)
+        shell_filter = d3plot.get_part_filter(FilterType.SHELL, part_ids)
+        self.assertEqual(shell_filter.sum(), 4696)
+
+        part_filter = d3plot.get_part_filter(FilterType.PART, [1])
+        self.assertEqual(part_filter.sum(), 1)

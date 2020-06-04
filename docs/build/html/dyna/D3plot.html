@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                1.1.2post3
+                1.2.0
               </div>
             
           
@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Binout.html">Binout</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">D3plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ArrayType.html">ArrayType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FilterType.html">FilterType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyna_performance_info.html">Performance Info</a></li>
 </ul>
 </li>
@@ -220,10 +221,13 @@ only give the path to the first file.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="lasso.dyna.D3plot.D3plot.enable_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_logger</span></code></a>(enable)</p></td>
 <td><p>Enable the logger for this class</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep[, field])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="lasso.dyna.D3plot.D3plot.get_part_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_part_filter</span></code></a>(self, filter_type, part_ids, …)</p></td>
+<td><p>Get a part filter for different entities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep[, field])</p></td>
 <td><p>Plot the d3plot geometry</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(self, filepath, block_size_bytes)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(self, filepath, block_size_bytes)</p></td>
 <td><p>Write a d3plot file again</p></td>
 </tr>
 </tbody>
@@ -307,6 +311,43 @@ helps with IDE integration and code safety.</p>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lasso.dyna.D3plot.D3plot.get_part_filter">
+<code class="sig-name descname">get_part_filter</code><span class="sig-paren">(</span><em class="sig-param">self, filter_type: lasso.dyna.FilterType.FilterType, part_ids: Iterable[int], for_state_array: bool = True</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a part filter for different entities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filter_type: `lasso.dyna.FilterType` or `str`</strong></dt><dd><p>the array type to filter (beam, shell, solid, tshell)</p>
+</dd>
+<dt><strong>part_ids: `Iterable[int]`</strong></dt><dd><p>part ids to filter out</p>
+</dd>
+<dt><strong>for_state_array: `bool`</strong></dt><dd><p>if the filter is meant for a state array. Makes a difference
+for shells if rigid bodies are in the model (mattyp == 20)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mask: <cite>np.ndarray</cite></dt><dd><p>mask usable on arrays to filter results</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="k">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">FilterType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">part_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">get_part_filter</span><span class="p">(</span><span class="n">FilterType</span><span class="o">.</span><span class="n">shell</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shell_stress</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_stress</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shell_stress</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(34, 7463, 3, 6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># select only parts from part_ids</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shell_stress_parts</span> <span class="o">=</span> <span class="n">shell_stress</span><span class="p">[:,</span> <span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
