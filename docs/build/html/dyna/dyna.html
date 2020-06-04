@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ArrayType.html">ArrayType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="FilterType.html">FilterType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyna_performance_info.html">Performance Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d3plot-example">D3plot Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
@@ -189,6 +190,44 @@
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="d3plot-example">
+<h2>D3plot Example<a class="headerlink" href="#d3plot-example" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="kn">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">FilterType</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># read a file (zero-copy reading of everything)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># read file buffered (less memory usage)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;node_displacement&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">n_files_to_load_at_once</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># and of course femzipped files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot.fz&quot;</span><span class="p">,</span> <span class="n">use_femzip</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># get arrays (see docs of ArrayType for shape info)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="s2">&quot;node_displacement&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(34, 51723, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># this is safer and has auto-completion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># filter elements for certain parts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_effective_plastic_strain</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(34, 56372, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">get_part_filter</span><span class="p">(</span><span class="n">FilterType</span><span class="o">.</span><span class="n">SHELL</span><span class="p">,</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># filter elements with mask</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span><span class="p">[:,</span> <span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(34, 17392, 3)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a standalone html plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
