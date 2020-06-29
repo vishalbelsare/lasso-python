@@ -7,9 +7,10 @@ import json
 import numpy as np
 from base64 import b64encode
 from zipfile import ZipFile, ZIP_DEFLATED
+from typing import Union, Tuple
 
 
-def _read_file(filepath):
+def _read_file(filepath: str):
     '''This function reads file as str
 
     Parameters
@@ -26,20 +27,25 @@ def _read_file(filepath):
         return fp.read()
 
 
-def plot_shell_mesh(nodes_coordinates,
-                    shell_node_indexes,
-                    field=None,
-                    is_element_field=True):
+def plot_shell_mesh(node_coordinates: np.ndarray,
+                    shell_node_indexes: np.ndarray,
+                    field: Union[np.ndarray, None] = None,
+                    is_element_field: bool = True,
+                    fringe_limits: Union[Tuple[float, float], None] = None):
     ''' Plot a mesh
 
     Parameters
     ----------
     node_coordinates : np.ndarray
         array of node coordinates for elements
-    tria_node_indexes : np.ndarray
-        node indexes for the tria shells (3 nodes per shell)
-    quad_node_indexes : np.ndarray
-        node indexes of quad shells (4 nodes per element)
+    shell_node_indexes : np.ndarray
+        node indexes of shells
+    field : Union[np.ndarray, None]
+        Array containing a field value for every element or node
+    is_element_field : bool
+        if the specified field is for elements or nodes
+    fringe_limits : Union[Tuple[float, float], None]
+        limits for the fringe bar. Set by default to min and max.
 
     Returns
     -------
@@ -47,8 +53,8 @@ def plot_shell_mesh(nodes_coordinates,
         html code for plotting as string
     '''
 
-    assert(nodes_coordinates.ndim == 2)
-    assert(nodes_coordinates.shape[1] == 3)
+    assert(node_coordinates.ndim == 2)
+    assert(node_coordinates.shape[1] == 3)
     assert(shell_node_indexes.ndim == 2)
     assert(shell_node_indexes.shape[1] in [3, 4])
     if isinstance(field, np.ndarray):
@@ -56,11 +62,11 @@ def plot_shell_mesh(nodes_coordinates,
         if is_element_field:
             assert(field.shape[0] == shell_node_indexes.shape[0])
         else:
-            assert(field.shape[0] == nodes_coordinates.shape[0])
+            assert(field.shape[0] == node_coordinates.shape[0])
 
     # cast types correctly
     # the types MUST be float32
-    nodes_coordinates = nodes_coordinates.astype(np.float32)
+    node_coordinates = node_coordinates.astype(np.float32)
     if isinstance(field, np.ndarray):
         field = field.astype(np.float32)
 
@@ -85,9 +91,9 @@ def plot_shell_mesh(nodes_coordinates,
     # we can not use the same nodes, thus we need to create multiple nodes
     # at the same position but with different fringe.
     nodes_xyz = np.concatenate([
-        nodes_coordinates[tria_node_indexes].reshape((-1, 3)),
-        nodes_coordinates[quad_node_indexes_tria1].reshape((-1, 3)),
-        nodes_coordinates[quad_node_indexes_tria2].reshape((-1, 3))
+        node_coordinates[tria_node_indexes].reshape((-1, 3)),
+        node_coordinates[quad_node_indexes_tria1].reshape((-1, 3)),
+        node_coordinates[quad_node_indexes_tria2].reshape((-1, 3))
     ])
 
     # fringe value and hover title
@@ -96,7 +102,7 @@ def plot_shell_mesh(nodes_coordinates,
         if is_element_field:
             n_shells = len(shell_node_indexes)
             n_tria = np.sum(is_tria)
-            n_quads = n_shells-n_tria
+            n_quads = n_shells - n_tria
 
             # split field according to elements
             field_tria = field[is_tria]
@@ -104,23 +110,23 @@ def plot_shell_mesh(nodes_coordinates,
 
             # allocate fringe array
             node_fringe = np.zeros(
-                (len(field_tria)+2*len(field_quad), 3), dtype=np.float32)
+                (len(field_tria) + 2 * len(field_quad), 3), dtype=np.float32)
 
             # set fringe values
             node_fringe[:n_tria, 0] = field_tria
             node_fringe[:n_tria, 1] = field_tria
             node_fringe[:n_tria, 2] = field_tria
 
-            node_fringe[n_tria:n_tria+n_quads, 0] = field_quad
-            node_fringe[n_tria:n_tria+n_quads, 1] = field_quad
-            node_fringe[n_tria:n_tria+n_quads, 2] = field_quad
+            node_fringe[n_tria:n_tria + n_quads, 0] = field_quad
+            node_fringe[n_tria:n_tria + n_quads, 1] = field_quad
+            node_fringe[n_tria:n_tria + n_quads, 2] = field_quad
 
-            node_fringe[n_tria+n_quads:n_tria +
-                        2*n_quads, 0] = field_quad
-            node_fringe[n_tria+n_quads:n_tria +
-                        2*n_quads, 1] = field_quad
-            node_fringe[n_tria+n_quads:n_tria +
-                        2*n_quads, 2] = field_quad
+            node_fringe[n_tria + n_quads:n_tria +
+                        2 * n_quads, 0] = field_quad
+            node_fringe[n_tria + n_quads:n_tria +
+                        2 * n_quads, 1] = field_quad
+            node_fringe[n_tria + n_quads:n_tria +
+                        2 * n_quads, 2] = field_quad
 
             # flatty paddy
             node_fringe = node_fringe.flatten()
@@ -137,13 +143,13 @@ def plot_shell_mesh(nodes_coordinates,
         node_txt = [str(entry) for entry in node_fringe.flatten()]
     else:
         node_fringe = np.zeros(len(nodes_xyz), dtype=np.float32)
-        node_txt = ['']*len(nodes_xyz)
+        node_txt = [''] * len(nodes_xyz)
 
     # zip compression of data for HTML (reduces size)
     zdata = io.BytesIO()
     with ZipFile(zdata, 'w', compression=ZIP_DEFLATED) as zipFile:
         zipFile.writestr('/intensities', node_fringe.tostring())
-        zipFile.writestr('/positions',   nodes_xyz.tostring())
+        zipFile.writestr('/positions', nodes_xyz.tostring())
         zipFile.writestr('/text', json.dumps(node_txt))
     zdata = b64encode(zdata.getvalue()).decode('utf-8')
 
@@ -152,9 +158,18 @@ def plot_shell_mesh(nodes_coordinates,
         os.path.dirname(__file__), 'resources', 'template.html'))
 
     # format html template file
+    min_value = 0
+    max_value = 0
+    if fringe_limits:
+        min_value = fringe_limits[0]
+        max_value = fringe_limits[1]
+    elif isinstance(field, np.ndarray):
+        min_value = field.min()
+        max_value = field.max()
+
     _html_div = _html_template.format(div_id=uuid.uuid4(),
-                                      lowIntensity=field.min() if isinstance(field, np.ndarray) else 0,
-                                      highIntensity=field.max() if isinstance(field, np.ndarray) else 0,
+                                      lowIntensity=min_value,
+                                      highIntensity=max_value,
                                       zdata=zdata)
 
     # wrap it up with all needed js libraries

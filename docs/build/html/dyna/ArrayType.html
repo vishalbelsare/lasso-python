@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.3.0
               </div>
             
           
@@ -471,6 +471,11 @@ instead of the string array names to ensure compatability.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_plastic_strain_tensor">
+<code class="sig-name descname">element_shell_plastic_strain_tensor</code><em class="property"> = 'element_shell_plastic_strain_tensor'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_plastic_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.element_shell_shear_force">
 <code class="sig-name descname">element_shell_shear_force</code><em class="property"> = 'element_shell_shear_force'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_shear_force" title="Permalink to this definition">¶</a></dt>
 <dd><p>shape (n_states, n_shells_non_rigid, qx_qy)</p>
@@ -487,6 +492,11 @@ instead of the string array names to ensure compatability.</p>
 <code class="sig-name descname">element_shell_stress</code><em class="property"> = 'element_shell_stress'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_stress" title="Permalink to this definition">¶</a></dt>
 <dd><p>shape (n_states, n_shells_non_rigid, n_shell_layers, xx_yy_zz_xy_yz_xz)</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_shell_thermal_strain_tensor">
+<code class="sig-name descname">element_shell_thermal_strain_tensor</code><em class="property"> = 'element_shell_thermal_strain_tensor'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_shell_thermal_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.element_shell_thickness">
@@ -573,6 +583,12 @@ instead of the string array names to ensure compatability.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_plastic_strain_tensor">
+<code class="sig-name descname">element_solid_plastic_strain_tensor</code><em class="property"> = 'element_solid_plastic_strain_tensor'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_plastic_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.element_solid_strain">
 <code class="sig-name descname">element_solid_strain</code><em class="property"> = 'element_solid_strain'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_strain" title="Permalink to this definition">¶</a></dt>
 <dd><p>shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)</p>
@@ -588,6 +604,12 @@ instead of the string array names to ensure compatability.</p>
 <dt id="lasso.dyna.ArrayType.ArrayType.element_solid_thermal_data">
 <code class="sig-name descname">element_solid_thermal_data</code><em class="property"> = 'element_solid_thermal_data'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_thermal_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>shape: (n_states, n_solids, n_solids_thermal_vars)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.element_solid_thermal_strain_tensor">
+<code class="sig-name descname">element_solid_thermal_strain_tensor</code><em class="property"> = 'element_solid_thermal_strain_tensor'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.element_solid_thermal_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -711,10 +733,21 @@ instead of the string array names to ensure compatability.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_residual_forces">
+<code class="sig-name descname">node_residual_forces</code><em class="property"> = 'node_residual_forces'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_residual_forces" title="Permalink to this definition">¶</a></dt>
+<dd><p>shape (n_states, n_nodes, fx_fy_fz)</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.node_temperature">
 <code class="sig-name descname">node_temperature</code><em class="property"> = 'node_temperature'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_temperature" title="Permalink to this definition">¶</a></dt>
 <dd><p>shape: (n_states, n_nodes) or (n_states, n_nodes, 3)</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="lasso.dyna.ArrayType.ArrayType.node_temperature_gradient">
+<code class="sig-name descname">node_temperature_gradient</code><em class="property"> = 'node_temperature_gradient'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.node_temperature_gradient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.node_velocity">
@@ -957,7 +990,8 @@ instead of the string array names to ensure compatability.</p>
 <dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.sph_n_neighbors">
 <code class="sig-name descname">sph_n_neighbors</code><em class="property"> = 'sph_n_neighbors'</em><a class="headerlink" href="#lasso.dyna.ArrayType.ArrayType.sph_n_neighbors" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>(n_states, n_sph_particles)</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="lasso.dyna.ArrayType.ArrayType.sph_node_indexes">

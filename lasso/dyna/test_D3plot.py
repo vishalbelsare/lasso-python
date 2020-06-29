@@ -44,7 +44,6 @@ class D3plotTest(TestCase):
             'part_velocity': (1, 1, 3),
             'part_mass': (1, 1),
             'part_hourglass_energy': (1, 1),
-            'rigid_wall_force': (1, 0),
             'node_displacement': (1, 4915, 3),
             'node_velocity': (1, 4915, 3),
             'node_acceleration': (1, 4915, 3),

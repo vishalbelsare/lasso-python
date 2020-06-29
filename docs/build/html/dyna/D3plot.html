@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.3.0
               </div>
             
           
@@ -225,7 +225,7 @@ only give the path to the first file.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="lasso.dyna.D3plot.D3plot.get_part_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_part_filter</span></code></a>(self, filter_type, part_ids, …)</p></td>
 <td><p>Get a part filter for different entities</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep[, field])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep, field, …)</p></td>
 <td><p>Plot the d3plot geometry</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(self, filepath, block_size_bytes)</p></td>
@@ -372,14 +372,20 @@ thus sometimes confusing … but that’s dyna.</p>
 
 <dl class="method">
 <dt id="lasso.dyna.D3plot.D3plot.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">i_timestep: int = 0</em>, <em class="sig-param">field=None</em>, <em class="sig-param">is_element_field: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self, i_timestep: int = 0, field: Union[numpy.ndarray, NoneType] = None, is_element_field: bool = True, fringe_limits: Union[Tuple[float, float], NoneType] = None, export_filepath: str = ''</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the d3plot geometry</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>i_timestep</strong><span class="classifier">int</span></dt><dd><p>timestep index to plot</p>
 </dd>
-<dt><strong>field</strong><span class="classifier">np.ndarray</span></dt><dd><p>Array containing a field value for every element</p>
+<dt><strong>field</strong><span class="classifier">Union[np.ndarray, None]</span></dt><dd><p>Array containing a field value for every element or node</p>
+</dd>
+<dt><strong>is_element_field</strong><span class="classifier">bool</span></dt><dd><p>if the specified field is for elements or nodes</p>
+</dd>
+<dt><strong>fringe_limits</strong><span class="classifier">Union[Tuple[float, float], None]</span></dt><dd><p>limits for the fringe bar. Set by default to min and max.</p>
+</dd>
+<dt><strong>export_filepath</strong><span class="classifier">str</span></dt><dd><p>filepath to export the html to</p>
 </dd>
 </dl>
 </dd>
@@ -387,6 +393,27 @@ thus sometimes confusing … but that’s dyna.</p>
 <p class="rubric">Notes</p>
 <p>Currently only shell elements can be plotted, since for
 solids the surface needs extraction.</p>
+<p class="rubric">Examples</p>
+<p>Plot deformation of last timestep.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># get eff. plastic strain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_effective_plastic_strain</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 4696, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># mean across all 3 integration points</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span> <span class="o">=</span> <span class="n">pstrain</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 4696)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># we only have 1 timestep here but let&#39;s take last one in general</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">last_timestep</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># we don&#39;t like the fringe, let&#39;s adjust</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">],</span> <span class="n">fringe_limits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># looks good so let&#39;s export it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">],</span> <span class="n">fringe_limits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">export_filepath</span><span class="o">=</span><span class="s2">&quot;yay.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -404,6 +431,27 @@ files. This can be controlled by this parameter. Set to 0 for no padding.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<p>Modify an existing d3plot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hvars</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_history_vars</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hvars</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 4696, 3, 19)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_history_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4696</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_hvars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">hvars</span><span class="p">,</span> <span class="n">new_history_var</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_history_vars</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_hvars</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">write_d3plot</span><span class="p">(</span><span class="s2">&quot;path/to/new/d3plot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Write a new d3plot from scratch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_coordinates</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_node_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_part_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">write_d3plot</span><span class="p">(</span><span class="s2">&quot;yay&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>

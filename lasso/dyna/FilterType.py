@@ -13,8 +13,8 @@ class FilterType(Enum):
         >>> d3plot.get_part_filter(FilterType.SHELL, part_ids)
     """
 
-    BEAM = "beam"
-    SHELL = "shell"
-    SOLID = "solid"
-    TSHELL = "tshell"
-    PART = "part"
+    BEAM = "beam"  #:
+    SHELL = "shell"  #:
+    SOLID = "solid"  #:
+    TSHELL = "tshell"  #:
+    PART = "part"  #:

@@ -276,10 +276,6 @@ class DiffcrashRun(object):
 
         # n processes
         self.n_processes = self._parse_n_processes(n_processes)
-        # if pool != None:
-        #     self.pool = pool
-        # else:
-        #     self.pool = futures.ThreadPoolExecutor(max_workers=self.n_processes)
 
     def _setup_logger(self) -> logging.Logger:
 
@@ -379,7 +375,7 @@ class DiffcrashRun(object):
             simulation_runs += glob.glob(pattern)
         simulation_runs = [
             filepath for filepath in simulation_runs if os.path.isfile(filepath)]
-        
+
         # search all excluded runs
         runs_to_exclude = []
         for pattern in exclude_runs:
@@ -388,7 +384,8 @@ class DiffcrashRun(object):
             filepath for filepath in runs_to_exclude if os.path.isfile(filepath)]
 
         n_runs_before_filtering = len(simulation_runs)
-        simulation_runs = [filepath for filepath in simulation_runs if filepath not in runs_to_exclude]
+        simulation_runs = [
+            filepath for filepath in simulation_runs if filepath not in runs_to_exclude]
         n_runs_after_filtering = len(simulation_runs)
 
         # remove the reference run
@@ -411,7 +408,7 @@ class DiffcrashRun(object):
         self.logger.info(msg)
 
         msg = self._msg_option.format(
-            "# excluded files", (n_runs_before_filtering-n_runs_after_filtering))
+            "# excluded files", (n_runs_before_filtering - n_runs_after_filtering))
         print(str_info(msg))
         self.logger.info(msg)
 
@@ -793,7 +790,7 @@ class DiffcrashRun(object):
                 self.project_dir, export_item + ".d3plot.fz")
             if os.path.isfile(export_item_filepath):
                 os.remove(export_item_filepath)
-        
+
         # do the thing
         start_time = time.time()
         return_code_futures = [pool.submit(
@@ -940,7 +937,7 @@ class DiffcrashRun(object):
 
         # check return code
         if return_code != 0:
-            msg  ="Running Eigen ... done in {0:.2f}s   ".format(time.time() - start_time)
+            msg = "Running Eigen ... done in {0:.2f}s   ".format(time.time() - start_time)
             print(str_error(msg))
             self.logger.error(msg)
 
@@ -1003,7 +1000,7 @@ class DiffcrashRun(object):
             msg = "Running Merge ... done in {0:.2f}s   ".format(time.time() - start_time)
             print(str_error(msg))
             self.logger.info(msg)
-            
+
             msg = "The process failed somehow."
             self.logger.error(msg)
             raise RuntimeError(str_error(msg))
