@@ -2,7 +2,8 @@
 from unittest import TestCase
 
 import numpy as np
-from lasso.dyna.D3plot import D3plot, ArrayType, FilterType
+
+from lasso.dyna.D3plot import ArrayType, D3plot, FilterType
 
 
 class D3plotTest(TestCase):
@@ -245,5 +246,8 @@ class D3plotTest(TestCase):
         shell_filter = d3plot.get_part_filter(FilterType.SHELL, part_ids)
         self.assertEqual(shell_filter.sum(), 4696)
 
-        part_filter = d3plot.get_part_filter(FilterType.PART, [1])
+        part_filter = d3plot.get_part_filter(FilterType.PART, part_ids)
         self.assertEqual(part_filter.sum(), 1)
+
+        node_filter = d3plot.get_part_filter(FilterType.NODE, part_ids)
+        self.assertEqual(len(node_filter), 4915)

@@ -27,6 +27,7 @@ class ArrayType:
     node_mass_scaling = "node_mass_scaling"  #: shape: (n_states, n_nodes)
     node_temperature_gradient = "node_temperature_gradient"  #: shape(n_states, n_nodes)
     node_residual_forces = "node_residual_forces"  #: shape (n_states, n_nodes, fx_fy_fz)
+    node_residual_moments = "node_residual_moments"  #: shape (n_states, n_nodes, mx_my_mz)
     # solids
     element_solid_node_indexes = "element_solid_node_indexes"  #: shape: (n_solids, 8)
     element_solid_part_indexes = "element_solid_part_indexes"  #: shape: (n_solids)

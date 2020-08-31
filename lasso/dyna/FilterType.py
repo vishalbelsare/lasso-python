@@ -18,3 +18,4 @@ class FilterType(Enum):
     SOLID = "solid"  #:
     TSHELL = "tshell"  #:
     PART = "part"  #:
+    NODE = "node"  # :

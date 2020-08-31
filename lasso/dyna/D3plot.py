@@ -497,9 +497,9 @@ class D3plot:
         else:
             self.header["external_numbers_dtype"] = np.int32
 
-        if self.header["filetype"] != 1 and self.header["filetype"] != 5:
+        if self.header["filetype"] not in (1, 5, 11):
             raise RuntimeError(
-                "Wrong filetype %d != 1 (d3plot) or 5 (d3part) in header" % self.header["filetype"])
+                "Wrong filetype %d != 1 (d3plot), 5 (d3part) or 11 (d3eigv) in header" % self.header["filetype"])
 
         # ndim
         if self.header["ndim"] == 5 or self.header["ndim"] == 7:
@@ -636,8 +636,10 @@ class D3plot:
         # node residual forces and moments (xxx1x)
         if len(idtdt_digits) > 1 and idtdt_digits[1] != 0:
             self.header["has_node_residual_forces"] = True
+            self.header["has_node_residual_moments"] = True
         else:
             self.header["has_node_residual_forces"] = False
+            self.header["has_node_residual_moments"] = False
         # idtdt % 10 == 1
 
         # pstrain tensor (xx1xx)
@@ -1776,6 +1778,7 @@ class D3plot:
             arraytype.node_acceleration: [n_states, n_nodes, n_dim],
             arraytype.node_temperature_gradient: [n_states, n_nodes],
             arraytype.node_residual_forces: [n_states, n_nodes, 3],
+            arraytype.node_residual_moments: [n_states, n_nodes, 3],
             # solids
             arraytype.element_solid_thermal_data: [n_states, n_solids, n_solids_thermal_vars],
             arraytype.element_solid_stress: [n_states, n_solids, 6],
@@ -1973,6 +1976,12 @@ class D3plot:
             n_node_temp_vars += 1
 
         if header["has_node_residual_forces"]:
+            n_node_temp_vars += 3
+
+        if header["has_node_residual_moments"]:
+            n_node_temp_vars += 3
+
+        if header["has_node_residual_moments"]:
             n_node_temp_vars += 3
 
         node_data_offset = int(n_node_vars + n_node_temp_vars) * \
@@ -2372,36 +2381,6 @@ class D3plot:
             finally:
                 var_index += n_dim * n_nodes
 
-        # velocity
-        if self.header["iv"]:
-            try:
-                tmp_array = state_data[:, var_index:var_index + n_dim * n_nodes]\
-                    .reshape((n_states, n_nodes, n_dim))
-                array_dict[arraytype.node_velocity] = tmp_array
-            except Exception:
-                trb_msg = traceback.format_exc()
-                msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(
-                    msg.format("_read_states_nodes, node_velocity",
-                               trb_msg))
-            finally:
-                var_index += n_dim * n_nodes
-
-        # acceleration
-        if self.header["ia"]:
-            try:
-                tmp_array = state_data[:, var_index:var_index + n_dim * n_nodes]\
-                    .reshape((n_states, n_nodes, n_dim))
-                array_dict[arraytype.node_acceleration] = tmp_array
-            except Exception:
-                trb_msg = traceback.format_exc()
-                msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(
-                    msg.format("_read_states_nodes, node_acceleration",
-                               trb_msg))
-            finally:
-                var_index += n_dim * n_nodes
-
         # only node temperatures
         if self.header["it"] == 1:
             try:
@@ -2478,21 +2457,65 @@ class D3plot:
             finally:
                 var_index += n_nodes
 
-        # node residual forces
+        # node residual forces and moments
         # TODO verify (see before, according to docs this is after previous)
         if self.header["has_node_residual_forces"]:
             try:
-                array_dict[arraytype.node_temperature_gradient] = \
+                array_dict[arraytype.node_residual_forces] = \
                     state_data[:, var_index:var_index + 3 * n_nodes]\
                     .reshape((n_states, n_nodes, 3))
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
                 logging.warning(
-                    msg.format("_read_states_nodes, node_temperature_gradient",
+                    msg.format("_read_states_nodes, node_residual_forces",
                                trb_msg))
             finally:
                 var_index += n_nodes * 3
+
+        if self.header["has_node_residual_moments"]:
+            try:
+                array_dict[arraytype.node_residual_moments] = \
+                    state_data[:, var_index:var_index + 3 * n_nodes]\
+                    .reshape((n_states, n_nodes, 3))
+            except Exception:
+                trb_msg = traceback.format_exc()
+                msg = "A failure in {0} was caught:\n{1}"
+                logging.warning(
+                    msg.format("_read_states_nodes, node_residual_moments",
+                               trb_msg))
+            finally:
+                var_index += n_nodes * 3
+
+        # velocity
+        if self.header["iv"]:
+            try:
+                tmp_array = state_data[:, var_index:var_index + n_dim * n_nodes]\
+                    .reshape((n_states, n_nodes, n_dim))
+                array_dict[arraytype.node_velocity] = tmp_array
+            except Exception:
+                trb_msg = traceback.format_exc()
+                msg = "A failure in {0} was caught:\n{1}"
+                logging.warning(
+                    msg.format("_read_states_nodes, node_velocity",
+                               trb_msg))
+            finally:
+                var_index += n_dim * n_nodes
+
+        # acceleration
+        if self.header["ia"]:
+            try:
+                tmp_array = state_data[:, var_index:var_index + n_dim * n_nodes]\
+                    .reshape((n_states, n_nodes, n_dim))
+                array_dict[arraytype.node_acceleration] = tmp_array
+            except Exception:
+                trb_msg = traceback.format_exc()
+                msg = "A failure in {0} was caught:\n{1}"
+                logging.warning(
+                    msg.format("_read_states_nodes, node_acceleration",
+                               trb_msg))
+            finally:
+                var_index += n_dim * n_nodes
 
         # mass scaling
         if self.header["has_mass_scaling"]:
@@ -2603,13 +2626,18 @@ class D3plot:
         # or individual arrays fails then we catch it
         try:
             # this is a sanity check if the manual was understood correctly
-            n_solid_vars2 = (7 +
-                             n_history_vars)
+            #
+            # NOTE due to plotcompress we disable this check, it can delete
+            # variables so that stress or pstrain might be missing despite
+            # being always present in the file spec
+            #
+            # n_solid_vars2 = (7 +
+            #                  n_history_vars)
 
-            if n_solid_vars2 != n_solid_vars:
-                msg = "n_solid_vars != n_solid_vars_computed: {} != {}."\
-                      + " Solid variables might be wrong."
-                logging.warning(msg.format(n_solid_vars, n_solid_vars2))
+            # if n_solid_vars2 != n_solid_vars:
+            #     msg = "n_solid_vars != n_solid_vars_computed: {} != {}."\
+            #           + " Solid variables might be wrong."
+            #     logging.warning(msg.format(n_solid_vars, n_solid_vars2))
 
             solid_state_data = \
                 state_data[:, var_index:var_index + n_solid_vars * n_solids]\
@@ -2619,9 +2647,10 @@ class D3plot:
 
             # stress
             try:
-                array_dict[arraytype.element_solid_stress] = \
-                    solid_state_data[:, :, :6]\
-                    .reshape((n_states, n_solids, 6))
+                if solid_state_data.shape[2] >= 6:
+                    array_dict[arraytype.element_solid_stress] = \
+                        solid_state_data[:, :, :6]\
+                        .reshape((n_states, n_solids, 6))
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
@@ -2633,9 +2662,11 @@ class D3plot:
 
             # effective plastic strain
             try:
-                array_dict[arraytype.element_solid_effective_plastic_strain] = \
-                    solid_state_data[:, :, i_solid_var]\
-                    .reshape((n_states, n_solids))
+                # in case plotcompress deleted stresses but pstrain exists
+                if i_solid_var < solid_state_data.shape[2]:
+                    array_dict[arraytype.element_solid_effective_plastic_strain] = \
+                        solid_state_data[:, :, i_solid_var]\
+                        .reshape((n_states, n_solids))
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
@@ -2668,7 +2699,11 @@ class D3plot:
                         array_dict[arraytype.element_solid_history_variables][:, :, -n_strain_vars:]
 
                     array_dict[arraytype.element_solid_history_variables] = \
-                        array_dict[arraytype.element_solid_history_variables][:, :, :-n_strain_vars]
+                        array_dict[arraytype.element_solid_history_variables][:,
+                                                                              :, : - n_strain_vars]
+
+                    if array_dict[arraytype.element_solid_history_variables].shape[2] == 0:
+                        del array_dict[arraytype.element_solid_history_variables]
                 except Exception:
                     trb_msg = traceback.format_exc()
                     msg = "A failure in {0} was caught:\n{1}"
@@ -3182,7 +3217,7 @@ class D3plot:
 
             # INTERNAL_ENERGY
             # STRAIN
-            if self.header["istrn"] == 0:
+            if self.header["istrn"] == 0 and self.header["has_internal_energy"]:
                 try:
                     array_dict[arraytype.element_shell_internal_energy] = \
                         shell_nonlayer_data[:, :, nonlayer_var_index]\
@@ -3215,7 +3250,7 @@ class D3plot:
 
                 # internal energy is behind strain if strain is written
                 # ... says the manual ...
-                if n_shell_vars >= 45:
+                if n_shell_vars >= 45 and self.header["has_internal_energy"]:
                     try:
                         array_dict[arraytype.element_shell_internal_energy] = \
                             shell_nonlayer_data[:, :, nonlayer_var_index]\
@@ -3227,6 +3262,7 @@ class D3plot:
                             msg.format("_read_states_shells, strains",
                                        trb_msg))
 
+            # PLASTIC STRAIN TENSOR
             if n_plastic_strain_tensor:
                 try:
                     pstrain_tensor = \
@@ -3243,6 +3279,7 @@ class D3plot:
                 finally:
                     nonlayer_var_index += n_plastic_strain_tensor
 
+            # THERMAL STRAIN TENSOR
             if n_thermal_strain_tensor:
                 try:
                     thermal_tensor = \
@@ -4369,20 +4406,20 @@ class D3plot:
         if not self.bb:
             return 4, np.int32, np.float32
 
-        # test file type flag (1=d3plot, 5=d3part)
+        # test file type flag (1=d3plot, 5=d3part, 11=d3eigv)
 
         # single precision
         value = self.bb.read_number(44, np.int32)
         if value > 1000:
             value -= 1000
-        if value == 1 or value == 5:
+        if value == 1 or value == 5 or value == 11:
             return 4, np.int32, np.float32
 
         # double precision
         value = self.bb.read_number(88, np.int64)
         if value > 1000:
             value -= 1000
-        if value == 1 or value == 5:
+        if value == 1 or value == 5 or value == 11:
             return 8, np.int64, np.float64
 
         raise RuntimeError("Unknown file type '{0}'.".format(value))
@@ -4731,8 +4768,8 @@ class D3plot:
 
         Parameters
         ----------
-        filter_type: `lasso.dyna.FilterType` or `str`
-            the array type to filter (beam, shell, solid, tshell)
+        filter_type: `lasso.dyna.FilterType`
+            the array type to filter for (beam, shell, solid, tshell, node)
         part_ids: `Iterable[int]`
             part ids to filter out
         for_state_array: `bool`
@@ -4756,6 +4793,30 @@ class D3plot:
             >>> # select only parts from part_ids
             >>> shell_stress_parts = shell_stress[:, mask]
         """
+
+        # nodes are treated separately
+        if filter_type == FilterType.NODE:
+            node_index_arrays = []
+
+            if ArrayType.element_shell_node_indexes in self.arrays:
+                shell_filter = self.get_part_filter(
+                    FilterType.SHELL, part_ids, for_state_array=False)
+                shell_node_indexes = self.arrays[ArrayType.element_shell_node_indexes]
+                node_index_arrays.append(shell_node_indexes[shell_filter].flatten())
+
+            if ArrayType.element_shell_node_indexes in self.arrays:
+                solid_filter = self.get_part_filter(
+                    FilterType.SOLID, part_ids, for_state_array=False)
+                solid_node_indexes = self.arrays[ArrayType.element_shell_node_indexes]
+                node_index_arrays.append(solid_node_indexes[solid_filter].flatten())
+
+            if ArrayType.element_tshell_node_indexes in self.arrays:
+                tshell_filter = self.get_part_filter(
+                    FilterType.TSHELL, part_ids, for_state_array=False)
+                tshell_node_indexes = self.arrays[ArrayType.element_tshell_node_indexes]
+                node_index_arrays.append(tshell_node_indexes[tshell_filter].flatten())
+
+            return np.unique(np.concatenate(node_index_arrays))
 
         # we need part ids first
         if ArrayType.part_ids in self.arrays:
