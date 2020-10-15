@@ -281,7 +281,8 @@ class D3plot:
 
         logging.debug("n_files found: {0}".format(n_files))
         logging.debug("n_states estimated: {0}".format(n_states))
-        logging.debug("files: {0}".format(pprint.pformat([info for info in file_infos])))
+        logging.debug("files: {0}".format(
+            pprint.pformat([info for info in file_infos])))
 
         # number of states and if buffered reading is used
         yield n_states, len(sub_file_infos) > 1
@@ -955,7 +956,8 @@ class D3plot:
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_geometry_data, node_coordinates", trb_msg))
+            logging.warning(msg.format(
+                "_read_geometry_data, node_coordinates", trb_msg))
         finally:
             position += section_word_length * self.wordsize
 
@@ -975,7 +977,8 @@ class D3plot:
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_geometry_data, solids_geometry", trb_msg))
+            logging.warning(msg.format(
+                "_read_geometry_data, solids_geometry", trb_msg))
         finally:
             position += section_word_length * self.wordsize
 
@@ -993,7 +996,8 @@ class D3plot:
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(msg.format("_read_geometry_data, ten_node_solids", trb_msg))
+                logging.warning(msg.format(
+                    "_read_geometry_data, ten_node_solids", trb_msg))
             finally:
                 position += section_word_length * self.wordsize
 
@@ -1002,12 +1006,15 @@ class D3plot:
         try:
             elem_tshell_data = self.bb.read_ndarray(
                 position, section_word_length * self.wordsize, 1, self.itype).reshape((self.header['nelth'], 9))
-            self.arrays[arraytype.element_tshell_node_indexes] = elem_tshell_data[:, :8] - FORTRAN_OFFSET
-            self.arrays[arraytype.element_tshell_part_indexes] = elem_tshell_data[:, 8] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_tshell_node_indexes] = elem_tshell_data[:,
+                                                                                  :8] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_tshell_part_indexes] = elem_tshell_data[:,
+                                                                                  8] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_geometry_data, tshells_geometry", trb_msg))
+            logging.warning(msg.format(
+                "_read_geometry_data, tshells_geometry", trb_msg))
         finally:
             position += section_word_length * self.wordsize
 
@@ -1018,12 +1025,15 @@ class D3plot:
                 position,
                 section_word_length * self.wordsize,
                 1, self.itype).reshape((self.header['nel2'], 6))
-            self.arrays[arraytype.element_beam_part_indexes] = elem_beam_data[:, 5] - FORTRAN_OFFSET
-            self.arrays[arraytype.element_beam_node_indexes] = elem_beam_data[:, :5] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_beam_part_indexes] = elem_beam_data[:,
+                                                                              5] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_beam_node_indexes] = elem_beam_data[:,
+                                                                              :5] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_geometry_data, beams_geometry", trb_msg))
+            logging.warning(msg.format(
+                "_read_geometry_data, beams_geometry", trb_msg))
         finally:
             position += section_word_length * self.wordsize
 
@@ -1032,12 +1042,15 @@ class D3plot:
         try:
             elem_shell_data = self.bb.read_ndarray(
                 position, section_word_length * self.wordsize, 1, self.itype).reshape((self.header['nel4'], 5))
-            self.arrays[arraytype.element_shell_node_indexes] = elem_shell_data[:, :4] - FORTRAN_OFFSET
-            self.arrays[arraytype.element_shell_part_indexes] = elem_shell_data[:, 4] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_shell_node_indexes] = elem_shell_data[:,
+                                                                                :4] - FORTRAN_OFFSET
+            self.arrays[arraytype.element_shell_part_indexes] = elem_shell_data[:,
+                                                                                4] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_geometry_data, shells_geometry", trb_msg))
+            logging.warning(msg.format(
+                "_read_geometry_data, shells_geometry", trb_msg))
         finally:
             position += section_word_length * self.wordsize
 
@@ -1246,13 +1259,15 @@ class D3plot:
         for rigid_body_info in rigid_bodies:
             rigid_body_part_indexes.append(rigid_body_info["mrigid"])
             rigid_body_n_nodes.append(rigid_body_info["numnodr"])
-            rigid_body_node_indexes_list.append(rigid_body_info["noder"] - FORTRAN_OFFSET)
+            rigid_body_node_indexes_list.append(
+                rigid_body_info["noder"] - FORTRAN_OFFSET)
             rigid_body_n_active_nodes.append(rigid_body_info["numnoda"])
             rigid_body_active_node_indexes_list.append(
                 rigid_body_info["nodea"])
 
         self.arrays[arraytype.rigid_body_part_indexes] = \
-            np.array(rigid_body_part_indexes, dtype=self.itype) - FORTRAN_OFFSET
+            np.array(rigid_body_part_indexes,
+                     dtype=self.itype) - FORTRAN_OFFSET
         self.arrays[arraytype.rigid_body_n_nodes] = \
             np.array(rigid_body_n_nodes, dtype=self.itype)
         self.arrays[arraytype.rigid_body_n_active_nodes] = \
@@ -1289,14 +1304,17 @@ class D3plot:
                 position, array_length, 1, self.itype).reshape((self.header["nmsph"], 2))
 
             # save array
-            self.arrays[arraytype.sph_node_indexes] = sph_node_matlist[:, 0] - FORTRAN_OFFSET
-            self.arrays[arraytype.sph_node_material_index] = sph_node_matlist[:, 1] - FORTRAN_OFFSET
+            self.arrays[arraytype.sph_node_indexes] = sph_node_matlist[:,
+                                                                       0] - FORTRAN_OFFSET
+            self.arrays[arraytype.sph_node_material_index] = sph_node_matlist[:,
+                                                                              1] - FORTRAN_OFFSET
 
         except Exception:
             # print info
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_sph_node_and_material_list", trb_msg))
+            logging.warning(msg.format(
+                "_read_sph_node_and_material_list", trb_msg))
 
         finally:
             # update position
@@ -1349,7 +1367,8 @@ class D3plot:
             # print info
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
-            logging.warning(msg.format("_read_particle_geometry_data", trb_msg))
+            logging.warning(msg.format(
+                "_read_particle_geometry_data", trb_msg))
 
             # fix position
             position = original_position + blocksize
@@ -1481,7 +1500,8 @@ class D3plot:
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(msg.format("_read_extra_node_connectivity, solid10", trb_msg))
+                logging.warning(msg.format(
+                    "_read_extra_node_connectivity, solid10", trb_msg))
             finally:
                 position += array_length
 
@@ -1498,7 +1518,8 @@ class D3plot:
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(msg.format("_read_extra_node_connectivity, shell8", trb_msg))
+                logging.warning(msg.format(
+                    "_read_extra_node_connectivity, shell8", trb_msg))
             finally:
                 position += array_length
 
@@ -1515,7 +1536,8 @@ class D3plot:
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(msg.format("_read_extra_node_connectivity, solid20", trb_msg))
+                logging.warning(msg.format(
+                    "_read_extra_node_connectivity, solid20", trb_msg))
             finally:
                 position += array_length
 
@@ -1532,7 +1554,8 @@ class D3plot:
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
-                logging.warning(msg.format("_read_extra_node_connectivity, solid27", trb_msg))
+                logging.warning(msg.format(
+                    "_read_extra_node_connectivity, solid27", trb_msg))
             finally:
                 position += array_length
 
@@ -1618,7 +1641,8 @@ class D3plot:
                     # part ids and corresponding titles
                     array_type = np.dtype([("ids", self.itype),
                                            ("titles", "S" + str(18 * titles_wordsize))])
-                    array_length = (self.wordsize + 18 * titles_wordsize) * entry_count
+                    array_length = (self.wordsize + 18 *
+                                    titles_wordsize) * entry_count
                     tmp_arrays = self.bb.read_ndarray(
                         position, array_length, 1, array_type)
                     position += array_length
@@ -1716,8 +1740,10 @@ class D3plot:
         n_solids = self.header["nel8"]
         n_solids_thermal_vars = self.header["nt3d"]
         n_solids_strain_vars = 6 * self.header["istrn"]
-        n_solid_thermal_strain_vars = 6 * self.header["has_thermal_strain_tensor"]
-        n_solid_plastic_strain_vars = 6 * self.header["has_plastic_strain_tensor"]
+        n_solid_thermal_strain_vars = 6 * \
+            self.header["has_thermal_strain_tensor"]
+        n_solid_plastic_strain_vars = 6 * \
+            self.header["has_plastic_strain_tensor"]
         n_solids_history_vars = (self.header["neiph"] -
                                  n_solids_strain_vars -
                                  n_solid_thermal_strain_vars -
@@ -2291,7 +2317,8 @@ class D3plot:
             previous_global_vars = var_index - n_timestep
             n_rigid_wall_vars = 4 if self.header["version"] >= 971 else 1
             # +1 is timestep which is not considered a global var ... seriously
-            n_rigid_walls = max(0, self.header["nglbv"] - previous_global_vars) // n_rigid_wall_vars
+            n_rigid_walls = max(
+                0, self.header["nglbv"] - previous_global_vars) // n_rigid_wall_vars
             if n_global_vars >= var_index + n_rigid_walls * n_rigid_wall_vars:
                 self.header["n_rigid_walls"] = n_rigid_walls
                 self.header["n_rigid_wall_vars"] = n_rigid_wall_vars
@@ -2571,7 +2598,8 @@ class D3plot:
         n_thermal_vars = self.header["nt3d"]
 
         try:
-            tmp_array = state_data[:, var_index:var_index + n_solids * n_thermal_vars]
+            tmp_array = state_data[:, var_index:var_index +
+                                   n_solids * n_thermal_vars]
             array_dict[arraytype.element_solid_thermal_data] = \
                 tmp_array\
                 .reshape((n_states, n_solids, n_thermal_vars))
@@ -2696,7 +2724,8 @@ class D3plot:
             if n_strain_vars:
                 try:
                     array_dict[arraytype.element_solid_strain] = \
-                        array_dict[arraytype.element_solid_history_variables][:, :, -n_strain_vars:]
+                        array_dict[arraytype.element_solid_history_variables][:,
+                                                                              :, -n_strain_vars:]
 
                     array_dict[arraytype.element_solid_history_variables] = \
                         array_dict[arraytype.element_solid_history_variables][:,
@@ -2812,7 +2841,8 @@ class D3plot:
             # thick shell element data
             tshell_data = state_data[:,
                                      var_index:var_index + n_thsell_vars * n_tshells]
-            tshell_data = tshell_data.reshape((n_states, n_tshells, n_thsell_vars))
+            tshell_data = tshell_data.reshape(
+                (n_states, n_tshells, n_thsell_vars))
 
             # extract layer data
             tshell_layer_data = tshell_data[:, :, slice(0, n_layer_vars)]
@@ -2865,7 +2895,8 @@ class D3plot:
             # STRAIN (only non layer data for tshells)
             if n_strain_vars:
                 try:
-                    tshell_nonlayer_data = tshell_nonlayer_data[:, :, :n_strain_vars]
+                    tshell_nonlayer_data = tshell_nonlayer_data[:,
+                                                                :, :n_strain_vars]
                     array_dict[arraytype.element_tshell_strain] = tshell_nonlayer_data\
                         .reshape((n_states, n_tshells, 2, 6))
                 except Exception:
@@ -2927,7 +2958,8 @@ class D3plot:
 
         try:
             # beam element data
-            beam_data = state_data[:, var_index:var_index + n_beam_vars * n_beams]
+            beam_data = state_data[:,
+                                   var_index:var_index + n_beam_vars * n_beams]
             beam_data = beam_data.reshape((n_states, n_beams, n_beam_vars))
 
             # extract layer data
@@ -3098,7 +3130,8 @@ class D3plot:
         n_force_variables = 8 * self.header["ioshl3"]
         n_extra_variables = 4 * self.header["ioshl4"]
         n_strain_vars = 12 * self.header["istrn"]
-        n_plastic_strain_tensor = 6 * n_layers * self.header["has_plastic_strain_tensor"]
+        n_plastic_strain_tensor = 6 * n_layers * \
+            self.header["has_plastic_strain_tensor"]
         n_thermal_strain_tensor = 6 * self.header["has_thermal_strain_tensor"]
 
         try:
@@ -3118,7 +3151,8 @@ class D3plot:
                 n_layers * (n_stress_vars + n_pstrain_vars + n_history_vars)
 
             # shell element data
-            shell_data = state_data[:, var_index:var_index + n_shell_vars * n_shells]
+            shell_data = state_data[:,
+                                    var_index:var_index + n_shell_vars * n_shells]
             shell_data = shell_data.reshape((n_states, n_shells, n_shell_vars))
 
             # extract layer data
@@ -3269,7 +3303,8 @@ class D3plot:
                         shell_nonlayer_data[:, :,
                                             nonlayer_var_index: nonlayer_var_index + n_plastic_strain_tensor]
                     array_dict[arraytype.element_shell_plastic_strain_tensor] = \
-                        pstrain_tensor.reshape((n_states, n_shells, n_layers, 6))
+                        pstrain_tensor.reshape(
+                            (n_states, n_shells, n_layers, 6))
                 except Exception:
                     trb_msg = traceback.format_exc()
                     msg = "A failure in {0} was caught:\n{1}"
@@ -3463,7 +3498,8 @@ class D3plot:
 
         # extract data
         try:
-            sph_data = state_data[:, var_index:var_index + n_particles * n_variables]
+            sph_data = state_data[:, var_index:var_index +
+                                  n_particles * n_variables]
 
             i_var = 1
 
@@ -3662,7 +3698,8 @@ class D3plot:
                 return self.itype if type_flag == 1 else self.ftype
 
             # extract airbag data
-            airbag_state_data = state_data[:, var_index:var_index + n_total_vars]
+            airbag_state_data = state_data[:,
+                                           var_index:var_index + n_total_vars]
 
             # airbag data
             airbag_data = airbag_state_data[:, :n_airbags * n_state_airbag_vars]\
@@ -4119,7 +4156,8 @@ class D3plot:
         for start in range(0, self.bb.size, BLOCK_SIZE):
             nz_indexes, = np.nonzero(mview_inv_arr[start:start + BLOCK_SIZE])
             if len(nz_indexes):
-                last_nonzero_byte_index = self.bb.size - (start + nz_indexes[0])
+                last_nonzero_byte_index = self.bb.size - \
+                    (start + nz_indexes[0])
                 break
         n_states_beyond_geom = (
             last_nonzero_byte_index - self.geometry_section_size) // size_per_state
@@ -4156,7 +4194,8 @@ class D3plot:
                                                  access=mmap.ACCESS_READ).read())
                     nz_indexes, = np.nonzero(mview[::-1])
                     if len(nz_indexes):
-                        last_nonzero_byte_index = start + rest_size - nz_indexes[0]
+                        last_nonzero_byte_index = start + \
+                            rest_size - nz_indexes[0]
 
                 # search in blocks from the rear
                 if last_nonzero_byte_index == -1:
@@ -4543,7 +4582,8 @@ class D3plot:
 
         if block_size_bytes > 0:
             remaining_bytes = n_bytes_written % block_size_bytes
-            n_bytes_to_fill = block_size_bytes - remaining_bytes if remaining_bytes != 0 else 0
+            n_bytes_to_fill = block_size_bytes - \
+                remaining_bytes if remaining_bytes != 0 else 0
             return b'\x00' * n_bytes_to_fill
 
     def compare(self, d3plot2, array_eps: Union[float, None] = None):
@@ -4743,7 +4783,8 @@ class D3plot:
 
                         if array_eps is not None and np.issubdtype(array1.dtype, np.number) \
                            and np.issubdtype(array2.dtype, np.number):
-                            comparison = (np.abs(array1 - array2) > array_eps).sum()
+                            comparison = (np.abs(array1 - array2)
+                                          > array_eps).sum()
                         else:
                             comparison = (array1 != array2).sum()
 
@@ -4802,19 +4843,22 @@ class D3plot:
                 shell_filter = self.get_part_filter(
                     FilterType.SHELL, part_ids, for_state_array=False)
                 shell_node_indexes = self.arrays[ArrayType.element_shell_node_indexes]
-                node_index_arrays.append(shell_node_indexes[shell_filter].flatten())
+                node_index_arrays.append(
+                    shell_node_indexes[shell_filter].flatten())
 
-            if ArrayType.element_shell_node_indexes in self.arrays:
+            if ArrayType.element_solid_node_indexes in self.arrays:
                 solid_filter = self.get_part_filter(
                     FilterType.SOLID, part_ids, for_state_array=False)
-                solid_node_indexes = self.arrays[ArrayType.element_shell_node_indexes]
-                node_index_arrays.append(solid_node_indexes[solid_filter].flatten())
+                solid_node_indexes = self.arrays[ArrayType.element_solid_node_indexes]
+                node_index_arrays.append(
+                    solid_node_indexes[solid_filter].flatten())
 
             if ArrayType.element_tshell_node_indexes in self.arrays:
                 tshell_filter = self.get_part_filter(
                     FilterType.TSHELL, part_ids, for_state_array=False)
                 tshell_node_indexes = self.arrays[ArrayType.element_tshell_node_indexes]
-                node_index_arrays.append(tshell_node_indexes[tshell_filter].flatten())
+                node_index_arrays.append(
+                    tshell_node_indexes[tshell_filter].flatten())
 
             return np.unique(np.concatenate(node_index_arrays))
 
@@ -4825,14 +4869,16 @@ class D3plot:
             d3plot_part_ids = self.arrays[ArrayType.part_titles_ids]
         else:
             msg = "D3plot does neither contain '{0}' nor '{1}'"
-            raise RuntimeError(msg.format(ArrayType.part_ids, ArrayType.part_titles_ids))
+            raise RuntimeError(msg.format(
+                ArrayType.part_ids, ArrayType.part_titles_ids))
 
         # if we filter parts we can stop here
         if filter_type == FilterType.PART:
             return np.isin(d3plot_part_ids, part_ids)
 
         # get part indexes from part ids
-        part_indexes = np.argwhere(np.isin(d3plot_part_ids, part_ids)).flatten()
+        part_indexes = np.argwhere(
+            np.isin(d3plot_part_ids, part_ids)).flatten()
 
         # associate part indexes with entities
         if filter_type == FilterType.BEAM:
