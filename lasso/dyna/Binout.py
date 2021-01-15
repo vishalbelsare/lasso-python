@@ -1,21 +1,12 @@
 
-import os
-import re
-import sys
 import glob
-import struct
-import ntpath
-import numpy as np
-import h5py
+from typing import List, Union
 
-import sys
-# if sys.version_info[0] < 3:
-#    from .lsda_py2 import Lsda
-# else:
-#    from .lsda_py3 import Lsda
+import h5py
+import numpy as np
+import pandas as pd
 
 from .lsda_py3 import Lsda
-
 
 '''
 # Recoded stuff from lsda from LSTC, but much more readable and quoted ...
@@ -113,7 +104,7 @@ class Binout:
 
     Parameters
     ----------
-    filepath : str
+    filepath: str
         path to the binout
 
     Notes
@@ -125,12 +116,12 @@ class Binout:
         >>> binout = Binout("path/to/binout")
     '''
 
-    def __init__(self, filepath):
+    def __init__(self, filepath: str):
         '''Constructor for a binout
 
         Parameters
         ----------
-        filepath : str
+        filepath: str
             path to the binout or pattern
 
         Notes
@@ -168,18 +159,17 @@ class Binout:
         #    self.lsda_root = self.lsda.root.children[""]
         # self.lsda_root = self.lsda.root
 
-    def read(self, *path):
-        '''read(path)
-        Read all data from Binout (top to low level)
+    def read(self, *path) -> Union[List[str], str, np.ndarray]:
+        '''Read all data from Binout (top to low level)
 
         Parameters
         ----------
-        path : list(str) or str
+        path: Union[Tuple[str, ...], List[str], str]
             internal path in the folder structure of the binout
 
         Returns
         -------
-        ret : list(str), np.ndarray or str
+        ret: Union[List[str], str, np.ndarray]
             list of subdata within the folder or data itself (array or string)
 
         Notes
@@ -188,17 +178,17 @@ class Binout:
             to make the access to the data more comfortable. The return type depends
             on the given path:
 
-             - `binout.read()` : list(str) names of directories (in binout)
-             - `binout.read(dir)` : list(str) names of variables or subdirs
-             - `binout.read(dir1, ..., variable)` : np.array(float/int) data
+             - `binout.read()`: `List[str] names of directories (in binout)
+             - `binout.read(dir)`: `List[str]` names of variables or subdirs
+             - `binout.read(dir1, ..., variable)`: np.array data
 
             If you have multiple outputs with different ids (e.g. in nodout for
-            multiple nodes) then don't forget to read the ids array for
+            multiple nodes) then don't forget to read the id array for
             identification or id-labels.
 
         Examples
         --------
-            >>> from qd.cae.dyna import Binout
+            >>> from lasso.dyna import Binout
             >>> binout = Binout("test/binout")
             >>> # get top dirs
             >>> binout.read()
@@ -218,12 +208,94 @@ class Binout:
 
         return self._decode_path(path)
 
+    def as_df(self, *args) -> pd.DataFrame:
+        """ read data and convert to pandas dataframe if possible 
+        
+        Parameters
+        ----------
+        path: Union[Tuple[str, ...], List[str], str]
+            internal path in the folder structure of the binout
+        
+        Returns
+        -------
+        df: pandas.DataFrame
+            data converted to pandas dataframe
+        
+        Raises
+        ------
+        ValueError
+            if the data cannot be converted to a pandas dataframe
+        
+        Examples
+        --------
+            >>> from lasso.dyna import Binout
+            >>> binout = Binout('path/to/binout')
+            
+            Read a time-dependent array.
+            
+            >>> binout.as_df('glstat', 'eroded_kinetic_energy')
+            time
+            0.00000        0.000000
+            0.19971        0.000000
+            0.39942        0.000000
+            0.59976        0.000000
+            0.79947        0.000000
+                            ...
+            119.19978    105.220786
+            119.39949    105.220786
+            119.59983    105.220786
+            119.79954    105.220786
+            119.99988    105.220786
+            Name: eroded_kinetic_energy, Length: 601, dtype: float64
+
+            Read a time and id-dependent array.
+
+            >>> binout.as_df('secforc', 'x_force')
+                                  1             2             3  ...            33            34            35
+            time                                                 ...
+            0.00063    2.168547e-16  2.275245e-15 -3.118639e-14  ... -5.126108e-13  4.592941e-16  8.431434e-17
+            0.20034    3.514243e-04  3.797908e-04 -1.701294e-03  ...  2.530416e-11  2.755493e-07  2.117375e-05
+            0.40005    3.052490e-03  3.242951e-02 -2.699926e-02  ...  6.755315e-06 -2.608923e-03  3.919351e-03
+            0.60039   -1.299816e-02  4.930999e-02 -1.632376e-02  ...  8.941705e-05 -2.203455e-02  3.536490e-02
+            0.80010    1.178485e-02  4.904512e-02 -9.740204e-03  ...  5.648263e-05 -6.999854e-02  6.934055e-02
+            ...                 ...           ...           ...  ...           ...           ...           ...
+            119.00007  9.737679e-01 -8.833702e+00  1.298964e+01  ... -9.977377e-02  7.883521e+00 -5.353501e+00
+            119.20041  7.421170e-01 -8.849411e+00  1.253505e+01  ... -1.845916e-01  7.791409e+00 -4.988928e+00
+            119.40012  9.946615e-01 -8.541475e+00  1.188757e+01  ... -3.662228e-02  7.675800e+00 -4.889339e+00
+            119.60046  9.677638e-01 -8.566695e+00  1.130774e+01  ...  5.144208e-02  7.273052e+00 -5.142375e+00
+            119.80017  1.035165e+00 -8.040828e+00  1.124044e+01  ... -1.213450e-02  7.188395e+00 -5.279221e+00
+        """
+
+        data = self.read(*args)
+
+        # validate time-based data
+        if not isinstance(data, np.ndarray):
+            err_msg = "data is not a numpy array but has type '{0}'"
+            raise ValueError(err_msg.format(type(data)))
+
+        time_array = self.read(*args[:-1], 'time')
+        if data.shape[0] != time_array.shape[0]:
+            raise ValueError("data series length does not match time array length")
+
+        time_pdi = pd.Index(time_array, name='time')
+
+        # create dataframe
+        if data.ndim > 1:
+            df = pd.DataFrame(index=time_pdi)
+            ids = self.read(*args[:-1], 'ids')
+            for i, j in enumerate(ids):
+                df[str(j)] = data.T[i]
+        else:
+            df = pd.Series(data, index=time_pdi, name=args[-1])
+
+        return df
+
     def _decode_path(self, path):
         '''Decode a path and get whatever is inside.
 
         Parameters
         ----------
-        path : list(str)
+        path: List[str]
             path within the binout
 
         Notes
@@ -234,7 +306,7 @@ class Binout:
 
         Returns
         -------
-        ret : list(str) or np.ndarray
+        ret: Union[List[str], np.ndarray]
             either subfolder list or data array
         '''
 
@@ -268,12 +340,12 @@ class Binout:
 
         Parameters
         ----------
-        symbol : Symbol
+        symbol: Symbol
             current directory which is a Lsda.Symbol
 
         Returns
         -------
-        symbol : Symbol
+        symbol: Symbol
             final symbol after recursive search of path
         '''
 
@@ -292,7 +364,7 @@ class Binout:
 
             next_symbol = symbol.get(next_symbol_name)
             if next_symbol == None:
-                raise ValueError("Can not find: %s" % next_symbol_name)
+                raise ValueError("Cannot find: %s" % next_symbol_name)
 
             return self._get_symbol(next_symbol, sub_path)
 
@@ -301,12 +373,12 @@ class Binout:
 
         Parameters
         ----------
-        path : list(str)
+        path: List[str]
             path to the variable
 
         Returns
         -------
-        data : np.ndarray of int or float
+        data: np.ndarray
         '''
 
         dir_symbol = self._get_symbol(self.lsda_root, path[:-1])
@@ -343,7 +415,7 @@ class Binout:
                         data.append(state_data[0])
                     else:  # more than one data entry
                         data.append(state_data)
-                    
+
                     time_symbol = subdir_symbol.get(b"time")
                     if time_symbol:
                         time += time_symbol.read()
@@ -355,18 +427,16 @@ class Binout:
             else:
                 return np.array(data)
 
-        raise ValueError("Could not find and read: %s" % str(path))
-
     def _collect_variables(self, symbol):
         '''Collect all variables from a symbol
 
         Parameters
         ----------
-        symbol : Symbol
+        symbol: Symbol
 
         Returns
         -------
-        variable_names : list(str)
+        variable_names: List[str]
 
         Notes
         -----
@@ -374,7 +444,7 @@ class Binout:
         '''
 
         var_names = set()
-        for subdir_name, subdir_symbol in symbol.children.items():
+        for _, subdir_symbol in symbol.children.items():
             var_names = var_names.union(subdir_symbol.children.keys())
 
         return self._bstr_to_str(list(var_names))
@@ -384,12 +454,12 @@ class Binout:
 
         Parameters
         ----------
-        data : np.array of int
+        data: Union[int, np.ndarray]
             some data array
 
         Returns
         -------
-        string : str
+        string: str
             data array converted to characters
 
         Notes
@@ -405,11 +475,11 @@ class Binout:
 
         Parameters
         ----------
-        string : str/unicode/bytes
+        string: Union[str, bytes]
 
         Returns
         -------
-        string : str
+        string: str
             converted to python version
         '''
 
@@ -428,11 +498,11 @@ class Binout:
 
         Parameters
         ----------
-        string : str
+        string: str
 
         Returns
         -------
-        string : binary str
+        string: bytes
         '''
 
         if not isinstance(string, bytes):
@@ -445,9 +515,9 @@ class Binout:
 
         Parameters
         ----------
-        filepath : str
+        filepath: str
             path where the HDF5 shall be saved
-        compression : str
+        compression: str
             compression technique (see h5py docs)
 
         Examples
@@ -464,13 +534,13 @@ class Binout:
 
         Parameters
         ----------
-        hdf5_grp : Group
+        hdf5_grp: Group
             group object in the HDF5, where all the data
             shall be saved into (of course in a tree like
             manner) 
-        compression : str
+        compression: str
             compression technique (see h5py docs)
-        path : tuple(str)
+        path: Tuple[str, ...]
             entry path in the binout
         '''
 

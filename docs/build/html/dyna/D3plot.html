@@ -1,54 +1,50 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>D3plot &mdash; LASSO Python Library</title>
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="../_static/lasso-favicon.gif"/>
   
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ArrayType" href="ArrayType.html" />
+    <link rel="next" title="D3plotHeader" href="D3plotHeader.html" />
     <link rel="prev" title="Binout" href="Binout.html" />
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-140293920-1', 'auto');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"
+  integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA=="
+  crossorigin="anonymous"></script>
 
 </head>
 
@@ -76,7 +72,7 @@
             
             
               <div class="version">
-                1.3.1
+                1.5.0
               </div>
             
           
@@ -93,6 +89,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -105,18 +102,22 @@
 <li class="toctree-l1 current"><a class="reference internal" href="dyna.html">lasso.dyna</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Binout.html">Binout</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">D3plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="D3plotHeader.html">D3plotHeader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ArrayType.html">ArrayType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="FilterType.html">FilterType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyna_performance_info.html">Performance Info</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyna.html#d3plot-example">D3plot Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../femzip/femzip.html">lasso.femzip (beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dimred/dimred.html">lasso.dimred (pro only)</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -151,11 +152,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="dyna.html">lasso.dyna</a> &raquo;</li>
         
@@ -164,7 +167,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -179,32 +182,62 @@
   <div class="section" id="d3plot">
 <h1>D3plot<a class="headerlink" href="#d3plot" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<dl class="class">
+<dl class="py class">
 <dt id="lasso.dyna.D3plot.D3plot">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.D3plot.</code><code class="sig-name descname">D3plot</code><span class="sig-paren">(</span><em class="sig-param">filepath: str = None</em>, <em class="sig-param">use_femzip: bool = False</em>, <em class="sig-param">n_files_to_load_at_once=-1</em>, <em class="sig-param">state_array_filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.D3plot.</code><code class="sig-name descname">D3plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_femzip</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_files_to_load_at_once</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_array_filter</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffered_reading</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>filepath</strong><span class="classifier"><cite>str</cite></span></dt><dd><p>path to a d3plot file</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filepath: str</strong></dt><dd><p>path to a d3plot file</p>
 </dd>
-<dt><strong>use_femzip</strong><span class="classifier"><cite>bool</cite></span></dt><dd><p>whether to use femzip decompression</p>
+<dt><strong>use_femzip: bool</strong></dt><dd><p><em>DEPRECATED</em> not used anymore</p>
 </dd>
-<dt><strong>n_files_to_load_at_once</strong><span class="classifier"><cite>int</cite></span></dt><dd><p>number of d3plot files to load into memory at once. By default -1 means all are loaded</p>
+<dt><strong>n_files_to_load_at_once: int</strong></dt><dd><p><em>DEPRECATED</em> not used anymore, use <cite>buffered_reading</cite></p>
 </dd>
-<dt><strong>state_array_filter</strong><span class="classifier"><cite>list</cite> of <cite>str</cite> or <cite>None</cite></span></dt><dd><p>names of arrays which will be the only ones loaded from state data</p>
+<dt><strong>state_array_filter: Union[List[str], None]</strong></dt><dd><p>names of arrays which will be the only ones loaded from state data</p>
 </dd>
-<dt><strong>Notes</strong></dt><dd></dd>
-<dt><strong>—–</strong></dt><dd><p>If dyna wrote multiple files for several states,
-only give the path to the first file.</p>
+<dt><strong>state_filter: Union[None, Set[int]]</strong></dt><dd><p>which states to load. Negative indexes count backwards.</p>
+</dd>
+<dt><strong>buffered_reading: bool</strong></dt><dd><p>whether to pull only a single state into memory during reading</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
+</dl>
+<p class="rubric">Notes</p>
+<p>If dyna wrote multiple files for several states,
+only give the path to the first file.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="kn">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># open and read everything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># only read node displacement</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;node_displacement&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or with nicer syntax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># only load first and last state</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_filter</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># our computer lacks RAM so lets extract a specific array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># but only keep one state at a time in memory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">buffered_reading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
 <dt><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.arrays" title="lasso.dyna.D3plot.D3plot.arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arrays</span></code></a></dt><dd><p>Dictionary holding all d3plot arrays</p>
 </dd>
-<dt><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.header" title="lasso.dyna.D3plot.D3plot.header"><code class="xref py py-obj docutils literal notranslate"><span class="pre">header</span></code></a></dt><dd><p>Dictionary holding all d3plot header information</p>
+<dt><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.header" title="lasso.dyna.D3plot.D3plot.header"><code class="xref py py-obj docutils literal notranslate"><span class="pre">header</span></code></a></dt><dd><p>Instance holding all d3plot header information</p>
+</dd>
+<dt><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.n_timesteps" title="lasso.dyna.D3plot.D3plot.n_timesteps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_timesteps</span></code></a></dt><dd><p>Number of timesteps loaded</p>
 </dd>
 </dl>
 </dd>
@@ -216,48 +249,74 @@ only give the path to the first file.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.compare" title="lasso.dyna.D3plot.D3plot.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(self, d3plot2, array_eps, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.compare" title="lasso.dyna.D3plot.D3plot.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(d3plot2[, array_eps])</p></td>
 <td><p>Compare two d3plots and print the info</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="lasso.dyna.D3plot.D3plot.enable_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_logger</span></code></a>(enable)</p></td>
 <td><p>Enable the logger for this class</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="lasso.dyna.D3plot.D3plot.get_part_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_part_filter</span></code></a>(self, filter_type, part_ids, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="lasso.dyna.D3plot.D3plot.get_part_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_part_filter</span></code></a>(filter_type, part_ids[, …])</p></td>
 <td><p>Get a part filter for different entities</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self, i_timestep, field, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.plot" title="lasso.dyna.D3plot.D3plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([i_timestep, field, is_element_field, …])</p></td>
 <td><p>Plot the d3plot geometry</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(self, filepath, block_size_bytes)</p></td>
-<td><p>Write a d3plot file again <strong>(not public)</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="lasso.dyna.D3plot.D3plot.write_d3plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_d3plot</span></code></a>(filepath[, block_size_bytes, …])</p></td>
+<td><p>Write a d3plot file again <strong>(pro version only)</strong></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filepath: str = None</em>, <em class="sig-param">use_femzip: bool = False</em>, <em class="sig-param">n_files_to_load_at_once=-1</em>, <em class="sig-param">state_array_filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_femzip</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_files_to_load_at_once</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_array_filter</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffered_reading</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>filepath</strong><span class="classifier"><cite>str</cite></span></dt><dd><p>path to a d3plot file</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filepath: str</strong></dt><dd><p>path to a d3plot file</p>
 </dd>
-<dt><strong>use_femzip</strong><span class="classifier"><cite>bool</cite></span></dt><dd><p>whether to use femzip decompression</p>
+<dt><strong>use_femzip: bool</strong></dt><dd><p><em>DEPRECATED</em> not used anymore</p>
 </dd>
-<dt><strong>n_files_to_load_at_once</strong><span class="classifier"><cite>int</cite></span></dt><dd><p>number of d3plot files to load into memory at once. By default -1 means all are loaded</p>
+<dt><strong>n_files_to_load_at_once: int</strong></dt><dd><p><em>DEPRECATED</em> not used anymore, use <cite>buffered_reading</cite></p>
 </dd>
-<dt><strong>state_array_filter</strong><span class="classifier"><cite>list</cite> of <cite>str</cite> or <cite>None</cite></span></dt><dd><p>names of arrays which will be the only ones loaded from state data</p>
+<dt><strong>state_array_filter: Union[List[str], None]</strong></dt><dd><p>names of arrays which will be the only ones loaded from state data</p>
 </dd>
-<dt><strong>Notes</strong></dt><dd></dd>
-<dt><strong>—–</strong></dt><dd><p>If dyna wrote multiple files for several states,
+<dt><strong>state_filter: Union[None, Set[int]]</strong></dt><dd><p>which states to load. Negative indexes count backwards.</p>
+</dd>
+<dt><strong>buffered_reading: bool</strong></dt><dd><p>whether to pull only a single state into memory during reading</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If dyna wrote multiple files for several states,
 only give the path to the first file.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="kn">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># open and read everything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># only read node displacement</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;node_displacement&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or with nicer syntax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># only load first and last state</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> <span class="n">state_filter</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># our computer lacks RAM so lets extract a specific array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># but only keep one state at a time in memory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">buffered_reading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.arrays">
 <em class="property">property </em><code class="sig-name descname">arrays</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary holding all d3plot arrays</p>
@@ -266,7 +325,7 @@ only give the path to the first file.</p>
 also be found in <cite>lasso.dyna.ArrayTypes</cite>, which
 helps with IDE integration and code safety.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;some/path/to/d3plot&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;some/path/to/d3plot&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="go">dict_keys([&#39;irbtyp&#39;, &#39;node_coordinates&#39;, ...])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># The following is good coding practice</span>
@@ -276,69 +335,88 @@ helps with IDE integration and code safety.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.compare">
-<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">d3plot2</em>, <em class="sig-param">array_eps: Union[float</em>, <em class="sig-param">NoneType] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d3plot2</span></em>, <em class="sig-param"><span class="n">array_eps</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two d3plots and print the info</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>d3plot2</strong><span class="classifier">D3plot</span></dt><dd><p>second d3plot</p>
+<dt><strong>d3plot2: D3plot</strong></dt><dd><p>second d3plot</p>
 </dd>
-<dt><strong>array_eps</strong><span class="classifier">float or None</span></dt><dd><p>tolerance for arrays, None by default</p>
+<dt><strong>array_eps: float or None</strong></dt><dd><p>tolerance for arrays</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>hdr_differences</strong><span class="classifier">dict</span></dt><dd><p>differences in the header</p>
+<dt>hdr_differences: dict</dt><dd><p>differences in the header</p>
 </dd>
-<dt><strong>array_differences</strong><span class="classifier">dict</span></dt><dd><p>difference between arrays (number of non-matching elements)</p>
-</dd>
-</dl>
+<dt>array_differences: dict</dt><dd><p>difference between arrays as message</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Comparison of a femzipped file and an uncompressed file. Femzip
+is a lossy compression, thus precision is traded for memory.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot1</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot2</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot.fz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hdr_diff</span><span class="p">,</span> <span class="n">array_diff</span> <span class="o">=</span> <span class="n">d3plot1</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">d3plot2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">arraytype</span><span class="p">,</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">array_diff</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+<span class="go">node_coordinates Δmax = 0.050048828125</span>
+<span class="go">node_displacement Δmax = 0.050048828125</span>
+<span class="go">node_velocity Δmax = 0.050048828125</span>
+<span class="go">node_acceleration Δmax = 49998984.0</span>
+<span class="go">element_beam_axial_force Δmax = 6.103515625e-05</span>
+<span class="go">element_shell_stress Δmax = 0.0005035400390625</span>
+<span class="go">element_shell_thickness Δmax = 9.999999717180685e-10</span>
+<span class="go">element_shell_unknown_variables Δmax = 0.0005000010132789612</span>
+<span class="go">element_shell_internal_energy Δmax = 188.41957092285156</span>
+</pre></div>
+</div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.enable_logger">
-<em class="property">static </em><code class="sig-name descname">enable_logger</code><span class="sig-paren">(</span><em class="sig-param">enable: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">enable_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">enable</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable the logger for this class</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>enable</strong><span class="classifier"><cite>bool</cite></span></dt><dd><p>whether to enable logging for this class</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>enable: bool</strong></dt><dd><p>whether to enable logging for this class</p>
 </dd>
 </dl>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.get_part_filter">
-<code class="sig-name descname">get_part_filter</code><span class="sig-paren">(</span><em class="sig-param">self, filter_type: lasso.dyna.FilterType.FilterType, part_ids: Iterable[int], for_state_array: bool = True</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_part_filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter_type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="FilterType.html#lasso.dyna.FilterType.FilterType" title="lasso.dyna.FilterType.FilterType">lasso.dyna.FilterType.FilterType</a></span></em>, <em class="sig-param"><span class="n">part_ids</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">for_state_array</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a part filter for different entities</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>filter_type: `lasso.dyna.FilterType`</strong></dt><dd><p>the array type to filter for (beam, shell, solid, tshell, node)</p>
+<dt><strong>filter_type: lasso.dyna.FilterType</strong></dt><dd><p>the array type to filter for (beam, shell, solid, tshell, node)</p>
 </dd>
-<dt><strong>part_ids: `Iterable[int]`</strong></dt><dd><p>part ids to filter out</p>
+<dt><strong>part_ids: Iterable[int]</strong></dt><dd><p>part ids to filter out</p>
 </dd>
-<dt><strong>for_state_array: `bool`</strong></dt><dd><p>if the filter is meant for a state array. Makes a difference
+<dt><strong>for_state_array: bool</strong></dt><dd><p>if the filter is meant for a state array. Makes a difference
 for shells if rigid bodies are in the model (mattyp == 20)</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>mask: <cite>np.ndarray</cite></dt><dd><p>mask usable on arrays to filter results</p>
+<dt>mask: np.ndarray</dt><dd><p>mask usable on arrays to filter results</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="kn">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">FilterType</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lasso.dyna</span> <span class="kn">import</span> <span class="n">D3plot</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">FilterType</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">part_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">get_part_filter</span><span class="p">(</span><span class="n">FilterType</span><span class="o">.</span><span class="n">shell</span><span class="p">)</span>
@@ -351,41 +429,52 @@ for shells if rigid bodies are in the model (mattyp == 20)</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.header">
 <em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.header" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dictionary holding all d3plot header information</p>
+<dd><p>Instance holding all d3plot header information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>header: D3plotHeader</dt><dd><p>header of the d3plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The header contains many informations such as number
-of elements, etc. The names are the original dyna names,
-thus sometimes confusing … but that’s dyna.</p>
+of elements, etc.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;some/path/to/d3plot&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">header</span>
-<span class="go">dict_keys([&#39;title&#39;, &#39;runtime&#39;, &#39;filetype&#39;, &#39;source_version&#39;, ...])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;some/path/to/d3plot&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># number of shells</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;nel4&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">n_shells</span>
 <span class="go">85624</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
+<dt id="lasso.dyna.D3plot.D3plot.n_timesteps">
+<em class="property">property </em><code class="sig-name descname">n_timesteps</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.n_timesteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of timesteps loaded</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self, i_timestep: int = 0, field: Union[numpy.ndarray, NoneType] = None, is_element_field: bool = True, fringe_limits: Union[Tuple[float, float], NoneType] = None, export_filepath: str = ''</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i_timestep</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">is_element_field</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">fringe_limits</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">export_filepath</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the d3plot geometry</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>i_timestep</strong><span class="classifier">int</span></dt><dd><p>timestep index to plot</p>
+<dt><strong>i_timestep: int</strong></dt><dd><p>timestep index to plot</p>
 </dd>
-<dt><strong>field</strong><span class="classifier">Union[np.ndarray, None]</span></dt><dd><p>Array containing a field value for every element or node</p>
+<dt><strong>field: Union[np.ndarray, None]</strong></dt><dd><p>Array containing a field value for every element or node</p>
 </dd>
-<dt><strong>is_element_field</strong><span class="classifier">bool</span></dt><dd><p>if the specified field is for elements or nodes</p>
+<dt><strong>is_element_field: bool</strong></dt><dd><p>if the specified field is for elements or nodes</p>
 </dd>
-<dt><strong>fringe_limits</strong><span class="classifier">Union[Tuple[float, float], None]</span></dt><dd><p>limits for the fringe bar. Set by default to min and max.</p>
+<dt><strong>fringe_limits: Union[Tuple[float, float], None]</strong></dt><dd><p>limits for the fringe bar. Set by default to min and max.</p>
 </dd>
-<dt><strong>export_filepath</strong><span class="classifier">str</span></dt><dd><p>filepath to export the html to</p>
+<dt><strong>export_filepath: str</strong></dt><dd><p>filepath to export the html to</p>
 </dd>
 </dl>
 </dd>
@@ -395,7 +484,7 @@ thus sometimes confusing … but that’s dyna.</p>
 solids the surface needs extraction.</p>
 <p class="rubric">Examples</p>
 <p>Plot deformation of last timestep.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get eff. plastic strain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pstrain</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_effective_plastic_strain</span><span class="p">]</span>
@@ -416,17 +505,19 @@ solids the surface needs extraction.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lasso.dyna.D3plot.D3plot.write_d3plot">
-<code class="sig-name descname">write_d3plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filepath: str</em>, <em class="sig-param">block_size_bytes: int = 2048</em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write a d3plot file again <strong>(not public)</strong></p>
+<code class="sig-name descname">write_d3plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>BinaryIO<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">block_size_bytes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2048</span></em>, <em class="sig-param"><span class="n">single_file</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a d3plot file again <strong>(pro version only)</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>filepath</strong><span class="classifier">str</span></dt><dd><p>filepath of the new d3plot file</p>
+<dt><strong>filepath: Union[str, BinaryIO]</strong></dt><dd><p>filepath of the new d3plot file or an opened file handle</p>
 </dd>
-<dt><strong>block_size_bytes</strong><span class="classifier">int</span></dt><dd><p>D3plots are originally written in byte-blocks causing zero-padding at the end of
+<dt><strong>block_size_bytes: int</strong></dt><dd><p>D3plots are originally written in byte-blocks causing zero-padding at the end of
 files. This can be controlled by this parameter. Set to 0 for no padding.</p>
+</dd>
+<dt><strong>single_file: bool</strong></dt><dd><p>whether to write all states into a single file</p>
 </dd>
 </dl>
 </dd>
@@ -436,7 +527,7 @@ files. This can be controlled by this parameter. Set to 0 for no padding.</p>
 LASSO directly in case of further interest.</p>
 <p class="rubric">Examples</p>
 <p>Modify an existing d3plot:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hvars</span> <span class="o">=</span> <span class="n">d3plot</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_history_vars</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hvars</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(1, 4696, 3, 19)</span>
@@ -447,12 +538,12 @@ LASSO directly in case of further interest.</p>
 </pre></div>
 </div>
 <p>Write a new d3plot from scratch:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_coordinates</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_node_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_part_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">write_d3plot</span><span class="p">(</span><span class="s2">&quot;yay&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">write_d3plot</span><span class="p">(</span><span class="s2">&quot;yay.d3plot&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -466,29 +557,29 @@ LASSO directly in case of further interest.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="ArrayType.html" class="btn btn-neutral float-right" title="ArrayType" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Binout.html" class="btn btn-neutral float-left" title="Binout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="D3plotHeader.html" class="btn btn-neutral float-right" title="D3plotHeader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Binout.html" class="btn btn-neutral float-left" title="Binout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright LASSO GmbH
+        &#169; Copyright LASSO GmbH.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -496,7 +587,6 @@ LASSO directly in case of further interest.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -507,7 +597,21 @@ LASSO directly in case of further interest.</p>
   
   
     
-   
+  
+ 
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
 
 </body>
 </html>

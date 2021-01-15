@@ -10,6 +10,7 @@ Documentation of the LS-Dyna module.
    
    Binout
    D3plot
+   D3plotHeader
    ArrayType
    FilterType
    dyna_performance_info
@@ -24,13 +25,17 @@ D3plot Example
       >>> # read a file (zero-copy reading of everything)
       >>> d3plot = D3plot("path/to/d3plot")
 
-      >>> # read file buffered (less memory usage)
+      >>> # read file 
+      >>> # - buffered (less memory usage)
+      >>> # - only node displacements (safes memory)
+      >>> # - read only first and last state
       >>> d3plot = D3plot("path/to/d3plot",
-      >>>                state_array_filter=["node_displacement"],
-      >>>                n_files_to_load_at_once=1)
+      >>>                 state_array_filter=["node_displacement"],
+      >>>                 buffered_reading=True,
+      >>>                 state_filter={0, -1})
 
       >>> # and of course femzipped files
-      >>> d3plot = D3plot("path/to/d3plot.fz", use_femzip=True)
+      >>> d3plot = D3plot("path/to/d3plot.fz")
 
       >>> # get arrays (see docs of ArrayType for shape info)
       >>> disp = d3plot.arrays["node_displacement"]

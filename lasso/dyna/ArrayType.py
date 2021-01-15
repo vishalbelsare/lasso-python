@@ -35,13 +35,17 @@ class ArrayType:
     element_solid_thermal_data = \
         "element_solid_thermal_data"  #: shape: (n_states, n_solids, n_solids_thermal_vars)
     element_solid_stress = \
-        "element_solid_stress"  #: shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)
+        "element_solid_stress"  #: shape: (n_states, n_solids, n_solid_layers, xx_yy_zz_xy_yz_xz)
     element_solid_effective_plastic_strain = \
-        "element_solid_effective_plastic_strain"  #: shape: (n_states, n_solids)
+        "element_solid_effective_plastic_strain"  #: shape: (n_states, n_solid_layers, n_solids)
     element_solid_history_variables = \
-        "element_solid_history_variables"  #: shape: (n_states, n_solids, n_solids_history_vars)
+        "element_solid_history_variables"  #: shape: (n_states, n_solids, n_solid_layers, n_solids_history_vars)
     element_solid_strain = \
-        "element_solid_strain"  #: shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)
+        "element_solid_strain"  #: shape: (n_states, n_solids, n_solid_layers, xx_yy_zz_xy_yz_xz)
+    element_solid_plastic_strain_tensor = \
+        "element_solid_plastic_strain_tensor"  #: shape: (n_states, n_solids, n_solid_layers, xx_yy_zz_xy_yz_xz)
+    element_solid_thermal_strain_tensor = \
+        "element_solid_thermal_strain_tensor"  #: shape: (n_states, n_solids, n_solid_layers, xx_yy_zz_xy_yz_xz)
     element_solid_is_alive = "element_solid_is_alive"  #: shape: (n_states, n_solids)
     element_solid_extra_nodes = "element_solid_extra_nodes"  #: shape: (n_solids, 2)
     element_solid_node10_extra_node_indexes = \
@@ -53,11 +57,28 @@ class ArrayType:
     element_solid_node27_element_index = \
         "element_solid_node27_element_index"  #: shape: (n_node27_solids)
     element_solid_node27_extra_node_indexes = \
-        "element_solid_node27_extra_node_indexes"  #: shape: (n_node27_solids, 20)
-    element_solid_plastic_strain_tensor = \
-        "element_solid_plastic_strain_tensor"  #: shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)
-    element_solid_thermal_strain_tensor = \
-        "element_solid_thermal_strain_tensor"  #: shape: (n_states, n_solids, xx_yy_zz_xy_yz_xz)
+        "element_solid_node27_extra_node_indexes"  #: shape: (n_node27_solids, 27)
+    element_solid_node21_penta_element_index = \
+        "element_solid_node21_penta_element_index"  #: shape: (n_node21p_solids)
+    element_solid_node21_penta_extra_node_indexes = \
+        "element_solid_node21_penta_extra_node_indexes"  #: shape: (n_node21p_solids, 21)
+    element_solid_node15_tetras_element_index = \
+        "element_solid_node15_tetras_element_index"  #: shape: (n_node15t_solids)
+    element_solid_node15_tetras_extra_node_indexes = \
+        "element_solid_node15_tetras_extra_node_indexes"  #: shape: (n_node15t_solids, 7)
+    element_solid_node20_tetras_element_index = \
+        "element_solid_node20_tetras_element_index"  #: shape: (n_node20t_solids)
+    element_solid_node20_tetras_extra_node_indexes = \
+        "element_solid_node20_tetras_extra_node_indexes"  #: shape: (n_node20t_solids, 20)
+    element_solid_node40_pentas_element_index = \
+        "element_solid_node40_pentas_element_index"  #: shape: (n_node40h_solids)
+    element_solid_node40_pentas_extra_node_indexes = \
+        "element_solid_node40_pentas_extra_node_indexes"  #: shape: (n_node40h_solids, 40)
+    element_solid_node64_hexas_element_index = \
+        "element_solid_node64_hexas_element_index"  #: shape: (n_node64h_solids)
+    element_solid_node64_hexas_extra_node_indexes = \
+        "element_solid_node64_hexas_extra_node_indexes"  #: shape: (n_node64h_solids, 64)
+
     # tshells
     element_tshell_part_indexes = "element_tshell_part_indexes"  #: shape: (n_tshells)
     element_tshell_node_indexes = "element_tshell_node_indexes"  #: shape: (n_tshells, 8)
@@ -147,6 +168,7 @@ class ArrayType:
     sph_internal_energy = "sph_internal_energy"  #: shape: (n_states, n_sph_particles)
     sph_n_neighbors = "sph_n_neighbors"  #: (n_states, n_sph_particles)
     sph_strain = "sph_strain"  #: shape: (n_states, n_sph_particles, xx_yy_zz_xy_yz_xz)
+    sph_strainrate = "sph_strainrate"  #: shape: (n_states, n_sph_particles, xx_yy_zz_xy_yz_xz)
     sph_mass = "sph_mass"  #: shape: (n_states, n_sph_particles)
     sph_deletion = "sph_deletion"  #: shape: (n_states, n_sph_particles)
     sph_history_vars = \
@@ -246,6 +268,7 @@ class ArrayType:
             ArrayType.node_acceleration,
             ArrayType.node_temperature_gradient,
             ArrayType.node_residual_forces,
+            ArrayType.node_residual_moments,
             # solids
             ArrayType.element_solid_thermal_data,
             ArrayType.element_solid_stress,

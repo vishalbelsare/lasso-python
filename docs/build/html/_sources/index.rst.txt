@@ -39,7 +39,9 @@ Modules
 
    ansa/ansa
    dyna/dyna
+   femzip/femzip
    diffcrash/diffcrash
+   dimred/dimred
     
     
 Indices and tables

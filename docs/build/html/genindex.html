@@ -1,53 +1,48 @@
 
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Index &mdash; LASSO Python Library</title>
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="_static/lasso-favicon.gif"/>
   
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-140293920-1', 'auto');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"
+  integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA=="
+  crossorigin="anonymous"></script>
 
 </head>
 
@@ -75,7 +70,7 @@
             
             
               <div class="version">
-                1.3.1
+                1.5.0
               </div>
             
           
@@ -92,6 +87,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -102,12 +98,15 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="ansa/ansa.html">lasso.ansa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dyna/dyna.html">lasso.dyna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="femzip/femzip.html">lasso.femzip (beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimred/dimred.html">lasso.dimred (pro only)</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -142,18 +141,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Index</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -179,11 +180,16 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
 </div>
@@ -195,9 +201,25 @@
       <ul>
         <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.__init__">(lasso.diffcrash.DiffcrashRun method)</a>
 </li>
+        <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.__init__">(lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
         <li><a href="dyna/Binout.html#lasso.dyna.Binout.Binout.__init__">(lasso.dyna.Binout.Binout method)</a>
 </li>
         <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.__init__">(lasso.dyna.D3plot.D3plot method)</a>
+</li>
+        <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.__init__">(lasso.dyna.D3plotHeader.D3plotHeader method)</a>
+</li>
+        <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.__init__">(lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+        <li><a href="femzip/FemzipAPIStatus.html#lasso.femzip.femzip_api.FemzipAPIStatus.__init__">(lasso.femzip.femzip_api.FemzipAPIStatus method)</a>
+</li>
+        <li><a href="femzip/FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo.__init__">(lasso.femzip.femzip_api.FemzipBufferInfo method)</a>
+</li>
+        <li><a href="femzip/FemzipError.html#lasso.femzip.femzip_api.FemzipError.__init__">(lasso.femzip.femzip_api.FemzipError method)</a>
+</li>
+        <li><a href="femzip/FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata.__init__">(lasso.femzip.femzip_api.FemzipFileMetadata method)</a>
+</li>
+        <li><a href="femzip/VariableInfo.html#lasso.femzip.femzip_api.VariableInfo.__init__">(lasso.femzip.femzip_api.VariableInfo method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -228,10 +250,10 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.airbag_particle_translation_energy">airbag_particle_translation_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.airbag_particle_velocity">airbag_particle_velocity (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.airbag_variable_names">airbag_variable_names (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.airbag_variable_types">airbag_variable_types (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -254,6 +276,8 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType">ArrayType (class in lasso.dyna.ArrayType)</a>
 </li>
+      <li><a href="dyna/Binout.html#lasso.dyna.Binout.Binout.as_df">as_df() (lasso.dyna.Binout.Binout method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -272,19 +296,41 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dimred/svd/pod_functions.html#lasso.dimred.svd.pod_functions.calculate_V_and_Betas">calculate_V_and_Betas() (in module lasso.dimred.svd.pod_functions)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.cfd_extra_data">cfd_extra_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success">check_if_logfiles_show_success() (lasso.diffcrash.DiffcrashRun method)</a>
 </li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.clear_project_dir">clear_project_dir() (lasso.diffcrash.DiffcrashRun method)</a>
 </li>
-      <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.compare">compare() (lasso.dyna.D3plot.D3plot method)</a>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.close_current_file">close_current_file() (lasso.femzip.femzip_api.FemzipAPI method)</a>
 </li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.clustering_results">clustering_results() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+      <li><a href="dimred/svd/KeywordTypes.html#lasso.dimred.svd.KeywordTypes.ClusterType">ClusterType (class in lasso.dimred.svd.KeywordTypes)</a>
+</li>
+      <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.compare">compare() (lasso.dyna.D3plot.D3plot method)</a>
+
+      <ul>
+        <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.compare">(lasso.dyna.D3plotHeader.D3plotHeader method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.contact_title_ids">contact_title_ids (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.contact_titles">contact_titles (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.copy_struct">copy_struct() (lasso.femzip.femzip_api.FemzipAPI static method)</a>
+</li>
+      <li><a href="dimred/svd/clustering_betas.html#lasso.dimred.svd.clustering_betas.create_cluster_arg_dict">create_cluster_arg_dict() (in module lasso.dimred.svd.clustering_betas)</a>
+</li>
+      <li><a href="dimred/svd/clustering_betas.html#lasso.dimred.svd.clustering_betas.create_detector_arg_dict">create_detector_arg_dict() (in module lasso.dimred.svd.clustering_betas)</a>
+</li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.create_project_dirs">create_project_dirs() (lasso.diffcrash.DiffcrashRun method)</a>
+</li>
+      <li><a href="dimred/svd/subsampling_methods.html#lasso.dimred.svd.subsampling_methods.create_reference_subsample">create_reference_subsample() (in module lasso.dimred.svd.subsampling_methods)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -294,9 +340,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot">D3plot (class in lasso.dyna.D3plot)</a>
 </li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader">D3plotHeader (class in lasso.dyna.D3plotHeader)</a>
+</li>
+      <li><a href="dimred/svd/KeywordTypes.html#lasso.dimred.svd.KeywordTypes.DetectorType">DetectorType (class in lasso.dimred.svd.KeywordTypes)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun">DiffcrashRun (class in lasso.diffcrash)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.dimension_reduction_svd">dimension_reduction_svd() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun">DimredRun (class in lasso.dimred.DimredRun)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -360,8 +414,6 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_shell_stress">element_shell_stress (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_shell_thermal_strain_tensor">element_shell_thermal_strain_tensor (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_shell_thickness">element_shell_thickness (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -374,19 +426,41 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_history_variables">element_solid_history_variables (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_ids">element_solid_ids (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_is_alive">element_solid_is_alive (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node10_extra_node_indexes">element_solid_node10_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node15_tetras_element_index">element_solid_node15_tetras_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node15_tetras_extra_node_indexes">element_solid_node15_tetras_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node20_element_index">element_solid_node20_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node20_extra_node_indexes">element_solid_node20_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node20_tetras_element_index">element_solid_node20_tetras_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node20_tetras_extra_node_indexes">element_solid_node20_tetras_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node21_penta_element_index">element_solid_node21_penta_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node21_penta_extra_node_indexes">element_solid_node21_penta_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node27_element_index">element_solid_node27_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node27_extra_node_indexes">element_solid_node27_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node40_pentas_element_index">element_solid_node40_pentas_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node40_pentas_extra_node_indexes">element_solid_node40_pentas_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node64_hexas_element_index">element_solid_node64_hexas_element_index (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node64_hexas_extra_node_indexes">element_solid_node64_hexas_extra_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.element_solid_node_indexes">element_solid_node_indexes (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
@@ -420,13 +494,33 @@
 </li>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.enable_logger">enable_logger() (lasso.dyna.D3plot.D3plot static method)</a>
 </li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.external_numbers_dtype">external_numbers_dtype (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.extra_long_header">extra_long_header (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI">FemzipAPI (class in lasso.femzip.femzip_api)</a>
+</li>
+      <li><a href="femzip/FemzipAPIStatus.html#lasso.femzip.femzip_api.FemzipAPIStatus">FemzipAPIStatus (class in lasso.femzip.femzip_api)</a>
+</li>
+      <li><a href="femzip/FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo">FemzipBufferInfo (class in lasso.femzip.femzip_api)</a>
+</li>
+      <li><a href="femzip/FemzipError.html#lasso.femzip.femzip_api.FemzipError">FemzipError (class in lasso.femzip.femzip_api)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata">FemzipFileMetadata (class in lasso.femzip.femzip_api)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.filetype">filetype (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/FilterType.html#lasso.dyna.FilterType.FilterType">FilterType (class in lasso.dyna.FilterType)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.ftype">ftype (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -434,19 +528,29 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.get_buffer_info">get_buffer_info() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.get_femzip_status">get_femzip_status() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.get_file_metadata">get_file_metadata() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.get_part_filter">get_part_filter() (lasso.dyna.D3plot.D3plot method)</a>
 </li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.get_part_titles">get_part_titles() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.global_internal_energy">global_internal_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.global_kinetic_energy">global_kinetic_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.global_timesteps">global_timesteps (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.global_total_energy">global_total_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.global_velocity">global_velocity (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="dimred/svd/clustering_betas.html#lasso.dimred.svd.clustering_betas.group_betas">group_betas() (in module lasso.dimred.svd.clustering_betas)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -454,6 +558,90 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_airbag_n_chambers">has_airbag_n_chambers (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_cfd_data">has_cfd_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_cubic_solids">has_cubic_solids (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_element_deletion_data">has_element_deletion_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_element_strain">has_element_strain (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.has_femunziplib_license">has_femunziplib_license() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_invariant_numbering">has_invariant_numbering (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_material_type_section">has_material_type_section (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_multi_solver_data">has_multi_solver_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_acceleration">has_node_acceleration (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_contact_energy_density">has_node_contact_energy_density (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_deletion_data">has_node_deletion_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_displacement">has_node_displacement (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_heat_flux">has_node_heat_flux (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_mass_scaling">has_node_mass_scaling (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_absolute">has_node_max_contact_penetration_absolute (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_relative">has_node_max_contact_penetration_relative (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_forces">has_node_residual_forces (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_moments">has_node_residual_moments (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_gradient">has_node_temperature_gradient (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_layers">has_node_temperature_layers (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperatures">has_node_temperatures (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_node_velocity">has_node_velocity (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_numbering_section">has_numbering_section (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_quadratic_solids">has_quadratic_solids (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_reduced_rigid_body_data">has_reduced_rigid_body_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_body_data">has_rigid_body_data (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_road_surface">has_rigid_road_surface (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_extra_variables">has_shell_extra_variables (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_forces">has_shell_forces (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_four_inplane_gauss_points">has_shell_four_inplane_gauss_points (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_internal_energy_density">has_shell_internal_energy_density (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_pstrain">has_shell_tshell_pstrain (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_stress">has_shell_tshell_stress (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_2_extra_nodes">has_solid_2_extra_nodes (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_internal_energy_density">has_solid_internal_energy_density (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_pstrain">has_solid_pstrain (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_plastic_strain_tensor">has_solid_shell_plastic_strain_tensor (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_thermal_strain_tensor">has_solid_shell_thermal_strain_tensor (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_stress">has_solid_stress (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.has_thick_shell_energy_density">has_thick_shell_energy_density (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.header">header() (lasso.dyna.D3plot.D3plot property)</a>
 </li>
   </ul></td>
@@ -462,14 +650,142 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.is_femunzip_version_ok">is_femunzip_version_ok() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.is_logfile_successful">is_logfile_successful() (lasso.diffcrash.DiffcrashRun method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.is_sidact_file">is_sidact_file() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.itype">itype (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    lasso.dimred.svd
+
+      <ul>
+        <li><a href="dimred/svd/svd.html#module-lasso.dimred.svd">module</a>
+</li>
+      </ul></li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.legacy_code_type">legacy_code_type (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.load_dynamic_library">load_dynamic_library() (lasso.femzip.femzip_api.FemzipAPI static method)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.load_file">load_file() (lasso.dyna.D3plotHeader.D3plotHeader method)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.log">log() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    module
+
+      <ul>
+        <li><a href="dimred/svd/svd.html#module-lasso.dimred.svd">lasso.dimred.svd</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_adapted_element_pairs">n_adapted_element_pairs (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_airbags">n_airbags (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_fluid_groups">n_ale_fluid_groups (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_materials">n_ale_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_history_vars">n_beam_history_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_materials">n_beam_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_vars">n_beam_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_beams">n_beams (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_dimensions">n_dimensions (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_global_vars">n_global_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_header_bytes">n_header_bytes (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_nodes">n_nodes (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_numbering_section_words">n_numbering_section_words (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_parts">n_parts (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_post_branches">n_post_branches (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars">n_rigid_wall_vars() (lasso.dyna.D3plotHeader.D3plotHeader property)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_materials">n_shell_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_history_vars">n_shell_tshell_history_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_layers">n_shell_tshell_layers (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_vars">n_shell_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shells">n_shells (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_shells_8_nodes">n_shells_8_nodes (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_history_vars">n_solid_history_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_materials">n_solid_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_thermal_vars">n_solid_thermal_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_vars">n_solid_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids">n_solids (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_15_node_tetras">n_solids_15_node_tetras (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_hexas">n_solids_20_node_hexas (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_tetras">n_solids_20_node_tetras (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_21_node_pentas">n_solids_21_node_pentas (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_27_node_hexas">n_solids_27_node_hexas (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_40_node_pentas">n_solids_40_node_pentas (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_64_node_hexas">n_solids_64_node_hexas (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_materials">n_sph_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_nodes">n_sph_nodes (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_materials">n_thick_shell_materials (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_vars">n_thick_shell_vars (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shells">n_thick_shells (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.n_timesteps">n_timesteps() (lasso.dyna.D3plot.D3plot property)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.n_types">n_types (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.node_acceleration">node_acceleration (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.node_coordinates">node_coordinates (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -482,8 +798,6 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.node_is_alive">node_is_alive (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.node_mass_scaling">node_mass_scaling (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.node_residual_forces">node_residual_forces (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -514,12 +828,12 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.part_internal_energy">part_internal_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.part_kinetic_energy">part_kinetic_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.part_mass">part_mass (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.part_material_type">part_material_type (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.part_titles">part_titles (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -530,15 +844,53 @@
 </li>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.plot">plot() (lasso.dyna.D3plot.D3plot method)</a>
 </li>
+      <li><a href="dimred/svd/plot_beta_clusters.html#lasso.dimred.svd.plot_beta_clusters.plot_clusters_js">plot_clusters_js() (in module lasso.dimred.svd.plot_beta_clusters)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.print">print() (lasso.dyna.D3plotHeader.D3plotHeader method)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.process_reference_run">process_reference_run() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_data_at_integration_points">quadratic_elems_has_data_at_integration_points (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_full_connectivity">quadratic_elems_has_full_connectivity (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.raise_error">raise_error() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.raw_header">raw_header (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/Binout.html#lasso.dyna.Binout.Binout.read">read() (lasso.dyna.Binout.Binout method)</a>
 </li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.read_config_file">read_config_file() (lasso.diffcrash.DiffcrashRun method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.read_geometry">read_geometry() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.read_single_state">read_single_state() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.read_state_deletion_info">read_state_deletion_info() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.read_states">read_states() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.read_variables">read_variables() (lasso.femzip.femzip_api.FemzipAPI method)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.release_version">release_version (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dimred/svd/subsampling_methods.html#lasso.dimred.svd.subsampling_methods.remap_random_subsample">remap_random_subsample() (in module lasso.dimred.svd.subsampling_methods)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.reset_project_dir">reset_project_dir() (lasso.dimred.DimredRun.DimredRun method)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_body_acceleration">rigid_body_acceleration (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
@@ -558,6 +910,8 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_body_rot_velocity">rigid_body_rot_velocity (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_body_rotation_matrix">rigid_body_rotation_matrix (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_body_velocity">rigid_body_velocity (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -566,8 +920,6 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_road_ids">rigid_road_ids (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_road_n_segments">rigid_road_n_segments (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.rigid_road_node_coordinates">rigid_road_node_coordinates (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -600,6 +952,8 @@
 </li>
       <li><a href="diffcrash/diffcrash_run.html#lasso.diffcrash.DiffcrashRun.run_setup">run_setup() (lasso.diffcrash.DiffcrashRun method)</a>
 </li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.runtime">runtime (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -614,6 +968,8 @@
 </li>
       <li><a href="dyna/FilterType.html#lasso.dyna.FilterType.FilterType.SOLID">SOLID (lasso.dyna.FilterType.FilterType attribute)</a>
 </li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.source_version">source_version (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_deletion">sph_deletion (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_density">sph_density (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -624,10 +980,10 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_internal_energy">sph_internal_energy (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_is_alive">sph_is_alive (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_mass">sph_mass (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_n_neighbors">sph_n_neighbors (lasso.dyna.ArrayType.ArrayType attribute)</a>
@@ -642,7 +998,15 @@
 </li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_strain">sph_strain (lasso.dyna.ArrayType.ArrayType attribute)</a>
 </li>
+      <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_strainrate">sph_strainrate (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
       <li><a href="dyna/ArrayType.html#lasso.dyna.ArrayType.ArrayType.sph_stress">sph_stress (lasso.dyna.ArrayType.ArrayType attribute)</a>
+</li>
+      <li><a href="femzip/FemzipAPI.html#lasso.femzip.femzip_api.FemzipAPI.struct_to_dict">struct_to_dict() (lasso.femzip.femzip_api.FemzipAPI static method)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.subsample_to_reference_run">subsample_to_reference_run() (lasso.dimred.DimredRun.DimredRun method)</a>
+</li>
+      <li><a href="dimred/svd/pod_functions.html#lasso.dimred.svd.pod_functions.svd_step_and_dim">svd_step_and_dim() (in module lasso.dimred.svd.pod_functions)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -650,13 +1014,47 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.thick_shell_energy_density_position">thick_shell_energy_density_position (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.title">title (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.title2">title2 (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
       <li><a href="dyna/FilterType.html#lasso.dyna.FilterType.FilterType.TSHELL">TSHELL (lasso.dyna.FilterType.FilterType attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.unused_numst">unused_numst (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="femzip/VariableInfo.html#lasso.femzip.femzip_api.VariableInfo">VariableInfo (class in lasso.femzip.femzip_api)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.version">version (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+      <li><a href="dimred/DimredRun.html#lasso.dimred.DimredRun.DimredRun.visualize_results">visualize_results() (lasso.dimred.DimredRun.DimredRun method)</a>
 </li>
   </ul></td>
 </tr></table>
 
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dyna/D3plotHeader.html#lasso.dyna.D3plotHeader.D3plotHeader.wordsize">wordsize (lasso.dyna.D3plotHeader.D3plotHeader attribute)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dyna/D3plot.html#lasso.dyna.D3plot.D3plot.write_d3plot">write_d3plot() (lasso.dyna.D3plot.D3plot method)</a>
 </li>
@@ -669,20 +1067,25 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright LASSO GmbH
+        &#169; Copyright LASSO GmbH.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -690,7 +1093,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -701,7 +1103,21 @@
   
   
     
-   
+  
+ 
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
 
 </body>
 </html>
