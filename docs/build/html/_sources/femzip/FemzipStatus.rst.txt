@@ -1,0 +1,8 @@
+
+FemzipStatus
+------------
+
+.. autoclass:: lasso.femzip.femzip_api.FemzipStatus
+    :members:
+
+    .. automethod:: __init__

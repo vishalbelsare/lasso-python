@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Module svd &mdash; LASSO Python Library</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/lasso-favicon.gif"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Clustering Betas" href="clustering_betas.html" />
+    <link rel="prev" title="DimredRun" href="../DimredRun.html" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"
+  integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA=="
+  crossorigin="anonymous"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../ansa/ansa.html">lasso.ansa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dyna/dyna.html">lasso.dyna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../femzip/femzip.html">lasso.femzip (beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../dimred.html">lasso.dimred (pro only)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../run.html">Command-Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DimredRun.html">DimredRun</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module svd</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="clustering_betas.html">Clustering Betas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_beta_clusters.html">Plot beta clusters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pod_functions.html">POD Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subsampling_methods.html">Subsampling Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KeywordTypes.html">Keyword Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../dimred.html">lasso.dimred (pro only)</a> &raquo;</li>
+        
+      <li>Module svd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-svd">
+<h1>Module svd<a class="headerlink" href="#module-svd" title="Permalink to this headline">¶</a></h1>
+<p>Module containing the methods and functions used by DimredRun</p>
+<span class="target" id="module-lasso.dimred.svd"></span><div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clustering_betas.html">Clustering Betas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_beta_clusters.html">Plot beta clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pod_functions.html">POD Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subsampling_methods.html">Subsampling Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeywordTypes.html">Keyword Types</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="clustering_betas.html" class="btn btn-neutral float-right" title="Clustering Betas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../DimredRun.html" class="btn btn-neutral float-left" title="DimredRun" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright LASSO GmbH.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>

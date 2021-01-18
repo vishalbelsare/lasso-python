@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Clustering Betas &mdash; LASSO Python Library</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/lasso-favicon.gif"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Plot beta clusters" href="plot_beta_clusters.html" />
+    <link rel="prev" title="Module svd" href="svd.html" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"
+  integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA=="
+  crossorigin="anonymous"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #242424" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> lasso
+          
+
+          
+            
+            <img src="../../_static/lasso-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../ansa/ansa.html">lasso.ansa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dyna/dyna.html">lasso.dyna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../femzip/femzip.html">lasso.femzip (beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diffcrash/diffcrash.html">lasso.diffcrash</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../dimred.html">lasso.dimred (pro only)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../run.html">Command-Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DimredRun.html">DimredRun</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="svd.html">Module svd</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Clustering Betas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_beta_clusters.html">Plot beta clusters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pod_functions.html">POD Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subsampling_methods.html">Subsampling Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KeywordTypes.html">Keyword Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">lasso</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../dimred.html">lasso.dimred (pro only)</a> &raquo;</li>
+        
+          <li><a href="svd.html">Module svd</a> &raquo;</li>
+        
+      <li>Clustering Betas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clustering-betas">
+<h1>Clustering Betas<a class="headerlink" href="#clustering-betas" title="Permalink to this headline">¶</a></h1>
+<p>Methods that apply different clustering and outlier detection algorithms.
+Offers additional functions to convert console command arguments into variables
+to use in the function.</p>
+<dl class="py function">
+<dt id="lasso.dimred.svd.clustering_betas.group_betas">
+<code class="sig-prename descclassname">lasso.dimred.svd.clustering_betas.</code><code class="sig-name descname">group_betas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">beta_index</span></em>, <em class="sig-param"><span class="n">betas</span></em>, <em class="sig-param"><span class="n">scale_betas</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cluster</span><span class="o">=</span><span class="default_value">'KMeans'</span></em>, <em class="sig-param"><span class="n">detector</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cluster_params</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">detector_params</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>list<span class="p">, </span>list<span class="p">]</span><span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.clustering_betas.group_betas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base function to to group betas into groups, detect outliers. Provides that all different
+clustering and outlier detection algorythms are implemented in an easy to access environment.
+To select different clustering and outlier detection algoyrthms, please use appropriate KeywordTypes
+A description of each function can be accessed with document_algorythm(keyword)
+A list of all functions can be accessed with list_detectors_and_clusters()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>beta_index: np.ndarray</strong></dt><dd><p>Array containing the file names specific to the betas with the same index in the beta array</p>
+</dd>
+<dt><strong>betas: np.ndarray</strong></dt><dd><p>Numpy array containing the betas.
+Betas are expected to be of shape (samples, timestep, 3)
+The three entries per beta can either be dimesnions (x,y,z) or any three betas/eigenvalues</p>
+</dd>
+<dt><strong>cluster: str, optional, default</strong><span class="classifier">“KMeans”.</span></dt><dd><p>String specifying which clustering algorythm shall be applied. Use ClusterType for easier access</p>
+</dd>
+<dt><strong>detector: str, optional, default: None.</strong></dt><dd><p>String specifying which outlier detection algorythm shall be applied. Use DetectorType for easier access</p>
+</dd>
+<dt><strong>cluster_params: dict, optional</strong></dt><dd><p>Dictionary containing parameters for the clustering algorythms.
+See the sklearn documentation for the function to learn more.</p>
+</dd>
+<dt><strong>detector_params: dict, optional</strong></dt><dd><p>Dictionary containing parameters for the outlier detection algorythms.
+See the sklearn documentation for the function to learn more</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>beta_clusters: list</dt><dd><p>List containing Numpy Arrays of betas in one cluster.
+If a detector was selected, or the clustering algorythm has its
+own outlier detection, the first entry in the list will be oultier betas</p>
+</dd>
+<dt>id_clusters: list</dt><dd><p>List containing lists of beta ids. Each id corresponds to the beta in the same place in the beta_clusters list</p>
+</dd>
+<dt>err_msg: str</dt><dd><p>Error message if wrong keywords for detector or cluster algorithms were used</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>document_algorithm:</dt><dd><p>Prints docstring of each function into console</p>
+</dd>
+<dt>list_detectors_and_clusters:</dt><dd><p>Prints out all detection and clustering algorythms into console</p>
+</dd>
+<dt>Sklearn Userguide chapter 2.3 Clustering: </dt><dd><p><a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html">https://scikit-learn.org/stable/modules/clustering.html</a>
+Detailed overview of different clustering algorythms</p>
+</dd>
+<dt>Sklearn Examples outlier detection:</dt><dd><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/plot_anomaly_comparison.html">https://scikit-learn.org/stable/auto_examples/plot_anomaly_comparison.html</a>
+Example of different used outlier detection algorythms</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function is optimized to be used by the console commandline tool</p>
+</div>
+<dl class="py function">
+<dt id="lasso.dimred.svd.clustering_betas.create_cluster_arg_dict">
+<code class="sig-prename descclassname">lasso.dimred.svd.clustering_betas.</code><code class="sig-name descname">create_cluster_arg_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>str<span class="p">, </span>dict<span class="p">]</span><span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.clustering_betas.create_cluster_arg_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines which cluster to use and creates a python dictionary to use as cluster_params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>args: Sequence[str]</strong></dt><dd><p>List of strings containing parameters and arguments</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>cluster_type: str</dt><dd><p>determines which cluster algorithm to use</p>
+</dd>
+<dt>cluster_arg_dict: dict</dt><dd><p>dictionary containing arguments and values for specific cluster_type</p>
+</dd>
+<dt>err_msg: str</dt><dd><p>message containing error, mostly unrecognised keywords</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lasso.dimred.svd.clustering_betas.create_detector_arg_dict">
+<code class="sig-prename descclassname">lasso.dimred.svd.clustering_betas.</code><code class="sig-name descname">create_detector_arg_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>str<span class="p">, </span>dict<span class="p">]</span><span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.clustering_betas.create_detector_arg_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines which detector to use and creates a python dictionary to use as detector_params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>args: Sequence[str]</strong></dt><dd><p>List of strings containing parameters and arguments</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>detector_type: str</dt><dd><p>determines which cluster algorithm to use</p>
+</dd>
+<dt>detector_arg_dict: dict</dt><dd><p>dictionary containing arguments and values for specific cluster_type</p>
+</dd>
+<dt>err_mgs: str</dt><dd><p>message containing error, mostly unrecognised keywords</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_beta_clusters.html" class="btn btn-neutral float-right" title="Plot beta clusters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="svd.html" class="btn btn-neutral float-left" title="Module svd" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright LASSO GmbH.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-140293920-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
