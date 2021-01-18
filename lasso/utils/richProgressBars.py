@@ -1,5 +1,6 @@
 import math
 import time
+from typing import Any
 
 from rich.progress import ProgressColumn
 
@@ -12,7 +13,7 @@ class PlaceHolderBar():
         '''This is a placeholder to not clutter console during testing'''
         self.finished: False
     
-    def render(self, task: "Task") -> str:
+    def render(self, task: Any) -> str:
         '''returns the planned output: empty string'''
         return ""
     
@@ -48,7 +49,7 @@ class WorkingDots(ProgressColumn):
             self.is_silenced = True
         super().__init__()
 
-    def render(self, task: "Task") -> str:
+    def render(self, task: Any) -> str:
         self.counter += 1
         if self.is_silenced:
             return ""
@@ -78,7 +79,7 @@ class SubsamplingWaitTime(ProgressColumn):
         self.n_proc = n_proc
         self.t_rem = -1
 
-    def render(self, task: "Task") -> str:
+    def render(self, task: Any) -> str:
         """ ?
         """
 
