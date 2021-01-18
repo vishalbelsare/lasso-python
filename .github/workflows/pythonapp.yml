@@ -24,8 +24,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # pip install -r requirements.txt
-        python -m pip install numpy
+        pythpn -m pip install -r requirements.txt
+        # python -m pip install numpy
         python setup.py install
     - name: Lint with flake8
       run: |
