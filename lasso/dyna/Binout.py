@@ -282,9 +282,17 @@ class Binout:
         # create dataframe
         if data.ndim > 1:
             df = pd.DataFrame(index=time_pdi)
-            ids = self.read(*args[:-1], 'ids')
+
+            if args[0] == 'rcforc':
+                ids = [(str(i) + 'm') if j else (str(i) + 's')
+                    for i, j in zip(self.read('rcforc', 'ids'),
+                                    self.read('rcforc', 'side'))]
+            else:
+                ids = self.read(*args[:-1], 'ids')
+
             for i, j in enumerate(ids):
                 df[str(j)] = data.T[i]
+
         else:
             df = pd.Series(data, index=time_pdi, name=args[-1])
 
