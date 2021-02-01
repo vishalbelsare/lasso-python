@@ -2,6 +2,7 @@
 import logging
 import os
 import re
+import stat
 import sys
 import time
 from ctypes import (CDLL, POINTER, Structure, byref, c_char_p, c_float, c_int,
@@ -107,9 +108,9 @@ class FemzipAPI:
         '''
 
         # check executable rights
-        if not os.access(path, os.X_OK):
-            os.chmod(path, os.X_OK)
-            if not os.access(path, os.X_OK):
+        if not os.access(path, os.X_OK) or not os.access(path, os.R_OK):
+            os.chmod(path, os.stat(path).st_mode | stat.S_IEXEC)
+            if not os.access(path, os.X_OK) or not os.access(path, os.R_OK):
                 err_msg = "Library '{0}' is not executable can couldn't change execution rights."
                 raise RuntimeError(err_msg.format(path))
 
@@ -156,6 +157,21 @@ class FemzipAPI:
             else:
                 shared_lib_name = "api_extended.so"
                 self.load_dynamic_library(
+                    os.path.join(bin_dirpath, "libiomp5.so")
+                )
+                self.load_dynamic_library(
+                    os.path.join(bin_dirpath, "libintlc.so.5")
+                )
+                self.load_dynamic_library(
+                    os.path.join(bin_dirpath, "libirng.so")
+                )
+                self.load_dynamic_library(
+                    os.path.join(bin_dirpath, "libimf.so")
+                )
+                self.load_dynamic_library(
+                    os.path.join(bin_dirpath, "libsvml.so")
+                )
+                self.load_dynamic_library(
                     os.path.join(bin_dirpath, "libfemzip_a_dyna_sidact_generic.so")
                 )
                 self.load_dynamic_library(
@@ -165,7 +181,7 @@ class FemzipAPI:
 
             filepath = os.path.join(
                 bin_dirpath, shared_lib_name)
-            self._api = CDLL(filepath)
+            self._api = self.load_dynamic_library(filepath)
 
             # license check
             self._api.has_femunziplib_license.restype = c_int
