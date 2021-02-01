@@ -109,9 +109,9 @@ class FemzipAPI:
 
         # check executable rights
         if not os.access(path, os.X_OK) or not os.access(path, os.R_OK):
-            os.chmod(path, os.stat(path).st_mode | stat.S_IEXEC)
+            os.chmod(path, os.stat(path).st_mode | stat.S_IEXEC | stat.S_IREAD)
             if not os.access(path, os.X_OK) or not os.access(path, os.R_OK):
-                err_msg = "Library '{0}' is not executable can couldn't change execution rights."
+                err_msg = "Library '{0}' is not executable and couldn't change execution rights."
                 raise RuntimeError(err_msg.format(path))
 
         return CDLL(path)
