@@ -208,6 +208,63 @@ class Binout:
 
         return self._decode_path(path)
 
+    def legend(self, db: str) -> pd.DataFrame:
+        """Legend as a pandas.DataFrame
+
+        Parameters
+        ----------
+        db : str
+            The database for the desired legend
+
+        Returns
+        -------
+        pandas.DataFrame
+            Legend with ID and title pairs
+
+        Raises
+        ------
+        ValueError
+            if specified database does not have a legend
+
+        Example
+        -------
+        >>> from lasso.dyna import Binout
+        >>> binout = Binout('path/to/binout')
+        >>> binout.legend('matsum')
+
+              id     title
+        0      1    Part 1
+        1      2    Part 2
+        2      3    Part 3
+        3      4    Part 4
+        4      5    Part 5
+        ...  ...       ...
+        94    95   Part 95
+        95    96   Part 96
+        96    97   Part 97
+        97    98   Part 98
+        98    99   Part 99
+        99   100  Part 100
+        """
+    
+        # validate legend exists
+        if 'legend' not in self.read(db):
+            raise ValueError(db + " has no legend")
+
+        legend = self.read(db, 'legend')
+
+        if 'legend_ids' in self.read(db):
+            id_field = 'legend_ids'
+        else:
+            id_field = 'ids'
+
+        # parse string into dataframe
+        return pd.DataFrame({
+            'id': self.read(db, id_field),
+            'title': [legend[i:i + 80].strip()
+                      for i in range(0, len(legend), 80)]
+        })
+
     def as_df(self, *args) -> pd.DataFrame:
         """ read data and convert to pandas dataframe if possible 
         
