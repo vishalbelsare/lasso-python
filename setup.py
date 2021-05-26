@@ -18,7 +18,7 @@ def get_requirements():
 def main():
 
     setup(name='lasso-python',
-          version='1.5.0post3',
+          version='1.5.1',
           description='A next-generation CAE Python Library.',
           author='Lasso GmbH',
           author_email='lasso@lasso.de',

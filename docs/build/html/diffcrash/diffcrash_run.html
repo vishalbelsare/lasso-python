@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -179,8 +182,8 @@
 <p>This class can be used in order to automate diffcrash runs in
 a hopefully comfortable manner.</p>
 <dl class="py class">
-<dt id="lasso.diffcrash.DiffcrashRun">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.diffcrash.</code><code class="sig-name descname">DiffcrashRun</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project_dir</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">crash_code</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">reference_run</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">simulation_runs</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">exclude_runs</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">diffcrash_home</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">use_id_mapping</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">config_file</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">parameter_file</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_processes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">logfile_dir</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lasso.diffcrash.</span></span><span class="sig-name descname"><span class="pre">DiffcrashRun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crash_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_run</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_runs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_runs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffcrash_home</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_id_mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_processes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logfile_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object handling a diffcrash run</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -219,8 +222,8 @@ variable DIFFCRASHHOME if not set.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project_dir</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">crash_code</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">reference_run</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">simulation_runs</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">exclude_runs</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">diffcrash_home</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">use_id_mapping</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">config_file</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">parameter_file</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_processes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">logfile_dir</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crash_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_run</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_runs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_runs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffcrash_home</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_id_mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_processes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logfile_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object handling a diffcrash run</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -252,8 +255,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success">
-<code class="sig-name descname">check_if_logfiles_show_success</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pattern</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success">
+<span class="sig-name descname"><span class="pre">check_if_logfiles_show_success</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.check_if_logfiles_show_success" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if a logfiles with given pattern show success</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -272,14 +275,14 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.clear_project_dir">
-<code class="sig-name descname">clear_project_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.clear_project_dir" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.clear_project_dir">
+<span class="sig-name descname"><span class="pre">clear_project_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.clear_project_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clears the entire project dir</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.create_project_dirs">
-<code class="sig-name descname">create_project_dirs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.create_project_dirs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.create_project_dirs">
+<span class="sig-name descname"><span class="pre">create_project_dirs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.create_project_dirs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates all project relevant directores</p>
 <p class="rubric">Notes</p>
 <dl class="simple">
@@ -292,8 +295,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.is_logfile_successful">
-<code class="sig-name descname">is_logfile_successful</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logfile</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.is_logfile_successful" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.is_logfile_successful">
+<span class="sig-name descname"><span class="pre">is_logfile_successful</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.is_logfile_successful" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a logfile indicates a success</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -311,8 +314,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.read_config_file">
-<code class="sig-name descname">read_config_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config_file</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.read_config_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.read_config_file">
+<span class="sig-name descname"><span class="pre">read_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.read_config_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a diffcrash config file</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -327,8 +330,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_eigen">
-<code class="sig-name descname">run_eigen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_eigen" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_eigen">
+<span class="sig-name descname"><span class="pre">run_eigen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_eigen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash eigen</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -341,8 +344,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_export">
-<code class="sig-name descname">run_export</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_export" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_export">
+<span class="sig-name descname"><span class="pre">run_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_export" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash export</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -355,8 +358,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_import">
-<code class="sig-name descname">run_import</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_import" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_import">
+<span class="sig-name descname"><span class="pre">run_import</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_import" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash import of runs</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -369,8 +372,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_math">
-<code class="sig-name descname">run_math</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_math" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_math">
+<span class="sig-name descname"><span class="pre">run_math</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_math" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash math</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -383,8 +386,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_matrix">
-<code class="sig-name descname">run_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_matrix">
+<span class="sig-name descname"><span class="pre">run_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash matrix</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -397,8 +400,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_merge">
-<code class="sig-name descname">run_merge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_merge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_merge">
+<span class="sig-name descname"><span class="pre">run_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_merge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash merge</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -411,8 +414,8 @@ variable DIFFCRASHHOME if not set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.diffcrash.DiffcrashRun.run_setup">
-<code class="sig-name descname">run_setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pool</span><span class="p">:</span> <span class="n">concurrent.futures.thread.ThreadPoolExecutor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.diffcrash.DiffcrashRun.run_setup">
+<span class="sig-name descname"><span class="pre">run_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.diffcrash.DiffcrashRun.run_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run diffcrash setup</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>

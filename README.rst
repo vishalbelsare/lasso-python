@@ -3,6 +3,14 @@
 |LASSO| Python Library
 ======================
 
+|test-main| |test-dev|
+
+.. |test-main| image:: https://github.com/lasso-gmbh/lasso-python-100/actions/workflows/test-runner.yml/badge.svg?branch=main
+   :target: https://github.com/lasso-gmbh/lasso-python-100/actions/workflows/test-runner.yml
+
+.. |test-dev| image:: https://github.com/lasso-gmbh/lasso-python-100/actions/workflows/test-runner.yml/badge.svg?branch=dev
+   :target: https://github.com/lasso-gmbh/lasso-python-100/actions/workflows/test-runner.yml
+
 This python library is designed for general purpose usage in the field of
 Computer Aided Engineering (CAE) and contains a small fraction of the
 `LASSO GmbH`_ codebase. 

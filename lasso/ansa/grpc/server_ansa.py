@@ -1,25 +1,26 @@
 
+from lasso.utils.ConsoleColoring import ConsoleColoring
+from lasso.logging import str_error, str_warn, str_info
 import pickle
 import os
-import re
 import sys
 import time
 import logging
-import importlib
 from concurrent import futures
 
 import ansa
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-from lasso.logging import str_error, str_warn, str_info
-from lasso.utils.ConsoleColoring import ConsoleColoring
 
 # messages
-_msg_site_packages_dir_not_set = "Environment variable '{0}' was not specified. Assuming all required packages where installed already somewhere else."
+_msg_site_packages_dir_not_set = ("Environment variable '{0}' was not specified. "
+                                  "Assuming all required packages where installed"
+                                  " already somewhere else.")
 _msg_port_taken = "Port {} is already in use."
 _msg_stopping_server = "Stopping GRPC server"
-_msg_invalid_argument_index = "A negative function argument index of '{0}' is not allowed. Either set a name or a valid index."
+_msg_invalid_argument_index = ("A negative function argument index of '{0}' is not allowed."
+                               " Either set a name or a valid index.")
 _msg_some_weird_error = "Encountered error '{0}'. Shutting down service."
 _msg_import_error = '''
 
@@ -49,7 +50,7 @@ _msg_import_error = '''
 # this is a utility for the command line usage
 try:
     sys.path.append(os.environ["ANSA_GRPC_SITE_PACKAGES_PATH"])
-except KeyError as err:
+except KeyError:
     print(str_warn(_msg_site_packages_dir_not_set.format(
         "ANSA_GRPC_SITE_PACKAGES_PATH")))
 

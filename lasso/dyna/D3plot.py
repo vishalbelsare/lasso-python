@@ -9,9 +9,8 @@ import struct
 import tempfile
 import traceback
 import typing
-import warnings
 import webbrowser
-from typing import (Any, BinaryIO, Dict, Iterable, List, Set, Tuple, Union)
+from typing import Any, BinaryIO, Dict, Iterable, List, Set, Tuple, Union
 
 import numpy as np
 
@@ -81,16 +80,28 @@ class MemoryInfo:
 
 class FemzipInfo:
     api: FemzipAPI
-    use_femzip: bool = False
     n_states: int = 0
     buffer_info: FemzipBufferInfo
+    use_femzip: bool = False
 
     def __init__(self,
                  filepath: str = ""):
         self.api = FemzipAPI()
-        self.use_femzip = self.api.is_sidact_file(filepath) if filepath else False
-        self.buffer_info = self.api.get_buffer_info(
-            filepath) if self.use_femzip else FemzipBufferInfo()
+        self.buffer_info = FemzipBufferInfo()
+
+        if filepath:
+            tmp_header = D3plotHeader().load_file(filepath)
+            self.use_femzip = tmp_header.has_femzip_indicator
+
+            if self.use_femzip:
+                # there is a lot to go wrong
+                try:
+                    self.buffer_info = self.api.get_buffer_info(
+                        filepath)
+                # loading femzip api failed
+                except Exception as err:
+                    err_msg = "Failed to use Femzip: {0}"
+                    raise RuntimeError(err_msg.format(err))
 
 
 class MaterialSectionInfo:
@@ -243,7 +254,7 @@ class D3plot:
         filepath: str
             path to a d3plot file
         use_femzip: bool
-           *DEPRECATED* not used anymore
+           Not needed anymore. Enforces femzip decompression manually.
         n_files_to_load_at_once: int
            *DEPRECATED* not used anymore, use `buffered_reading`
         state_array_filter: Union[List[str], None]
@@ -269,7 +280,7 @@ class D3plot:
 
             >>> # our computer lacks RAM so lets extract a specific array
             >>> # but only keep one state at a time in memory
-            >>> d3plot = D3plot("path/to/d3plot", 
+            >>> d3plot = D3plot("path/to/d3plot",
             >>>                 state_array_filter=[ArrayType.node_displacement],
             >>>                 buffered_reading=True)
 
@@ -282,13 +293,9 @@ class D3plot:
 
         LOGGER.debug("-------- D 3 P L O T --------")
 
-        # warnings
-        if use_femzip is not None:
-            msg = "use_femzip is now deprecated and not required anymore."
-            warnings.warn(msg, DeprecationWarning)
-
         self._arrays = {}
         self._header = D3plotHeader()
+        # self._femzip_info = FemzipInfo()
         self._femzip_info = FemzipInfo(
             filepath=filepath if filepath is not None else "")
         self._material_section_info = MaterialSectionInfo()
@@ -315,6 +322,7 @@ class D3plot:
         # arrays to filter out
         self.state_array_filter = state_array_filter
 
+        # load memory accordingly
         # no femzip
         if filepath and not self._femzip_info.use_femzip:
             self.bb = BinaryBuffer(filepath)
@@ -322,6 +330,8 @@ class D3plot:
         # femzip
         elif filepath and self._femzip_info.use_femzip:
             self.bb = self._read_femzip_geometry(filepath)
+            # we need to reload the header
+            self._header = D3plotHeader().load_file(self.bb)
             self.bb_states = None
         # no data to load basically
         else:
@@ -334,7 +344,7 @@ class D3plot:
         self._read_header()
 
         # read geometry
-        self._read_geometry()
+        self._parse_geometry()
 
         # read state data
 
@@ -351,7 +361,8 @@ class D3plot:
                 )
             except Exception:
                 tb = traceback.format_exc()
-                warn_msg = "Error when using advanced Femzip API, falling back to normal but slower Femzip API.\n{0}"
+                warn_msg = "Error when using advanced Femzip API, "\
+                    "falling back to normal but slower Femzip API.\n{0}"
                 LOGGER.warning(warn_msg.format(tb))
 
                 # since we had a crash, we need to reload the file
@@ -397,6 +408,7 @@ class D3plot:
 
         # save
         bb = BinaryBuffer()
+        bb.filepath_ = filepath
         bb.memoryview = buffer_geo.cast('B')
 
         return bb
@@ -811,7 +823,9 @@ class D3plot:
 
         # TIMESTEPS
         timestep_array = np.array(
-            [buffer_info.timesteps[i_timestep] for i_timestep in range(buffer_info.n_timesteps)], dtype=self.header.ftype)
+            [buffer_info.timesteps[i_timestep]
+             for i_timestep in range(buffer_info.n_timesteps)],
+            dtype=self.header.ftype)
         self.arrays[ArrayType.global_timesteps] = timestep_array
 
     def _read_header(self):
@@ -825,7 +839,7 @@ class D3plot:
 
         self.geometry_section_size = self._header.n_header_bytes
 
-    def _read_geometry(self):
+    def _parse_geometry(self):
         ''' Read the d3plot geometry
         '''
 
@@ -1172,7 +1186,8 @@ class D3plot:
         #
         # is_packed = True if self.header['ndim'] == 3 else False
         # if is_packed:
-        #     raise RuntimeError("Can not deal with packed geometry data (ndim == {}).".format(self.header['ndim']))
+        #     raise RuntimeError("Can not deal with packed "\
+        #                        "geometry data (ndim == {}).".format(self.header['ndim']))
 
         position = self.geometry_section_size
 
@@ -1241,8 +1256,10 @@ class D3plot:
             elem_tshell_data = self.bb.read_ndarray(
                 position, section_word_length * self.header.wordsize, 1, self._header.itype)\
                 .reshape((self.header.n_thick_shells, 9))
-            self.arrays[ArrayType.element_tshell_node_indexes] = elem_tshell_data[:, :8] - FORTRAN_OFFSET
-            self.arrays[ArrayType.element_tshell_part_indexes] = elem_tshell_data[:, 8] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_tshell_node_indexes] = \
+                elem_tshell_data[:, :8] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_tshell_part_indexes] = \
+                elem_tshell_data[:, 8] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
@@ -1258,8 +1275,10 @@ class D3plot:
                 position,
                 section_word_length * self.header.wordsize,
                 1, self._header.itype).reshape((n_beams, 6))
-            self.arrays[ArrayType.element_beam_part_indexes] = elem_beam_data[:, 5] - FORTRAN_OFFSET
-            self.arrays[ArrayType.element_beam_node_indexes] = elem_beam_data[:, :5] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_beam_part_indexes] = \
+                elem_beam_data[:, 5] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_beam_node_indexes] = \
+                elem_beam_data[:, :5] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
@@ -1274,8 +1293,10 @@ class D3plot:
             elem_shell_data = self.bb.read_ndarray(
                 position, section_word_length * self.header.wordsize, 1, self._header.itype)\
                 .reshape((self.header.n_shells, 5))
-            self.arrays[ArrayType.element_shell_node_indexes] = elem_shell_data[:, :4] - FORTRAN_OFFSET
-            self.arrays[ArrayType.element_shell_part_indexes] = elem_shell_data[:, 4] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_shell_node_indexes] = \
+                elem_shell_data[:, :4] - FORTRAN_OFFSET
+            self.arrays[ArrayType.element_shell_part_indexes] = \
+                elem_shell_data[:, 4] - FORTRAN_OFFSET
         except Exception:
             trb_msg = traceback.format_exc()
             msg = "A failure in {0} was caught:\n{1}"
@@ -1304,7 +1325,8 @@ class D3plot:
             self.arrays[ArrayType.element_shell_ids] = np.arange(
                 FORTRAN_OFFSET, self.header.n_shells + FORTRAN_OFFSET, dtype=self.header.itype)
             self.arrays[ArrayType.element_tshell_ids] = np.arange(
-                FORTRAN_OFFSET, self.header.n_thick_shells + FORTRAN_OFFSET, dtype=self.header.itype)
+                FORTRAN_OFFSET, self.header.n_thick_shells + FORTRAN_OFFSET,
+                dtype=self.header.itype)
             self.arrays[ArrayType.part_ids] = np.arange(
                 FORTRAN_OFFSET, self.header.n_parts + FORTRAN_OFFSET, dtype=self.header.itype)
             return
@@ -1385,11 +1407,11 @@ class D3plot:
                                 info.n_thick_shells +
                                 info.n_parts * 3)
             if n_words_computed != self.header.n_numbering_section_words:
-                warn_msg = "ID section: The computed word count does not match the header word count: {0} != {1}."
-                " The ID arrays might contain errors."
+                warn_msg = ("ID section: The computed word count does "
+                            "not match the header word count: {0} != {1}."
+                            " The ID arrays might contain errors.")
                 LOGGER.warning(warn_msg.format(n_words_computed,
                                                self.header.n_numbering_section_words))
-
             # node ids
             array_length = info.n_nodes * self.header.wordsize
             self.arrays[ArrayType.node_ids] = self.bb.read_ndarray(
@@ -1430,7 +1452,8 @@ class D3plot:
             if 'nmmat' in numbering_header:
 
                 if info.n_parts != self.header.n_parts:
-                    err_msg = "nmmat in the file header ({}) and in the numbering header ({}) are inconsistent."
+                    err_msg = "nmmat in the file header ({}) and in the "\
+                        "numbering header ({}) are inconsistent."
                     raise RuntimeError(err_msg.format(
                         self.header.n_parts, info.n_parts))
 
@@ -1635,7 +1658,8 @@ class D3plot:
 
             # extract geometry as a single array
             array_length = blocksize
-            particle_geom_data = self.bb.read_ndarray(position, array_length, 1, self._header.itype)\
+            particle_geom_data = self.bb.read_ndarray(
+                position, array_length, 1, self._header.itype)\
                 .reshape((info.n_airbags, ngeom))
             position += array_length
 
@@ -1783,8 +1807,10 @@ class D3plot:
             array_length = 2 * self.header.n_solids * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids, 2))
-                self.arrays[ArrayType.element_solid_node10_extra_node_indexes] = array - FORTRAN_OFFSET
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids, 2))
+                self.arrays[ArrayType.element_solid_node10_extra_node_indexes] = \
+                    array - FORTRAN_OFFSET
             except Exception:
                 trb_msg = traceback.format_exc()
                 msg = "A failure in {0} was caught:\n{1}"
@@ -1797,7 +1823,8 @@ class D3plot:
             array_length = 5 * self.header.n_shells_8_nodes * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_shells_8_nodes, 5))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_shells_8_nodes, 5))
                 self.arrays[ArrayType.element_shell_node8_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_shell_node8_extra_node_indexes] = \
@@ -1814,7 +1841,8 @@ class D3plot:
             array_length = 13 * self.header.n_solids_20_node_hexas * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_20_node_hexas, 13))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_20_node_hexas, 13))
                 self.arrays[ArrayType.element_solid_node20_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node20_extra_node_indexes] = \
@@ -1827,11 +1855,13 @@ class D3plot:
                 position += array_length
 
         # 27 node solid hexas
-        if self.header.n_solids_27_node_hexas > 0 and self.header.quadratic_elems_has_full_connectivity:
+        if self.header.n_solids_27_node_hexas > 0 \
+           and self.header.quadratic_elems_has_full_connectivity:
             array_length = 28 * self.header.n_solids_27_node_hexas * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_27_node_hexas, 28))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_27_node_hexas, 28))
                 self.arrays[ArrayType.element_solid_node27_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node27_extra_node_indexes] = \
@@ -1844,11 +1874,13 @@ class D3plot:
                 position += array_length
 
         # 21 node solid pentas
-        if self.header.n_solids_21_node_pentas > 0 and self.header.quadratic_elems_has_full_connectivity:
+        if self.header.n_solids_21_node_pentas > 0 \
+           and self.header.quadratic_elems_has_full_connectivity:
             array_length = 22 * self.header.n_solids_21_node_pentas * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_21_node_pentas, 22))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_21_node_pentas, 22))
                 self.arrays[ArrayType.element_solid_node21_penta_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node21_penta_extra_node_indexes] = \
@@ -1861,12 +1893,14 @@ class D3plot:
                 position += array_length
 
         # 15 node solid tetras
-        if self.header.n_solids_15_node_tetras > 0 and self.header.quadratic_elems_has_full_connectivity:
+        if self.header.n_solids_15_node_tetras > 0 \
+           and self.header.quadratic_elems_has_full_connectivity:
             # manual says 8 but this seems odd
             array_length = 8 * self.header.n_solids_15_node_tetras * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_15_node_tetras, 8))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_15_node_tetras, 8))
                 self.arrays[ArrayType.element_solid_node15_tetras_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node15_tetras_extra_node_indexes] = \
@@ -1883,7 +1917,8 @@ class D3plot:
             array_length = 21 * self.header.n_solids_20_node_tetras * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_20_node_tetras, 21))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_20_node_tetras, 21))
                 self.arrays[ArrayType.element_solid_node20_tetras_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node20_tetras_extra_node_indexes] = \
@@ -1900,7 +1935,8 @@ class D3plot:
             array_length = 41 * self.header.n_solids_40_node_pentas * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_40_node_pentas, 41))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_40_node_pentas, 41))
                 self.arrays[ArrayType.element_solid_node40_pentas_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node40_pentas_extra_node_indexes] = \
@@ -1917,7 +1953,8 @@ class D3plot:
             array_length = 65 * self.header.n_solids_64_node_hexas * self.header.wordsize
             try:
                 array = self.bb.read_ndarray(
-                    position, array_length, 1, self._header.itype).reshape((self.header.n_solids_64_node_hexas, 65))
+                    position, array_length, 1, self._header.itype)\
+                    .reshape((self.header.n_solids_64_node_hexas, 65))
                 self.arrays[ArrayType.element_solid_node64_hexas_element_index] = \
                     array[:, 0] - FORTRAN_OFFSET
                 self.arrays[ArrayType.element_solid_node64_hexas_extra_node_indexes] = \
@@ -2255,7 +2292,8 @@ class D3plot:
             ArrayType.element_shell_internal_energy: [n_states, n_shells_reduced],
             ArrayType.element_shell_strain: [n_states, n_shells_reduced, 2, 6],
             ArrayType.element_shell_thermal_strain_tensor: [n_states, n_shells_reduced, 6],
-            ArrayType.element_shell_plastic_strain_tensor: [n_states, n_shells_reduced, n_shell_layers, 6],
+            ArrayType.element_shell_plastic_strain_tensor: [
+                n_states, n_shells_reduced, n_shell_layers, 6],
             ArrayType.element_shell_is_alive: [n_states, n_shells],
             # sph
             ArrayType.sph_deletion: [n_states, n_sph_particles],
@@ -2402,11 +2440,15 @@ class D3plot:
 
         node_data_offset = n_node_vars * self.header.n_nodes * self.header.wordsize
         # thermal shit
-        therm_data_offset = self.header.n_solid_thermal_vars * self.header.n_solids * self.header.wordsize
+        therm_data_offset = (self.header.n_solid_thermal_vars
+                             * self.header.n_solids
+                             * self.header.wordsize)
         # solids
         solid_offset = self.header.n_solids * self.header.n_solid_vars * self.header.wordsize
         # tshells
-        tshell_offset = self.header.n_thick_shells * self.header.n_thick_shell_vars * self.header.wordsize
+        tshell_offset = (self.header.n_thick_shells
+                         * self.header.n_thick_shell_vars
+                         * self.header.wordsize)
         # beams
         beam_offset = self.header.n_beams * self.header.n_beam_vars * self.header.wordsize
         # shells
@@ -2430,8 +2472,9 @@ class D3plot:
         # airbag particle offset
         if self._airbag_info.n_airbags:
             particle_state_offset = \
-                (self._airbag_info.n_airbags * self._airbag_info.n_airbag_state_variables +
-                 self._airbag_info.n_particles * self._airbag_info.n_particle_state_variables) * self.header.wordsize
+                ((self._airbag_info.n_airbags * self._airbag_info.n_airbag_state_variables +
+                  self._airbag_info.n_particles * self._airbag_info.n_particle_state_variables)
+                 * self.header.wordsize)
         else:
             particle_state_offset = 0
         # rigid road stuff whoever uses this
@@ -2809,7 +2852,8 @@ class D3plot:
         # +1 is timestep which is not considered a global var ... seriously
         n_rigid_walls = self._n_rigid_walls
         if n_global_vars >= previous_global_vars + n_rigid_walls * n_rigid_wall_vars:
-            if previous_global_vars + n_rigid_walls * n_rigid_wall_vars != self.header.n_global_vars:
+            if (previous_global_vars + n_rigid_walls * n_rigid_wall_vars
+                    != self.header.n_global_vars):
                 LOGGER.warning(
                     "Bug while reading global data for rigid walls. Skipping this data.")
                 var_index += self.header.n_global_vars - previous_global_vars
@@ -3176,7 +3220,7 @@ class D3plot:
 
                     array_dict[ArrayType.element_solid_history_variables] = \
                         array_dict[ArrayType.element_solid_history_variables][:,
-                                                                              :, :, : - n_strain_vars]
+                                                                              :, :, :-n_strain_vars]
 
                     if not all(array_dict[ArrayType.element_solid_history_variables].shape):
                         del array_dict[ArrayType.element_solid_history_variables]
@@ -3732,7 +3776,8 @@ class D3plot:
                 try:
                     pstrain_tensor = \
                         shell_nonlayer_data[:, :,
-                                            nonlayer_var_index: nonlayer_var_index + n_plastic_strain_tensor]
+                                            nonlayer_var_index: nonlayer_var_index
+                                            + n_plastic_strain_tensor]
                     array_dict[ArrayType.element_shell_plastic_strain_tensor] = \
                         pstrain_tensor.reshape((n_states, n_shells, n_layers, 6))
                 except Exception:
@@ -3749,7 +3794,8 @@ class D3plot:
                 try:
                     thermal_tensor = \
                         shell_nonlayer_data[:, :,
-                                            nonlayer_var_index: nonlayer_var_index + n_thermal_strain_tensor]
+                                            nonlayer_var_index: nonlayer_var_index
+                                            + n_thermal_strain_tensor]
                     array_dict[ArrayType.element_shell_thermal_strain_tensor] = \
                         thermal_tensor.reshape((n_states, n_shells, 6))
                 except Exception:
@@ -4313,7 +4359,9 @@ class D3plot:
                         i_particle_var_z = particle_var_names_stripped.index("Pos z")
 
                         array_dict[ArrayType.airbag_particle_position] = \
-                            particle_data[:, :, (i_particle_var_x, i_particle_var_y, i_particle_var_z)]\
+                            particle_data[:, :, (i_particle_var_x,
+                                                 i_particle_var_y,
+                                                 i_particle_var_z)]\
                             .view(get_dtype(var_type))
                     except Exception:
                         trb_msg = traceback.format_exc()
@@ -4338,7 +4386,9 @@ class D3plot:
                         i_particle_var_z = particle_var_names_stripped.index("Vel z")
 
                         array_dict[ArrayType.airbag_particle_velocity] = \
-                            particle_data[:, :, (i_particle_var_x, i_particle_var_y, i_particle_var_z)]\
+                            particle_data[:, :, (i_particle_var_x,
+                                                 i_particle_var_y,
+                                                 i_particle_var_z)]\
                             .view(get_dtype(var_type))
                     except Exception:
                         trb_msg = traceback.format_exc()
@@ -4362,7 +4412,10 @@ class D3plot:
 
         return var_index
 
-    def _read_states_road_surfaces(self, state_data: np.ndarray, var_index: int, array_dict: dict) -> int:
+    def _read_states_road_surfaces(self,
+                                   state_data: np.ndarray,
+                                   var_index: int,
+                                   array_dict: dict) -> int:
         ''' Read the road surfaces state data for whoever wants this ...
 
         Parameters
@@ -4431,7 +4484,10 @@ class D3plot:
 
         return var_index
 
-    def _read_states_rigid_body_motion(self, state_data: np.ndarray, var_index: int, array_dict: dict) -> int:
+    def _read_states_rigid_body_motion(self,
+                                       state_data: np.ndarray,
+                                       var_index: int,
+                                       array_dict: dict) -> int:
         ''' Read the road surfaces state data for whoever want this ...
 
         Parameters
@@ -4590,7 +4646,7 @@ class D3plot:
         if not self.bb:
             return []
 
-        base_filepath = self.bb.filepath_[0]
+        base_filepath = self.header.filepath
 
         # bugfix
         # If you encounter these int casts more often here this is why:
@@ -4639,6 +4695,9 @@ class D3plot:
         n_states_beyond_geom = (
             last_nonzero_byte_index - self.geometry_section_size) // size_per_state
 
+        # bugfix: if states are too big we can get a negative estimation
+        n_states_beyond_geom = max(0, n_states_beyond_geom)
+
         # memory required later
         memory_infos = [MemoryInfo(
             start=self.geometry_section_size,  # type: ignore
@@ -4675,7 +4734,6 @@ class D3plot:
 
                 # search in blocks from the reair
                 if last_nonzero_byte_index == -1:
-                    has_rest_size = rest_size != 0
                     for i_block in range(n_blocks - 1, -1, -1):
                         start = block_length * i_block
                         mview = memoryview(mmap.mmap(fp.fileno(),
@@ -4692,6 +4750,16 @@ class D3plot:
                 msg = "The file {0} seems to be missing it's endmark."
                 raise RuntimeError(msg.format(filepath))
 
+            # BUGFIX
+            # In d3eigv it could be observed that there is not neccesarily an endmark.
+            # As a consequence the last byte can indeed be zero. We control this by
+            # checking if the last nonzero byte was smaller than the state size which
+            # makes no sense.
+            if self.header.filetype == D3plotFiletype.D3EIGV \
+               and last_nonzero_byte_index < size_per_state \
+               and size_per_state <= filesize:
+                last_nonzero_byte_index = size_per_state
+
             n_states_in_file = last_nonzero_byte_index // size_per_state
             memory_infos.append(MemoryInfo(
                 start=0,
@@ -4705,7 +4773,8 @@ class D3plot:
         return memory_infos
 
     @staticmethod
-    def _read_file_from_memory_info(memory_infos: Union[MemoryInfo, List[MemoryInfo]]) -> Tuple[BinaryBuffer, int]:
+    def _read_file_from_memory_info(
+            memory_infos: Union[MemoryInfo, List[MemoryInfo]]) -> Tuple[BinaryBuffer, int]:
         ''' Read files from a single or multiple memory infos
 
         Parameters
@@ -4965,8 +5034,6 @@ class D3plot:
             >>> d3plot.plot(0, field=pstrain[last_timestep])
             >>> # we don't like the fringe, let's adjust
             >>> d3plot.plot(0, field=pstrain[last_timestep], fringe_limits=(0, 0.3))
-            >>> # looks good so let's export it
-            >>> d3plot.plot(0, field=pstrain[last_timestep], fringe_limits=(0, 0.3), export_filepath="yay.html")
         '''
 
         assert(i_timestep < self._state_info.n_timesteps)
@@ -5015,7 +5082,8 @@ class D3plot:
                 fp.write(_html)
         else:
             # create new temp file
-            with tempfile.NamedTemporaryFile(dir=tempdir, suffix=".html", mode="w", delete=False) as fp:
+            with tempfile.NamedTemporaryFile(
+                    dir=tempdir, suffix=".html", mode="w", delete=False) as fp:
                 fp.write(_html)
                 webbrowser.open(fp.name)
 
@@ -5060,7 +5128,7 @@ class D3plot:
             differences in the header
         array_differences: dict
             difference between arrays as message
-        
+
         Examples
         --------
             Comparison of a femzipped file and an uncompressed file. Femzip

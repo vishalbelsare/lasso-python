@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -183,15 +186,15 @@
 <h1>D3plot<a class="headerlink" href="#d3plot" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <dl class="py class">
-<dt id="lasso.dyna.D3plot.D3plot">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.D3plot.</code><code class="sig-name descname">D3plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_femzip</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_files_to_load_at_once</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_array_filter</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffered_reading</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lasso.dyna.D3plot.</span></span><span class="sig-name descname"><span class="pre">D3plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_femzip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_files_to_load_at_once</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_array_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffered_reading</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>filepath: str</strong></dt><dd><p>path to a d3plot file</p>
 </dd>
-<dt><strong>use_femzip: bool</strong></dt><dd><p><em>DEPRECATED</em> not used anymore</p>
+<dt><strong>use_femzip: bool</strong></dt><dd><p>Not needed anymore. Enforces femzip decompression manually.</p>
 </dd>
 <dt><strong>n_files_to_load_at_once: int</strong></dt><dd><p><em>DEPRECATED</em> not used anymore, use <cite>buffered_reading</cite></p>
 </dd>
@@ -225,7 +228,7 @@ only give the path to the first file.</p>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># our computer lacks RAM so lets extract a specific array</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># but only keep one state at a time in memory</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>                <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">],</span>
 <span class="gp">&gt;&gt;&gt; </span>                <span class="n">buffered_reading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -267,15 +270,15 @@ only give the path to the first file.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_femzip</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_files_to_load_at_once</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_array_filter</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffered_reading</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_femzip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_files_to_load_at_once</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_array_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffered_reading</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a D3plot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>filepath: str</strong></dt><dd><p>path to a d3plot file</p>
 </dd>
-<dt><strong>use_femzip: bool</strong></dt><dd><p><em>DEPRECATED</em> not used anymore</p>
+<dt><strong>use_femzip: bool</strong></dt><dd><p>Not needed anymore. Enforces femzip decompression manually.</p>
 </dd>
 <dt><strong>n_files_to_load_at_once: int</strong></dt><dd><p><em>DEPRECATED</em> not used anymore, use <cite>buffered_reading</cite></p>
 </dd>
@@ -309,16 +312,16 @@ only give the path to the first file.</p>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># our computer lacks RAM so lets extract a specific array</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># but only keep one state at a time in memory</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">(</span><span class="s2">&quot;path/to/d3plot&quot;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>                <span class="n">state_array_filter</span><span class="o">=</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">],</span>
 <span class="gp">&gt;&gt;&gt; </span>                <span class="n">buffered_reading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.arrays">
-<em class="property">property </em><code class="sig-name descname">arrays</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.arrays" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.arrays">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arrays</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary holding all d3plot arrays</p>
 <p class="rubric">Notes</p>
 <p>The corresponding keys of the dictionary can
@@ -336,8 +339,8 @@ helps with IDE integration and code safety.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.compare">
-<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d3plot2</span></em>, <em class="sig-param"><span class="n">array_eps</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.compare">
+<span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d3plot2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.compare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two d3plots and print the info</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -379,8 +382,8 @@ is a lossy compression, thus precision is traded for memory.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.enable_logger">
-<em class="property">static </em><code class="sig-name descname">enable_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">enable</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.enable_logger">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">enable_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.enable_logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable the logger for this class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -393,8 +396,8 @@ is a lossy compression, thus precision is traded for memory.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.get_part_filter">
-<code class="sig-name descname">get_part_filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter_type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="FilterType.html#lasso.dyna.FilterType.FilterType" title="lasso.dyna.FilterType.FilterType">lasso.dyna.FilterType.FilterType</a></span></em>, <em class="sig-param"><span class="n">part_ids</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">for_state_array</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.get_part_filter">
+<span class="sig-name descname"><span class="pre">get_part_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="FilterType.html#lasso.dyna.FilterType.FilterType" title="lasso.dyna.FilterType.FilterType"><span class="pre">lasso.dyna.FilterType.FilterType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">part_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_state_array</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.get_part_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a part filter for different entities</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -429,9 +432,9 @@ for shells if rigid bodies are in the model (mattyp == 20)</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.header">
-<em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.header" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.header">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">header</span></span><em class="property"><span class="pre">:</span> <span class="pre">lasso.dyna.D3plotHeader.D3plotHeader</span></em><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.header" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instance holding all d3plot header information</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -453,15 +456,15 @@ of elements, etc.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.n_timesteps">
-<em class="property">property </em><code class="sig-name descname">n_timesteps</code><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.n_timesteps" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.n_timesteps">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_timesteps</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.n_timesteps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of timesteps loaded</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i_timestep</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">is_element_field</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">fringe_limits</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">export_filepath</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_timestep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_element_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fringe_limits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the d3plot geometry</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -499,15 +502,13 @@ solids the surface needs extraction.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># we don&#39;t like the fringe, let&#39;s adjust</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">],</span> <span class="n">fringe_limits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># looks good so let&#39;s export it</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">pstrain</span><span class="p">[</span><span class="n">last_timestep</span><span class="p">],</span> <span class="n">fringe_limits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">export_filepath</span><span class="o">=</span><span class="s2">&quot;yay.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plot.D3plot.write_d3plot">
-<code class="sig-name descname">write_d3plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>BinaryIO<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">block_size_bytes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2048</span></em>, <em class="sig-param"><span class="n">single_file</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plot.D3plot.write_d3plot">
+<span class="sig-name descname"><span class="pre">write_d3plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">BinaryIO</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size_bytes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plot.D3plot.write_d3plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a d3plot file again <strong>(pro version only)</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -539,10 +540,14 @@ LASSO directly in case of further interest.</p>
 </div>
 <p>Write a new d3plot from scratch:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span> <span class="o">=</span> <span class="n">D3plot</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_coordinates</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_coordinates</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                                                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                                                      <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_node_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">element_shell_part_indexes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">arrays</span><span class="p">[</span><span class="n">ArrayType</span><span class="o">.</span><span class="n">node_displacement</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                                                        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                                                        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3plot</span><span class="o">.</span><span class="n">write_d3plot</span><span class="p">(</span><span class="s2">&quot;yay.d3plot&quot;</span><span class="p">)</span>
 </pre></div>
 </div>

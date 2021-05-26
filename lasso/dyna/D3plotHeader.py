@@ -9,6 +9,7 @@ from ..logging import get_logger
 
 LOGGER = get_logger(__file__)
 
+
 def get_digit(number: int, i_digit: int) -> int:
     """ Get a digit from a number
 
@@ -23,10 +24,10 @@ def get_digit(number: int, i_digit: int) -> int:
     -------
     digit: int
         digit or 0 if i_digit is too large
-    
+
     Notes
     -----
-        `i_digit` does refer to a digit from the 
+        `i_digit` does refer to a digit from the
         lowest position counting. Thus
         123 with `i_digit=0` is `3`.
     """
@@ -51,7 +52,7 @@ def get_digit(number: int, i_digit: int) -> int:
 
 class D3plotFiletype(enum.Enum):
     ''' Enum for the filetype of a D3plot
-    ''' 
+    '''
     D3PLOT = 1
     D3PART = 5
     D3EIGV = 11
@@ -98,94 +99,101 @@ class D3plotHeader:
     ''' Class for reading only header information of a d3plot
     '''
 
+    # meta
+    filepath: str = ""  #: filepath of file
+
     # file info
-    itype: np.dtype = np.int32 #: integer type of d3plot
-    ftype: np.dtype = np.float32 #: floating point type of d3plot
-    wordsize: int = 4 #: size of words in bytes (4 = single precision, 8 = double precision)
-    raw_header: Dict[str, Any] = {} #: raw header data as dict
-    external_numbers_dtype = np.int32 #: integer type of user ids
-    n_header_bytes: int = 0 #: number of bytes of header (at least 256 or more)
+    itype: np.dtype = np.int32  #: integer type of d3plot
+    ftype: np.dtype = np.float32  #: floating point type of d3plot
+    wordsize: int = 4  #: size of words in bytes (4 = single precision, 8 = double precision)
+    raw_header: Dict[str, Any] = {}  #: raw header data as dict
+    external_numbers_dtype = np.int32  #: integer type of user ids
+    n_header_bytes: int = 0  #: number of bytes of header (at least 256 or more)
 
     # header
-    title: str = "" #: main title
-    title2: str = "" #: optional, secondary title
-    runtime: int = 0 #: runtime of the d3plot as timestamp
-    filetype: D3plotFiletype = D3plotFiletype.D3PLOT #: filetype such as d3plot or d3part
+    title: str = ""  #: main title
+    title2: str = ""  #: optional, secondary title
+    runtime: int = 0  #: runtime of the d3plot as timestamp
+    filetype: D3plotFiletype = D3plotFiletype.D3PLOT  #: filetype such as d3plot or d3part
 
-    source_version: int = 0 #: source version of LS-Dyna
-    release_version: str = "" #: release version of LS-Dyna
-    version: float = 0. #: version of LS-Dyna
-    extra_long_header: bool = False #: if header was longer than default
+    source_version: int = 0  #: source version of LS-Dyna
+    release_version: str = ""  #: release version of LS-Dyna
+    version: float = 0.  #: version of LS-Dyna
+    extra_long_header: bool = False  #: if header was longer than default
 
     # general info
-    n_dimensions: int = 3 #: number of dimensions, usually three
-    n_global_vars: int = 0 #: how many global vars for each state
-    n_adapted_element_pairs: int = 0 #: how many adapted element pairs
-    has_node_deletion_data: bool = False #: if node deletion data is present
-    has_element_deletion_data: bool = False #: if element deletion data is present
-    has_numbering_section: bool = False #: if a user numbering section is present
-    has_material_type_section: bool = False #: if material type section was written
-    n_numbering_section_words: int = 0 #: amount of words for numbering section
-    has_invariant_numbering: bool = False #: if invariant numbering is used whatever that means
-    quadratic_elems_has_full_connectivity: bool = False #: if quadric elements have full connectivity
-    quadratic_elems_has_data_at_integration_points: bool = False #: if quadric elements data is at integration points
+    n_dimensions: int = 3  #: number of dimensions, usually three
+    n_global_vars: int = 0  #: how many global vars for each state
+    n_adapted_element_pairs: int = 0  #: how many adapted element pairs
+    has_node_deletion_data: bool = False  #: if node deletion data is present
+    has_element_deletion_data: bool = False  #: if element deletion data is present
+    has_numbering_section: bool = False  #: if a user numbering section is present
+    has_material_type_section: bool = False  #: if material type section was written
+    n_numbering_section_words: int = 0  #: amount of words for numbering section
+    has_invariant_numbering: bool = False  #: if invariant numbering is used whatever that means
+    quadratic_elems_has_full_connectivity: bool = False  #: if quadric elements have full connected
+    #: if quadric elements data is at integration points
+    quadratic_elems_has_data_at_integration_points: bool = False
     n_post_branches: int = 0  #: unused and unknown
-    n_types: Tuple[int, ...] = tuple() #: behind geometry these are integers indicating additional data such as part names 
+    #: behind geometry these are integers indicating additional data such as part names
+    n_types: Tuple[int, ...] = tuple()
 
     # parts
-    n_parts: int = 0 #: obviously number of parts
+    n_parts: int = 0  #: obviously number of parts
 
     # nodes
-    n_nodes: int = 0 #: number of nodes
-    has_node_temperatures: bool = False #: if node temperature is present
-    has_node_temperature_layers: bool = False #: if node temperatures are layered
-    has_node_heat_flux: bool = False #: if node heat flux is present
-    has_node_mass_scaling: bool = False #: mass scaling is written
-    has_node_displacement: bool = False #: node displacement is written
-    has_node_velocity: bool = False #: node velocity is written
-    has_node_acceleration: bool = False #: node acceleration is written
-    has_node_temperature_gradient: bool = False #: node temperature gradient is written
-    has_node_residual_forces: bool = False #: node residual forces are written
-    has_node_residual_moments: bool = False #: node residual moments are written
-    has_node_max_contact_penetration_absolute: bool = False #: node contact penetration info was written
-    has_node_max_contact_penetration_relative: bool = False #: node relative contact penetration info was written
-    has_node_contact_energy_density: int = False #: node energy density was written
+    n_nodes: int = 0  #: number of nodes
+    has_node_temperatures: bool = False  #: if node temperature is present
+    has_node_temperature_layers: bool = False  #: if node temperatures are layered
+    has_node_heat_flux: bool = False  #: if node heat flux is present
+    has_node_mass_scaling: bool = False  #: mass scaling is written
+    has_node_displacement: bool = False  #: node displacement is written
+    has_node_velocity: bool = False  #: node velocity is written
+    has_node_acceleration: bool = False  #: node acceleration is written
+    has_node_temperature_gradient: bool = False  #: node temperature gradient is written
+    has_node_residual_forces: bool = False  #: node residual forces are written
+    has_node_residual_moments: bool = False  #: node residual moments are written
+    has_node_max_contact_penetration_absolute: bool = False  #: node contact penetration info exist
+    #: node relative contact penetration info was written
+    has_node_max_contact_penetration_relative: bool = False
+    has_node_contact_energy_density: int = False  #: node energy density was written
 
     # elements
-    n_shell_tshell_layers: int = 3 #: number of layers for shells and thick shells
-    n_shell_tshell_history_vars: int = 0 #: number of history vars for shells and thick shells
-    has_shell_tshell_stress: bool = False #: if shells and thick shells have stresses
-    has_shell_tshell_pstrain: bool = False #: if shells and thick shells have eff. plastic strain
-    has_element_strain: bool = False #: if all elements have strain
-    has_solid_shell_plastic_strain_tensor: bool = False #: if solids have plastic strain tensor
-    has_solid_shell_thermal_strain_tensor: bool = False #: if solids have thermal strain tensor
+    n_shell_tshell_layers: int = 3  #: number of layers for shells and thick shells
+    n_shell_tshell_history_vars: int = 0  #: number of history vars for shells and thick shells
+    has_shell_tshell_stress: bool = False  #: if shells and thick shells have stresses
+    has_shell_tshell_pstrain: bool = False  #: if shells and thick shells have eff. plastic strain
+    has_element_strain: bool = False  #: if all elements have strain
+    has_solid_shell_plastic_strain_tensor: bool = False  #: if solids have plastic strain tensor
+    has_solid_shell_thermal_strain_tensor: bool = False  #: if solids have thermal strain tensor
 
     # solids
-    n_solids: int = 0 #: number of solids
-    n_solid_vars: int = 0 #: number of solid variables per element and state
-    n_solid_materials: int = 0 #: number of solid materials/parts
-    n_solid_history_vars: int = 0 #: number of solid history variables
-    n_solid_thermal_vars: int = 0 #: number of solid thermal variables
-    n_solids_20_node_hexas: int = 0 #: number of 20-node solid hexas
-    n_solids_27_node_hexas: int = 0 #: number of 27-node solid hexas
-    n_solids_21_node_pentas: int = 0 #: number of 21-node solid pentas
-    n_solids_15_node_tetras: int = 0 #: number of 15-node solid tetras
-    n_solids_20_node_tetras: int = 0 #: number of 20-node solid tetras
-    n_solids_40_node_pentas: int = 0 #: number of 40-node solid pentas
-    n_solids_64_node_hexas: int = 0 #: number of 64-node solid hexas
-    has_solid_2_extra_nodes: bool = False #: if two extra nodes were written for solids
-    has_solid_stress: bool = False #: if solid stress is present
-    has_solid_pstrain: bool = False #: if solid eff. plastic strain is present
-    has_quadratic_solids: bool = False #: if quadratic solids were used
-    has_cubic_solids: bool = False #: if cubic solids were used
-    has_solid_internal_energy_density: bool = False #: if solids have internal energy density
+    n_solids: int = 0  #: number of solids
+    n_solid_vars: int = 0  #: number of solid variables per element and state
+    n_solid_materials: int = 0  #: number of solid materials/parts
+    n_solid_history_vars: int = 0  #: number of solid history variables
+    n_solid_thermal_vars: int = 0  #: number of solid thermal variables
+    n_solids_20_node_hexas: int = 0  #: number of 20-node solid hexas
+    n_solids_27_node_hexas: int = 0  #: number of 27-node solid hexas
+    n_solids_21_node_pentas: int = 0  #: number of 21-node solid pentas
+    n_solids_15_node_tetras: int = 0  #: number of 15-node solid tetras
+    n_solids_20_node_tetras: int = 0  #: number of 20-node solid tetras
+    n_solids_40_node_pentas: int = 0  #: number of 40-node solid pentas
+    n_solids_64_node_hexas: int = 0  #: number of 64-node solid hexas
+    has_solid_2_extra_nodes: bool = False  #: if two extra nodes were written for solids
+    has_solid_stress: bool = False  #: if solid stress is present
+    has_solid_pstrain: bool = False  #: if solid eff. plastic strain is present
+    has_quadratic_solids: bool = False  #: if quadratic solids were used
+    has_cubic_solids: bool = False  #: if cubic solids were used
+    has_solid_internal_energy_density: bool = False  #: if solids have internal energy density
 
     # shells
-    n_shells: int = 0 #: number of shells
-    n_shell_vars: int = 0 #: number of shell vars per element and state
-    n_shell_materials: int = 0 #: number of shell materials/parts
-    n_shells_8_nodes: int = 0 #: number of 8-node shells
-    has_shell_four_inplane_gauss_points: bool = False  #: if shells have four inplace gaussian integration points
+    n_shells: int = 0  #: number of shells
+    n_shell_vars: int = 0  #: number of shell vars per element and state
+    n_shell_materials: int = 0  #: number of shell materials/parts
+    n_shells_8_nodes: int = 0  #: number of 8-node shells
+    #: if shells have four inplace gaussian integration points
+    has_shell_four_inplane_gauss_points: bool = False
     has_shell_forces: bool = False  #: if shell forces are present
     has_shell_extra_variables: bool = False  #: if extra shell variables such as forces are present
     # has_shell_internal_energy: bool = False
@@ -205,14 +213,14 @@ class D3plotHeader:
     n_beam_history_vars: int = 0  #: number of beam history variables
 
     # airbags
-    n_airbags: int = 0 #: number of airbags
-    has_airbag_n_chambers: bool = False #: if airbags have number of chambers var
+    n_airbags: int = 0  #: number of airbags
+    has_airbag_n_chambers: bool = False  #: if airbags have number of chambers var
 
     # rigid roads
     has_rigid_road_surface: bool = False  #: if rigid road surface was written
 
     # rigid bodies
-    has_rigid_body_data: bool = False #: if rigid body section was written
+    has_rigid_body_data: bool = False  #: if rigid body section was written
     has_reduced_rigid_body_data: bool = False  #: if the reduced set of rigid body data was written
 
     # sph
@@ -232,8 +240,8 @@ class D3plotHeader:
     cfd_extra_data: int = 0  #: if cfd data contains extra section
 
     # historical artifacts
-    legacy_code_type: int = 6 #: originally a code indicator but unused nowadays
-    unused_numst: int = 0 #: unused and not explained in docs
+    legacy_code_type: int = 6  #: originally a code indicator but unused nowadays
+    unused_numst: int = 0  #: unused and not explained in docs
 
     def __init__(self, filepath: Union[str, BinaryBuffer, None] = None):
         """ Create a D3plotHeader instance
@@ -242,20 +250,20 @@ class D3plotHeader:
         ----------
         filepath: Union[str, BinaryBuffer, None]
             path to a d3plot file or a buffer holding d3plot memory
-        
+
         Returns
         -------
         header: D3plotHeader
             d3plot header instance
-        
+
         Examples
         --------
             Create an empty header file
-            
+
             >>> header = D3plotHeader()
 
             Now load only the header of a d3plot.
-            
+
             >>> header.load_file("path/to/d3plot")
 
             Or we can do the above together.
@@ -291,7 +299,7 @@ class D3plotHeader:
             buffer holding the exact header data in binary form
         """
 
-        LOGGER.debug(f"_read_file_buffer start")
+        LOGGER.debug("_read_file_buffer start")
         LOGGER.debug(f"filepath: {filepath}")
 
         # load first 64 single words
@@ -311,8 +319,8 @@ class D3plotHeader:
         if len(bb) <= n_header_bytes:
             bb = BinaryBuffer(filepath,
                               n_bytes=n_header_bytes)
-        
-        LOGGER.debug(f"_read_file_buffer end")
+
+        LOGGER.debug("_read_file_buffer end")
 
         return bb
 
@@ -325,7 +333,7 @@ class D3plotHeader:
             size of the header in bytes
         """
 
-        LOGGER.debug(f"_determine_n_bytes start")
+        LOGGER.debug("_determine_n_bytes start")
 
         n_base_words = 64
         min_n_bytes = n_base_words * wordsize
@@ -469,6 +477,13 @@ class D3plotHeader:
                 self.raw_header[name] = dtype()
 
         # PARSE HEADER (no fun ahead)
+        if isinstance(file, str):
+            self.filepath = file
+        elif isinstance(file, BinaryBuffer):
+            if isinstance(file.filepath_, str):
+                self.filepath = file.filepath_
+            elif isinstance(file.filepath_, list) and len(file.filepath_) > 0:
+                self.filepath = file.filepath_[0]
 
         self.title = self.raw_header["title"].strip()
         self.runtime = self.raw_header["runtime"]
@@ -699,7 +714,8 @@ class D3plotHeader:
         #                                 6 * self.has_shell_tshell_stress +
         #                                 self.has_shell_tshell_pstrain +
         #                                 self.n_shell_tshell_history_vars) +
-        #                                 8 * self.has_shell_forces + 4 * self.has_shell_extra_variables))
+        #                                 8 * self.has_shell_forces
+        #                                 + 4 * self.has_shell_extra_variables))
 
         # if not self.has_element_strain:
         #     if shell_vars_behind_layers > 1 and shell_vars_behind_layers < 6:
@@ -789,6 +805,24 @@ class D3plotHeader:
         return self
 
     @property
+    def has_femzip_indicator(self) -> bool:
+        """ If the femzip indicator can be found in the header
+
+        Notes
+        -----
+            Only use on raw files.
+
+            If the header displays a femzip indicator then the file
+            is femzipped. If you load the femzip file as such then
+            this indicator will not be set, since femzip itself
+            corrects the indicator again.
+        """
+        if "nmmat" in self.raw_header:
+            return self.raw_header["nmmat"] == 76_893_465
+        else:
+            return False
+
+    @property
     def n_rigid_wall_vars(self) -> int:
         """ number of rigid wall vars
 
@@ -848,7 +882,7 @@ class D3plotHeader:
                 try:
                     storage_dict[name] = bb.read_text(
                         data[0], data[2])
-                except UnicodeDecodeError as err:
+                except UnicodeDecodeError:
                     storage_dict[name] = ""
 
             else:
@@ -858,9 +892,11 @@ class D3plotHeader:
         return storage_dict
 
     @staticmethod
-    def _determine_file_settings(bb: Union[BinaryBuffer, None] = None) -> Tuple[int, 
-                                                                                Union[np.int32, np.int64],
-                                                                                Union[np.float32, np.float64]]:
+    def _determine_file_settings(bb: Union[BinaryBuffer, None] = None) -> Tuple[int,
+                                                                                Union[np.int32,
+                                                                                      np.int64],
+                                                                                Union[np.float32,
+                                                                                      np.float64]]:
         '''Determine the precision of the file
 
         Parameters
@@ -883,7 +919,7 @@ class D3plotHeader:
         wordsize = 4
         itype = np.int32
         ftype = np.float32
-        
+
         # test file type flag (1=d3plot, 5=d3part, 11=d3eigv)
 
         if isinstance(bb, BinaryBuffer):
@@ -898,10 +934,10 @@ class D3plotHeader:
                 wordsize = 4
                 itype = np.int32
                 ftype = np.float32
-                
+
                 LOGGER.debug(f"wordsize={wordsize} itype={itype} ftype={ftype}")
                 LOGGER.debug("_determine_file_settings end")
-                
+
                 return wordsize, itype, ftype
 
             # double precision
@@ -914,10 +950,10 @@ class D3plotHeader:
                 wordsize = 8
                 itype = np.int64
                 ftype = np.float64
-                
+
                 LOGGER.debug(f"wordsize={wordsize} itype={itype} ftype={ftype}")
                 LOGGER.debug("_determine_file_settings end")
-                
+
                 return wordsize, itype, ftype
 
             raise RuntimeError("Unknown file type '{0}'.".format(value))

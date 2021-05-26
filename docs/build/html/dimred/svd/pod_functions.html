@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -188,13 +191,14 @@
 <h1>POD Functions<a class="headerlink" href="#pod-functions" title="Permalink to this headline">¶</a></h1>
 <p>These functions are used for the proper orthogonal decomposition of samples</p>
 <dl class="py function">
-<dt id="lasso.dimred.svd.pod_functions.calculate_V_and_Betas">
-<code class="sig-prename descclassname">lasso.dimred.svd.pod_functions.</code><code class="sig-name descname">calculate_V_and_Betas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stacked_sub_displ</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>str<span class="p">, </span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>numpy.ndarray<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.pod_functions.calculate_V_and_Betas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dimred.svd.pod_functions.calculate_V_and_Betas">
+<span class="sig-prename descclassname"><span class="pre">lasso.dimred.svd.pod_functions.</span></span><span class="sig-name descname"><span class="pre">calculate_V_and_Betas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stacked_sub_displ</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.dimred.svd.pod_functions.calculate_V_and_Betas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the right reduced order Basis V and up to 10 eigenvalues of the subsamples</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>stacked_sub_displ: np.ndarray</strong></dt><dd><p>np.ndarray containing all subsampled displacements, shape must be (samples, timesteps, nodes, dims)</p>
+<dt><strong>stacked_sub_displ: np.ndarray</strong></dt><dd><p>np.ndarray containing all subsampled displacements
+shape must be (samples, timesteps, nodes, dims)</p>
 </dd>
 </dl>
 </dd>
@@ -212,8 +216,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="lasso.dimred.svd.pod_functions.svd_step_and_dim">
-<code class="sig-prename descclassname">lasso.dimred.svd.pod_functions.</code><code class="sig-name descname">svd_step_and_dim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s_mat</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.dimred.svd.pod_functions.svd_step_and_dim" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dimred.svd.pod_functions.svd_step_and_dim">
+<span class="sig-prename descclassname"><span class="pre">lasso.dimred.svd.pod_functions.</span></span><span class="sig-name descname"><span class="pre">svd_step_and_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_mat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#lasso.dimred.svd.pod_functions.svd_step_and_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a svds operation on the two dimensional s_mat</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

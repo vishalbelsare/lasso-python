@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -182,8 +185,8 @@
   <div class="section" id="femzipapi">
 <h1>FemzipAPI<a class="headerlink" href="#femzipapi" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="lasso.femzip.femzip_api.FemzipAPI">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.femzip.femzip_api.</code><code class="sig-name descname">FemzipAPI</code><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lasso.femzip.femzip_api.</span></span><span class="sig-name descname"><span class="pre">FemzipAPI</span></span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
@@ -249,14 +252,14 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.close_current_file">
-<code class="sig-name descname">close_current_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.close_current_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.close_current_file">
+<span class="sig-name descname"><span class="pre">close_current_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.close_current_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Closes the current file handle(use not recommended)</p>
 <p class="rubric">Notes</p>
 <p>Closes a currently opened file by the API. There
@@ -270,8 +273,8 @@ This can also be used in case of bugs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.copy_struct">
-<em class="property">static </em><code class="sig-name descname">copy_struct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">src</span><span class="p">:</span> <span class="n">_ctypes.Structure</span></em>, <em class="sig-param"><span class="n">dest</span><span class="p">:</span> <span class="n">_ctypes.Structure</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.copy_struct" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.copy_struct">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">copy_struct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_ctypes.Structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_ctypes.Structure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.copy_struct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies all fields from src struct to dest</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -298,8 +301,8 @@ This can also be used in case of bugs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.get_buffer_info">
-<code class="sig-name descname">get_buffer_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_buffer_info" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.get_buffer_info">
+<span class="sig-name descname"><span class="pre">get_buffer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_buffer_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the dimensions of the buffers for femzip</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -333,8 +336,8 @@ This can also be used in case of bugs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.get_femzip_status">
-<code class="sig-name descname">get_femzip_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipAPIStatus.html#lasso.femzip.femzip_api.FemzipAPIStatus" title="lasso.femzip.femzip_api.FemzipAPIStatus">lasso.femzip.femzip_api.FemzipAPIStatus</a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_femzip_status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.get_femzip_status">
+<span class="sig-name descname"><span class="pre">get_femzip_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipAPIStatus.html#lasso.femzip.femzip_api.FemzipAPIStatus" title="lasso.femzip.femzip_api.FemzipAPIStatus"><span class="pre">lasso.femzip.femzip_api.FemzipAPIStatus</span></a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_femzip_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check the status of the femzip api</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -346,7 +349,7 @@ This can also be used in case of bugs.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>This reports whether a file is currently
-opened and how far it was processed. This 
+opened and how far it was processed. This
 internal state is used to avoid internal
 conflicts and crashes, thus is useful for
 debugging.</p>
@@ -358,8 +361,8 @@ debugging.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.get_file_metadata">
-<code class="sig-name descname">get_file_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata" title="lasso.femzip.femzip_api.FemzipFileMetadata">lasso.femzip.femzip_api.FemzipFileMetadata</a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_file_metadata" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.get_file_metadata">
+<span class="sig-name descname"><span class="pre">get_file_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata" title="lasso.femzip.femzip_api.FemzipFileMetadata"><span class="pre">lasso.femzip.femzip_api.FemzipFileMetadata</span></a><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_file_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get infos about the femzip variables in the file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -393,8 +396,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.get_part_titles">
-<code class="sig-name descname">get_part_titles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">buffer_info</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; memoryview<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_part_titles" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.get_part_titles">
+<span class="sig-name descname"><span class="pre">get_part_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">memoryview</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.get_part_titles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the part title section</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -415,8 +418,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.has_femunziplib_license">
-<code class="sig-name descname">has_femunziplib_license</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.has_femunziplib_license" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.has_femunziplib_license">
+<span class="sig-name descname"><span class="pre">has_femunziplib_license</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.has_femunziplib_license" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the extended libraries are available</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -433,8 +436,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.is_femunzip_version_ok">
-<code class="sig-name descname">is_femunzip_version_ok</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.is_femunzip_version_ok" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.is_femunzip_version_ok">
+<span class="sig-name descname"><span class="pre">is_femunzip_version_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.is_femunzip_version_ok" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the femunzip version can be handled</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -457,8 +460,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.is_sidact_file">
-<code class="sig-name descname">is_sidact_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.is_sidact_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.is_sidact_file">
+<span class="sig-name descname"><span class="pre">is_sidact_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.is_sidact_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests if a filepath points at a sidact file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -484,8 +487,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.load_dynamic_library">
-<em class="property">static </em><code class="sig-name descname">load_dynamic_library</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; ctypes.CDLL<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.load_dynamic_library" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.load_dynamic_library">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">load_dynamic_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">ctypes.CDLL</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.load_dynamic_library" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a library and check for correct execution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -504,8 +507,8 @@ not be used by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.read_geometry">
-<code class="sig-name descname">read_geometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">buffer_info</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">close_file</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; memoryview<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_geometry" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.read_geometry">
+<span class="sig-name descname"><span class="pre">read_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">memoryview</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_geometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read the geometry buffer from femzip</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -536,8 +539,8 @@ might occur.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.read_single_state">
-<code class="sig-name descname">read_single_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i_timestep</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">buffer_info</span><span class="p">:</span> <span class="n"><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a></span></em>, <em class="sig-param"><span class="n">state_buffer</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>memoryview<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; memoryview<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_single_state" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.read_single_state">
+<span class="sig-name descname"><span class="pre">read_single_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_timestep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_buffer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">memoryview</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">memoryview</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_single_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a single state</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -574,8 +577,8 @@ in order to terminate state reading.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.read_state_deletion_info">
-<code class="sig-name descname">read_state_deletion_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">buffer_info</span><span class="p">:</span> <span class="n"><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a></span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_state_deletion_info" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.read_state_deletion_info">
+<span class="sig-name descname"><span class="pre">read_state_deletion_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_state_deletion_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get information which elements are alive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -588,7 +591,7 @@ in order to terminate state reading.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The <cite>buffer</cite> must have the size of at least 
+<p>The <cite>buffer</cite> must have the size of at least
 <cite>buffer_info.size_activity</cite>.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># get info about required memory</span>
@@ -610,8 +613,8 @@ in order to terminate state reading.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.read_states">
-<code class="sig-name descname">read_states</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">buffer_info</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo">lasso.femzip.femzip_api.FemzipBufferInfo</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_states" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.read_states">
+<span class="sig-name descname"><span class="pre">read_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="FemzipBufferInfo.html#lasso.femzip.femzip_api.FemzipBufferInfo" title="lasso.femzip.femzip_api.FemzipBufferInfo"><span class="pre">lasso.femzip.femzip_api.FemzipBufferInfo</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_states" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads all femzip state information</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -639,8 +642,8 @@ in order to terminate state reading.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.read_variables">
-<code class="sig-name descname">read_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_metadata</span><span class="p">:</span> <span class="n"><a class="reference internal" href="FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata" title="lasso.femzip.femzip_api.FemzipFileMetadata">lasso.femzip.femzip_api.FemzipFileMetadata</a></span></em>, <em class="sig-param"><span class="n">n_parts</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">n_rigid_walls</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">n_rigid_wall_vars</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">n_airbag_particles</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">n_airbags</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">state_filter</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>str<span class="p">, </span>lasso.femzip.fz_config.FemzipVariableCategory<span class="p">]</span><span class="p">, </span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_variables" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.read_variables">
+<span class="sig-name descname"><span class="pre">read_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_metadata</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="FemzipFileMetadata.html#lasso.femzip.femzip_api.FemzipFileMetadata" title="lasso.femzip.femzip_api.FemzipFileMetadata"><span class="pre">lasso.femzip.femzip_api.FemzipFileMetadata</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_parts</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rigid_walls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rigid_wall_vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_airbag_particles</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_airbags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">lasso.femzip.fz_config.FemzipVariableCategory</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.read_variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read specific variables from Femzip</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -668,13 +671,13 @@ in order to terminate state reading.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Uses extended femzip library and requires a license
-for ‘FEMUNZIPLIB_DYNA’. Please contact sidact if 
+for ‘FEMUNZIPLIB_DYNA’. Please contact sidact if
 required.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.femzip.femzip_api.FemzipAPI.struct_to_dict">
-<em class="property">static </em><code class="sig-name descname">struct_to_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">struct</span><span class="p">:</span> <span class="n">_ctypes.Structure</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.struct_to_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.femzip.femzip_api.FemzipAPI.struct_to_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">struct_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_ctypes.Structure</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.femzip.femzip_api.FemzipAPI.struct_to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a ctypes struct into a dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

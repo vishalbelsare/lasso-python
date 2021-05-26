@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -188,8 +191,8 @@
 <h1>Subsampling Methods<a class="headerlink" href="#subsampling-methods" title="Permalink to this headline">¶</a></h1>
 <p>Methods used to for subsampling process</p>
 <dl class="py function">
-<dt id="lasso.dimred.svd.subsampling_methods.create_reference_subsample">
-<code class="sig-prename descclassname">lasso.dimred.svd.subsampling_methods.</code><code class="sig-name descname">create_reference_subsample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">load_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">parts</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">nr_samples</span><span class="o">=</span><span class="default_value">2000</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.subsampling_methods.create_reference_subsample" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dimred.svd.subsampling_methods.create_reference_subsample">
+<span class="sig-prename descclassname"><span class="pre">lasso.dimred.svd.subsampling_methods.</span></span><span class="sig-name descname"><span class="pre">create_reference_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.dimred.svd.subsampling_methods.create_reference_subsample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the D3plot at load_path, extracts the node coordinates of part 13, returns
 a random subsample of these nodes</p>
 <dl class="field-list simple">
@@ -219,8 +222,8 @@ a random subsample of these nodes</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="lasso.dimred.svd.subsampling_methods.remap_random_subsample">
-<code class="sig-prename descclassname">lasso.dimred.svd.subsampling_methods.</code><code class="sig-name descname">remap_random_subsample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">load_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">parts</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="n">reference_subsample</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#lasso.dimred.svd.subsampling_methods.remap_random_subsample" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dimred.svd.subsampling_methods.remap_random_subsample">
+<span class="sig-prename descclassname"><span class="pre">lasso.dimred.svd.subsampling_methods.</span></span><span class="sig-name descname"><span class="pre">remap_random_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_subsample</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.dimred.svd.subsampling_methods.remap_random_subsample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remaps the specified sample onto a new mesh provided by reference subsampl, using knn matching</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

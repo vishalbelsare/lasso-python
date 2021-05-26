@@ -405,7 +405,9 @@ stress_index = {
 }
 
 
-def femzip_to_d3plot(result_arrays: Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]) -> Dict[str, np.ndarray]:
+def femzip_to_d3plot(
+        result_arrays: Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]
+        ) -> Dict[str, np.ndarray]:
     """Map femzip arrays to d3plot arrays
 
     Parameters
@@ -540,7 +542,8 @@ class FemzipMapper():
         self._map_arrays(array_infos, self._d3plot_arrays)
 
     def _convert(self,
-                 result_arrays: Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]) -> List[FemzipArrayInfo]:
+                 result_arrays: Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]
+                 ) -> List[FemzipArrayInfo]:
         """ Convert femzip result arrays into array infos
 
         Parameters
@@ -844,7 +847,8 @@ def filter_femzip_variables(file_metadata: FemzipFileMetadata,
             try:
                 fz_array_type = FemzipArrayType.from_string(var_name)
             except ValueError:
-                warn_msg = "Warning: lasso-python does not support femzip result field '{0}' category type '{1}'."
+                warn_msg = ("Warning: lasso-python does not support femzip result"
+                            " field '{0}' category type '{1}'.")
                 logging.warning(warn_msg.format(var_name.strip(), var_type))
                 continue
 

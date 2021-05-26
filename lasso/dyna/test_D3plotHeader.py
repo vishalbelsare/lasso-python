@@ -1,8 +1,9 @@
-from lasso.io.BinaryBuffer import BinaryBuffer
-from lasso.dyna.D3plotHeader import D3plotFiletype, D3plotHeader, d3plot_filetype_from_integer, get_digit
 from unittest import TestCase
 
 import numpy as np
+from lasso.dyna.D3plotHeader import (D3plotFiletype, D3plotHeader,
+                                     d3plot_filetype_from_integer, get_digit)
+from lasso.io.BinaryBuffer import BinaryBuffer
 
 
 class D3plotHeaderTest(TestCase):
@@ -35,12 +36,12 @@ class D3plotHeaderTest(TestCase):
         for index in range(len(number_str)):
             digit = get_digit(number, index)
             self.assertEqual(
-                digit, 
-                int(number_str[index]), 
+                digit,
+                int(number_str[index]),
                 f"index {index} digit {digit} digit_str {number_str[index]}")
-        
+
         self.assertEqual(get_digit(number, 10), 0)
-    
+
     def test_d3plot_filetype_from_integer(self) -> None:
 
         self.assertEqual(
@@ -59,10 +60,10 @@ class D3plotHeaderTest(TestCase):
         # INFOR is forbidden
         with self.assertRaises(ValueError):
             d3plot_filetype_from_integer(4)
-        
+
         with self.assertRaises(ValueError):
             d3plot_filetype_from_integer(0)
-    
+
     def test_determine_file_settings(self) -> None:
 
         # the routine checks the "filetype" flag
@@ -75,13 +76,13 @@ class D3plotHeaderTest(TestCase):
             for filetype in (D3plotFiletype.D3PLOT,
                              D3plotFiletype.D3PART,
                              D3plotFiletype.D3EIGV):
-                
+
                 bb = BinaryBuffer()
                 bb.memoryview = memoryview(bytearray(256))
                 bb.write_number(position, filetype.value, np.int32)
 
                 wordsize, itype, ftype = D3plotHeader._determine_file_settings(bb)
-                
+
                 if position == 44:
                     self.assertEqual(wordsize, 4)
                     self.assertEqual(itype, np.int32)

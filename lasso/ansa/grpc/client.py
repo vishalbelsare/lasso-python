@@ -3,10 +3,8 @@ import os
 import sys
 if not hasattr(sys, 'argv'):
     sys.argv = ['']
-import time
 import grpc
 import pickle
-import random
 import argparse
 import typing
 
@@ -15,7 +13,7 @@ from lasso.utils.ConsoleColoring import ConsoleColoring
 from . import AnsaGRPC_pb2
 from . import AnsaGRPC_pb2_grpc
 from .settings import GRPC_DEFAULT_PORT
-from .utils import pickle_object, Entity
+from .utils import pickle_object
 
 # messages
 _msg_using_address = "Using address '{0}'."

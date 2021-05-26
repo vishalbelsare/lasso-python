@@ -297,42 +297,40 @@ class D3plotTest(TestCase):
     def test_negative_to_positive_state_indexes(self) -> None:
 
         indexes = set()
-        new_indexes =_negative_to_positive_state_indexes(indexes, len(indexes))
+        new_indexes = _negative_to_positive_state_indexes(indexes, len(indexes))
         self.assertSetEqual(indexes, new_indexes)
 
         indexes = {0, 1, 2}
         with self.assertRaises(ValueError):
-            new_indexes =_negative_to_positive_state_indexes(indexes, 2)
-        
+            new_indexes = _negative_to_positive_state_indexes(indexes, 2)
+
         indexes = {0, -1}
-        new_indexes =_negative_to_positive_state_indexes(indexes, 8)
+        new_indexes = _negative_to_positive_state_indexes(indexes, 8)
         self.assertSetEqual(new_indexes, {0, 7})
 
     def test_is_end_of_file_marker(self) -> None:
-        
+
         # -999999. in float32
         bb = BinaryBuffer()
         bb.memoryview = memoryview(struct.pack("<f", -999999.))
 
         result = D3plot._is_end_of_file_marker(bb, 0, np.float32)
         self.assertEqual(result, True)
-        
+
         # -999999. in float64
         bb = BinaryBuffer()
         bb.memoryview = memoryview(struct.pack("<d", -999999.))
-        
+
         result = D3plot._is_end_of_file_marker(bb, 0, np.float64)
         self.assertEqual(result, True)
 
         # some other number
         bb = BinaryBuffer()
         bb.memoryview = memoryview(struct.pack("<d", -41.))
-        
+
         result = D3plot._is_end_of_file_marker(bb, 0, np.float64)
         self.assertEqual(result, False)
 
         # invalid dtype
         with self.assertRaises(ValueError):
             result = D3plot._is_end_of_file_marker(bb, 0, np.int32)
-        
-

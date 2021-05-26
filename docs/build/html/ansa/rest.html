@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -251,11 +254,11 @@ as an argument here. If <code class="docutils literal notranslate"><span class="
 yell at you and tell you how to install it.</p>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">lasso</span><span class="o">.</span><span class="n">ansa</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">server</span>
-    <span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="o">.</span><span class="mf">1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
+    <span class="o">--</span><span class="n">ansa</span><span class="o">-</span><span class="n">filepath</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="mf">.1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
     <span class="o">--</span><span class="n">python33</span><span class="o">-</span><span class="n">path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">envs</span>\<span class="n">py33</span>
 
-<span class="p">[</span><span class="o">/</span><span class="p">]</span> <span class="n">Running</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="o">.</span><span class="mf">1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
-    <span class="o">-</span><span class="n">nolauncher</span> <span class="o">-</span><span class="n">nogui</span> <span class="o">-</span><span class="n">execscript</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">lasso</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">6.</span><span class="n">egg</span>\<span class="n">lasso</span>\<span class="n">ansa</span>\<span class="n">rest</span>\<span class="n">server_ansa</span><span class="o">.</span><span class="n">py</span>
+<span class="p">[</span><span class="o">/</span><span class="p">]</span> <span class="n">Running</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">BETA_CAE_Systems</span>\<span class="n">ansa_v19</span><span class="mf">.1.2</span>\<span class="n">ansa64</span><span class="o">.</span><span class="n">bat</span>
+    <span class="o">-</span><span class="n">nolauncher</span> <span class="o">-</span><span class="n">nogui</span> <span class="o">-</span><span class="n">execscript</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">lasso</span><span class="o">-</span><span class="mf">0.1.0</span><span class="o">-</span><span class="n">py3</span><span class="mf">.6</span><span class="o">.</span><span class="n">egg</span>\<span class="n">lasso</span>\<span class="n">ansa</span>\<span class="n">rest</span>\<span class="n">server_ansa</span><span class="o">.</span><span class="n">py</span>
     <span class="o">-</span><span class="n">execpy</span> <span class="s2">&quot;serve(16136)&quot;</span>
 
 <span class="o">...</span>
@@ -273,7 +276,7 @@ yell at you and tell you how to install it.</p>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">the</span> <span class="n">development</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">production</span> <span class="n">environment</span><span class="o">.</span>
 <span class="n">Use</span> <span class="n">a</span> <span class="n">production</span> <span class="n">WSGI</span> <span class="n">server</span> <span class="n">instead</span><span class="o">.</span>
 <span class="o">*</span> <span class="n">Debug</span> <span class="n">mode</span><span class="p">:</span> <span class="n">off</span>
-<span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">16136</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span> <span class="c1">#</span>
+<span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">16136</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span> <span class="c1">#</span>
 </pre></div>
 </div>
 </div></blockquote>

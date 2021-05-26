@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -183,8 +186,8 @@
 <h1>Binout<a class="headerlink" href="#binout" title="Permalink to this headline">¶</a></h1>
 <p>There is a <a class="reference external" href="https://www.youtube.com/watch?v=P96Vkuvg02w&amp;t=2s">YOUTUBE TUTORIAL</a> for this class available:</p>
 <dl class="py class">
-<dt id="lasso.dyna.Binout.Binout">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.Binout.</code><code class="sig-name descname">Binout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.Binout.Binout">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lasso.dyna.Binout.</span></span><span class="sig-name descname"><span class="pre">Binout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a binout</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -230,8 +233,8 @@ pattern will be loaded.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lasso.dyna.Binout.Binout.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.Binout.Binout.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for a binout</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,8 +264,8 @@ pattern will be loaded.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.Binout.Binout.as_df">
-<code class="sig-name descname">as_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#lasso.dyna.Binout.Binout.as_df" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.Binout.Binout.as_df">
+<span class="sig-name descname"><span class="pre">as_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.as_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>read data and convert to pandas dataframe if possible</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -308,26 +311,26 @@ pattern will be loaded.</p>
 </div>
 <p>Read a time and id-dependent array.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binout</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="s1">&#39;secforc&#39;</span><span class="p">,</span> <span class="s1">&#39;x_force&#39;</span><span class="p">)</span>
-<span class="go">                      1             2             3  ...            33            34            35</span>
-<span class="go">time                                                 ...</span>
-<span class="go">0.00063    2.168547e-16  2.275245e-15 -3.118639e-14  ... -5.126108e-13  4.592941e-16  8.431434e-17</span>
-<span class="go">0.20034    3.514243e-04  3.797908e-04 -1.701294e-03  ...  2.530416e-11  2.755493e-07  2.117375e-05</span>
-<span class="go">0.40005    3.052490e-03  3.242951e-02 -2.699926e-02  ...  6.755315e-06 -2.608923e-03  3.919351e-03</span>
-<span class="go">0.60039   -1.299816e-02  4.930999e-02 -1.632376e-02  ...  8.941705e-05 -2.203455e-02  3.536490e-02</span>
-<span class="go">0.80010    1.178485e-02  4.904512e-02 -9.740204e-03  ...  5.648263e-05 -6.999854e-02  6.934055e-02</span>
-<span class="gp">... </span>                <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>  <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>
-<span class="go">119.00007  9.737679e-01 -8.833702e+00  1.298964e+01  ... -9.977377e-02  7.883521e+00 -5.353501e+00</span>
-<span class="go">119.20041  7.421170e-01 -8.849411e+00  1.253505e+01  ... -1.845916e-01  7.791409e+00 -4.988928e+00</span>
-<span class="go">119.40012  9.946615e-01 -8.541475e+00  1.188757e+01  ... -3.662228e-02  7.675800e+00 -4.889339e+00</span>
-<span class="go">119.60046  9.677638e-01 -8.566695e+00  1.130774e+01  ...  5.144208e-02  7.273052e+00 -5.142375e+00</span>
-<span class="go">119.80017  1.035165e+00 -8.040828e+00  1.124044e+01  ... -1.213450e-02  7.188395e+00 -5.279221e+00</span>
+<span class="go">                      1             2             3  ...            33            34</span>
+<span class="go">time                                                 .</span>
+<span class="go">0.00063    2.168547e-16  2.275245e-15 -3.118639e-14  ... -5.126108e-13  4.592941e-16</span>
+<span class="go">0.20034    3.514243e-04  3.797908e-04 -1.701294e-03  ...  2.530416e-11  2.755493e-07</span>
+<span class="go">0.40005    3.052490e-03  3.242951e-02 -2.699926e-02  ...  6.755315e-06 -2.608923e-03</span>
+<span class="go">0.60039   -1.299816e-02  4.930999e-02 -1.632376e-02  ...  8.941705e-05 -2.203455e-02</span>
+<span class="go">0.80010    1.178485e-02  4.904512e-02 -9.740204e-03  ...  5.648263e-05 -6.999854e-02</span>
+<span class="gp">... </span>                <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>  <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>
+<span class="go">119.00007  9.737679e-01 -8.833702e+00  1.298964e+01  ... -9.977377e-02  7.883521e+00</span>
+<span class="go">119.20041  7.421170e-01 -8.849411e+00  1.253505e+01  ... -1.845916e-01  7.791409e+00</span>
+<span class="go">119.40012  9.946615e-01 -8.541475e+00  1.188757e+01  ... -3.662228e-02  7.675800e+00</span>
+<span class="go">119.60046  9.677638e-01 -8.566695e+00  1.130774e+01  ...  5.144208e-02  7.273052e+00</span>
+<span class="go">119.80017  1.035165e+00 -8.040828e+00  1.124044e+01  ... -1.213450e-02  7.188395e+00</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.Binout.Binout.read">
-<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">path</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">, </span>str<span class="p">, </span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.read" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.Binout.Binout.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.dyna.Binout.Binout.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read all data from Binout (top to low level)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -379,8 +382,8 @@ identification or id-labels.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.Binout.Binout.save_hdf5">
-<code class="sig-name descname">save_hdf5</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">compression</span><span class="o">=</span><span class="default_value">'gzip'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.save_hdf5" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.Binout.Binout.save_hdf5">
+<span class="sig-name descname"><span class="pre">save_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gzip'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.Binout.Binout.save_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a binout as HDF5</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -72,7 +75,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -183,8 +186,8 @@
 <h1>D3plotHeader<a class="headerlink" href="#d3plotheader" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <dl class="py class">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader">
-<em class="property">class </em><code class="sig-prename descclassname">lasso.dyna.D3plotHeader.</code><code class="sig-name descname">D3plotHeader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>lasso.io.BinaryBuffer.BinaryBuffer<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lasso.dyna.D3plotHeader.</span></span><span class="sig-name descname"><span class="pre">D3plotHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">lasso.io.BinaryBuffer.BinaryBuffer</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a D3plotHeader instance</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -220,6 +223,8 @@ Thus it is safe to use on big files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_femzip_indicator" title="lasso.dyna.D3plotHeader.D3plotHeader.has_femzip_indicator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_femzip_indicator</span></code></a></dt><dd><p>If the femzip indicator can be found in the header</p>
+</dd>
 <dt><a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars" title="lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_rigid_wall_vars</span></code></a></dt><dd><p>number of rigid wall vars</p>
 </dd>
 <dt><strong>n_solid_layers</strong></dt><dd></dd>
@@ -254,8 +259,8 @@ Thus it is safe to use on big files.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>lasso.io.BinaryBuffer.BinaryBuffer<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">lasso.io.BinaryBuffer.BinaryBuffer</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a D3plotHeader instance</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -291,601 +296,607 @@ Thus it is safe to use on big files.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.itype">
-<code class="sig-name descname">itype</code><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.itype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><p>filepath of file</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.itype">
+<span class="sig-name descname"><span class="pre">itype</span></span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.itype" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.int32</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.ftype">
-<code class="sig-name descname">ftype</code><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.ftype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.ftype">
+<span class="sig-name descname"><span class="pre">ftype</span></span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.ftype" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.float32</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.wordsize">
-<code class="sig-name descname">wordsize</code><em class="property">: int</em><em class="property"> = 4</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.wordsize" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.wordsize">
+<span class="sig-name descname"><span class="pre">wordsize</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.wordsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>size of words in bytes (4 = single precision, 8 = double precision)</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.raw_header">
-<code class="sig-name descname">raw_header</code><em class="property">: Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></em><em class="property"> = {}</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.raw_header" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.raw_header">
+<span class="sig-name descname"><span class="pre">raw_header</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.raw_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>raw header data as dict</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.external_numbers_dtype">
-<code class="sig-name descname">external_numbers_dtype</code><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.external_numbers_dtype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.external_numbers_dtype">
+<span class="sig-name descname"><span class="pre">external_numbers_dtype</span></span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.external_numbers_dtype" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.int32</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_header_bytes">
-<code class="sig-name descname">n_header_bytes</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_header_bytes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_header_bytes">
+<span class="sig-name descname"><span class="pre">n_header_bytes</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_header_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of bytes of header (at least 256 or more)</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.title">
-<code class="sig-name descname">title</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.title" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.title" title="Permalink to this definition">¶</a></dt>
 <dd><p>main title</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.title2">
-<code class="sig-name descname">title2</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.title2" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.title2">
+<span class="sig-name descname"><span class="pre">title2</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.title2" title="Permalink to this definition">¶</a></dt>
 <dd><p>optional, secondary title</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.runtime">
-<code class="sig-name descname">runtime</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.runtime" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.runtime">
+<span class="sig-name descname"><span class="pre">runtime</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.runtime" title="Permalink to this definition">¶</a></dt>
 <dd><p>runtime of the d3plot as timestamp</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.filetype">
-<code class="sig-name descname">filetype</code><em class="property">: lasso.dyna.D3plotHeader.D3plotFiletype</em><em class="property"> = 1</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.filetype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.filetype">
+<span class="sig-name descname"><span class="pre">filetype</span></span><em class="property"><span class="pre">:</span> <span class="pre">lasso.dyna.D3plotHeader.D3plotFiletype</span></em><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.filetype" title="Permalink to this definition">¶</a></dt>
 <dd><p>filetype such as d3plot or d3part</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.source_version">
-<code class="sig-name descname">source_version</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.source_version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.source_version">
+<span class="sig-name descname"><span class="pre">source_version</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.source_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>source version of LS-Dyna</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.release_version">
-<code class="sig-name descname">release_version</code><em class="property">: str</em><em class="property"> = ''</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.release_version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.release_version">
+<span class="sig-name descname"><span class="pre">release_version</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.release_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>release version of LS-Dyna</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.version">
-<code class="sig-name descname">version</code><em class="property">: float</em><em class="property"> = 0.0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0.0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.version" title="Permalink to this definition">¶</a></dt>
 <dd><p>version of LS-Dyna</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.extra_long_header">
-<code class="sig-name descname">extra_long_header</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.extra_long_header" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.extra_long_header">
+<span class="sig-name descname"><span class="pre">extra_long_header</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.extra_long_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>if header was longer than default</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_dimensions">
-<code class="sig-name descname">n_dimensions</code><em class="property">: int</em><em class="property"> = 3</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_dimensions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_dimensions">
+<span class="sig-name descname"><span class="pre">n_dimensions</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_dimensions" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of dimensions, usually three</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_global_vars">
-<code class="sig-name descname">n_global_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_global_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_global_vars">
+<span class="sig-name descname"><span class="pre">n_global_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_global_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>how many global vars for each state</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_adapted_element_pairs">
-<code class="sig-name descname">n_adapted_element_pairs</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_adapted_element_pairs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_adapted_element_pairs">
+<span class="sig-name descname"><span class="pre">n_adapted_element_pairs</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_adapted_element_pairs" title="Permalink to this definition">¶</a></dt>
 <dd><p>how many adapted element pairs</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_deletion_data">
-<code class="sig-name descname">has_node_deletion_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_deletion_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_deletion_data">
+<span class="sig-name descname"><span class="pre">has_node_deletion_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_deletion_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if node deletion data is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_element_deletion_data">
-<code class="sig-name descname">has_element_deletion_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_element_deletion_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_element_deletion_data">
+<span class="sig-name descname"><span class="pre">has_element_deletion_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_element_deletion_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if element deletion data is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_numbering_section">
-<code class="sig-name descname">has_numbering_section</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_numbering_section" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_numbering_section">
+<span class="sig-name descname"><span class="pre">has_numbering_section</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_numbering_section" title="Permalink to this definition">¶</a></dt>
 <dd><p>if a user numbering section is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_material_type_section">
-<code class="sig-name descname">has_material_type_section</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_material_type_section" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_material_type_section">
+<span class="sig-name descname"><span class="pre">has_material_type_section</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_material_type_section" title="Permalink to this definition">¶</a></dt>
 <dd><p>if material type section was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_numbering_section_words">
-<code class="sig-name descname">n_numbering_section_words</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_numbering_section_words" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_numbering_section_words">
+<span class="sig-name descname"><span class="pre">n_numbering_section_words</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_numbering_section_words" title="Permalink to this definition">¶</a></dt>
 <dd><p>amount of words for numbering section</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_invariant_numbering">
-<code class="sig-name descname">has_invariant_numbering</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_invariant_numbering" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_invariant_numbering">
+<span class="sig-name descname"><span class="pre">has_invariant_numbering</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_invariant_numbering" title="Permalink to this definition">¶</a></dt>
 <dd><p>if invariant numbering is used whatever that means</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_full_connectivity">
-<code class="sig-name descname">quadratic_elems_has_full_connectivity</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_full_connectivity" title="Permalink to this definition">¶</a></dt>
-<dd><p>if quadric elements have full connectivity</p>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_full_connectivity">
+<span class="sig-name descname"><span class="pre">quadratic_elems_has_full_connectivity</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_full_connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>if quadric elements have full connected</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_data_at_integration_points">
-<code class="sig-name descname">quadratic_elems_has_data_at_integration_points</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_data_at_integration_points" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_data_at_integration_points">
+<span class="sig-name descname"><span class="pre">quadratic_elems_has_data_at_integration_points</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.quadratic_elems_has_data_at_integration_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>if quadric elements data is at integration points</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_post_branches">
-<code class="sig-name descname">n_post_branches</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_post_branches" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_post_branches">
+<span class="sig-name descname"><span class="pre">n_post_branches</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_post_branches" title="Permalink to this definition">¶</a></dt>
 <dd><p>unused and unknown</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_types">
-<code class="sig-name descname">n_types</code><em class="property">: Tuple<span class="p">[</span>int<span class="p">, </span><span class="p">…</span><span class="p">]</span></em><em class="property"> = ()</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_types" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_types">
+<span class="sig-name descname"><span class="pre">n_types</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>behind geometry these are integers indicating additional data such as part names</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_parts">
-<code class="sig-name descname">n_parts</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_parts" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_parts">
+<span class="sig-name descname"><span class="pre">n_parts</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>obviously number of parts</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_nodes">
-<code class="sig-name descname">n_nodes</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_nodes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_nodes">
+<span class="sig-name descname"><span class="pre">n_nodes</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of nodes</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperatures">
-<code class="sig-name descname">has_node_temperatures</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperatures" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperatures">
+<span class="sig-name descname"><span class="pre">has_node_temperatures</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>if node temperature is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_layers">
-<code class="sig-name descname">has_node_temperature_layers</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_layers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_layers">
+<span class="sig-name descname"><span class="pre">has_node_temperature_layers</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>if node temperatures are layered</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_heat_flux">
-<code class="sig-name descname">has_node_heat_flux</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_heat_flux" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_heat_flux">
+<span class="sig-name descname"><span class="pre">has_node_heat_flux</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_heat_flux" title="Permalink to this definition">¶</a></dt>
 <dd><p>if node heat flux is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_mass_scaling">
-<code class="sig-name descname">has_node_mass_scaling</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_mass_scaling" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_mass_scaling">
+<span class="sig-name descname"><span class="pre">has_node_mass_scaling</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_mass_scaling" title="Permalink to this definition">¶</a></dt>
 <dd><p>mass scaling is written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_displacement">
-<code class="sig-name descname">has_node_displacement</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_displacement" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_displacement">
+<span class="sig-name descname"><span class="pre">has_node_displacement</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_displacement" title="Permalink to this definition">¶</a></dt>
 <dd><p>node displacement is written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_velocity">
-<code class="sig-name descname">has_node_velocity</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_velocity" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_velocity">
+<span class="sig-name descname"><span class="pre">has_node_velocity</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>node velocity is written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_acceleration">
-<code class="sig-name descname">has_node_acceleration</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_acceleration" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_acceleration">
+<span class="sig-name descname"><span class="pre">has_node_acceleration</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_acceleration" title="Permalink to this definition">¶</a></dt>
 <dd><p>node acceleration is written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_gradient">
-<code class="sig-name descname">has_node_temperature_gradient</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_gradient" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_gradient">
+<span class="sig-name descname"><span class="pre">has_node_temperature_gradient</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_temperature_gradient" title="Permalink to this definition">¶</a></dt>
 <dd><p>node temperature gradient is written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_forces">
-<code class="sig-name descname">has_node_residual_forces</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_forces" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_forces">
+<span class="sig-name descname"><span class="pre">has_node_residual_forces</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_forces" title="Permalink to this definition">¶</a></dt>
 <dd><p>node residual forces are written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_moments">
-<code class="sig-name descname">has_node_residual_moments</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_moments" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_moments">
+<span class="sig-name descname"><span class="pre">has_node_residual_moments</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_residual_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>node residual moments are written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_absolute">
-<code class="sig-name descname">has_node_max_contact_penetration_absolute</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_absolute" title="Permalink to this definition">¶</a></dt>
-<dd><p>node contact penetration info was written</p>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_absolute">
+<span class="sig-name descname"><span class="pre">has_node_max_contact_penetration_absolute</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>node contact penetration info exist</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_relative">
-<code class="sig-name descname">has_node_max_contact_penetration_relative</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_relative" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_relative">
+<span class="sig-name descname"><span class="pre">has_node_max_contact_penetration_relative</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_max_contact_penetration_relative" title="Permalink to this definition">¶</a></dt>
 <dd><p>node relative contact penetration info was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_contact_energy_density">
-<code class="sig-name descname">has_node_contact_energy_density</code><em class="property">: int</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_contact_energy_density" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_node_contact_energy_density">
+<span class="sig-name descname"><span class="pre">has_node_contact_energy_density</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_node_contact_energy_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>node energy density was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_layers">
-<code class="sig-name descname">n_shell_tshell_layers</code><em class="property">: int</em><em class="property"> = 3</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_layers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_layers">
+<span class="sig-name descname"><span class="pre">n_shell_tshell_layers</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of layers for shells and thick shells</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_history_vars">
-<code class="sig-name descname">n_shell_tshell_history_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_history_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_history_vars">
+<span class="sig-name descname"><span class="pre">n_shell_tshell_history_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_tshell_history_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of history vars for shells and thick shells</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_stress">
-<code class="sig-name descname">has_shell_tshell_stress</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_stress" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_stress">
+<span class="sig-name descname"><span class="pre">has_shell_tshell_stress</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_stress" title="Permalink to this definition">¶</a></dt>
 <dd><p>if shells and thick shells have stresses</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_pstrain">
-<code class="sig-name descname">has_shell_tshell_pstrain</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_pstrain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_pstrain">
+<span class="sig-name descname"><span class="pre">has_shell_tshell_pstrain</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_tshell_pstrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>if shells and thick shells have eff. plastic strain</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_element_strain">
-<code class="sig-name descname">has_element_strain</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_element_strain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_element_strain">
+<span class="sig-name descname"><span class="pre">has_element_strain</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_element_strain" title="Permalink to this definition">¶</a></dt>
 <dd><p>if all elements have strain</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_plastic_strain_tensor">
-<code class="sig-name descname">has_solid_shell_plastic_strain_tensor</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_plastic_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_plastic_strain_tensor">
+<span class="sig-name descname"><span class="pre">has_solid_shell_plastic_strain_tensor</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_plastic_strain_tensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>if solids have plastic strain tensor</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_thermal_strain_tensor">
-<code class="sig-name descname">has_solid_shell_thermal_strain_tensor</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_thermal_strain_tensor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_thermal_strain_tensor">
+<span class="sig-name descname"><span class="pre">has_solid_shell_thermal_strain_tensor</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_shell_thermal_strain_tensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>if solids have thermal strain tensor</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids">
-<code class="sig-name descname">n_solids</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids">
+<span class="sig-name descname"><span class="pre">n_solids</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of solids</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_vars">
-<code class="sig-name descname">n_solid_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_vars">
+<span class="sig-name descname"><span class="pre">n_solid_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of solid variables per element and state</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_materials">
-<code class="sig-name descname">n_solid_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_materials">
+<span class="sig-name descname"><span class="pre">n_solid_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of solid materials/parts</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_history_vars">
-<code class="sig-name descname">n_solid_history_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_history_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_history_vars">
+<span class="sig-name descname"><span class="pre">n_solid_history_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_history_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of solid history variables</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_thermal_vars">
-<code class="sig-name descname">n_solid_thermal_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_thermal_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solid_thermal_vars">
+<span class="sig-name descname"><span class="pre">n_solid_thermal_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solid_thermal_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of solid thermal variables</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_hexas">
-<code class="sig-name descname">n_solids_20_node_hexas</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_hexas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_hexas">
+<span class="sig-name descname"><span class="pre">n_solids_20_node_hexas</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_hexas" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 20-node solid hexas</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_27_node_hexas">
-<code class="sig-name descname">n_solids_27_node_hexas</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_27_node_hexas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_27_node_hexas">
+<span class="sig-name descname"><span class="pre">n_solids_27_node_hexas</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_27_node_hexas" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 27-node solid hexas</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_21_node_pentas">
-<code class="sig-name descname">n_solids_21_node_pentas</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_21_node_pentas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_21_node_pentas">
+<span class="sig-name descname"><span class="pre">n_solids_21_node_pentas</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_21_node_pentas" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 21-node solid pentas</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_15_node_tetras">
-<code class="sig-name descname">n_solids_15_node_tetras</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_15_node_tetras" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_15_node_tetras">
+<span class="sig-name descname"><span class="pre">n_solids_15_node_tetras</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_15_node_tetras" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 15-node solid tetras</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_tetras">
-<code class="sig-name descname">n_solids_20_node_tetras</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_tetras" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_tetras">
+<span class="sig-name descname"><span class="pre">n_solids_20_node_tetras</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_20_node_tetras" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 20-node solid tetras</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_40_node_pentas">
-<code class="sig-name descname">n_solids_40_node_pentas</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_40_node_pentas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_40_node_pentas">
+<span class="sig-name descname"><span class="pre">n_solids_40_node_pentas</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_40_node_pentas" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 40-node solid pentas</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_64_node_hexas">
-<code class="sig-name descname">n_solids_64_node_hexas</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_64_node_hexas" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_solids_64_node_hexas">
+<span class="sig-name descname"><span class="pre">n_solids_64_node_hexas</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_solids_64_node_hexas" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 64-node solid hexas</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_2_extra_nodes">
-<code class="sig-name descname">has_solid_2_extra_nodes</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_2_extra_nodes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_2_extra_nodes">
+<span class="sig-name descname"><span class="pre">has_solid_2_extra_nodes</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_2_extra_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>if two extra nodes were written for solids</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_stress">
-<code class="sig-name descname">has_solid_stress</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_stress" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_stress">
+<span class="sig-name descname"><span class="pre">has_solid_stress</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_stress" title="Permalink to this definition">¶</a></dt>
 <dd><p>if solid stress is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_pstrain">
-<code class="sig-name descname">has_solid_pstrain</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_pstrain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_pstrain">
+<span class="sig-name descname"><span class="pre">has_solid_pstrain</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_pstrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>if solid eff. plastic strain is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_quadratic_solids">
-<code class="sig-name descname">has_quadratic_solids</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_quadratic_solids" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_quadratic_solids">
+<span class="sig-name descname"><span class="pre">has_quadratic_solids</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_quadratic_solids" title="Permalink to this definition">¶</a></dt>
 <dd><p>if quadratic solids were used</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_cubic_solids">
-<code class="sig-name descname">has_cubic_solids</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_cubic_solids" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_cubic_solids">
+<span class="sig-name descname"><span class="pre">has_cubic_solids</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_cubic_solids" title="Permalink to this definition">¶</a></dt>
 <dd><p>if cubic solids were used</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_internal_energy_density">
-<code class="sig-name descname">has_solid_internal_energy_density</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_internal_energy_density" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_solid_internal_energy_density">
+<span class="sig-name descname"><span class="pre">has_solid_internal_energy_density</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_solid_internal_energy_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>if solids have internal energy density</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shells">
-<code class="sig-name descname">n_shells</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shells" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shells">
+<span class="sig-name descname"><span class="pre">n_shells</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shells" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of shells</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_vars">
-<code class="sig-name descname">n_shell_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_vars">
+<span class="sig-name descname"><span class="pre">n_shell_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of shell vars per element and state</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_materials">
-<code class="sig-name descname">n_shell_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shell_materials">
+<span class="sig-name descname"><span class="pre">n_shell_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shell_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of shell materials/parts</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_shells_8_nodes">
-<code class="sig-name descname">n_shells_8_nodes</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shells_8_nodes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_shells_8_nodes">
+<span class="sig-name descname"><span class="pre">n_shells_8_nodes</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_shells_8_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of 8-node shells</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_four_inplane_gauss_points">
-<code class="sig-name descname">has_shell_four_inplane_gauss_points</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_four_inplane_gauss_points" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_four_inplane_gauss_points">
+<span class="sig-name descname"><span class="pre">has_shell_four_inplane_gauss_points</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_four_inplane_gauss_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>if shells have four inplace gaussian integration points</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_forces">
-<code class="sig-name descname">has_shell_forces</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_forces" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_forces">
+<span class="sig-name descname"><span class="pre">has_shell_forces</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_forces" title="Permalink to this definition">¶</a></dt>
 <dd><p>if shell forces are present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_extra_variables">
-<code class="sig-name descname">has_shell_extra_variables</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_extra_variables" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_extra_variables">
+<span class="sig-name descname"><span class="pre">has_shell_extra_variables</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_extra_variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>if extra shell variables such as forces are present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_internal_energy_density">
-<code class="sig-name descname">has_shell_internal_energy_density</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_internal_energy_density" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_shell_internal_energy_density">
+<span class="sig-name descname"><span class="pre">has_shell_internal_energy_density</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_shell_internal_energy_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>if shell internal energy density is present</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shells">
-<code class="sig-name descname">n_thick_shells</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shells" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shells">
+<span class="sig-name descname"><span class="pre">n_thick_shells</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shells" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of thick shell elements</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_vars">
-<code class="sig-name descname">n_thick_shell_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_vars">
+<span class="sig-name descname"><span class="pre">n_thick_shell_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of thick shell element vars</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_materials">
-<code class="sig-name descname">n_thick_shell_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_materials">
+<span class="sig-name descname"><span class="pre">n_thick_shell_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_thick_shell_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of thick shell materials/parts</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_thick_shell_energy_density">
-<code class="sig-name descname">has_thick_shell_energy_density</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_thick_shell_energy_density" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_thick_shell_energy_density">
+<span class="sig-name descname"><span class="pre">has_thick_shell_energy_density</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_thick_shell_energy_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>if thick shells have energy density</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.thick_shell_energy_density_position">
-<code class="sig-name descname">thick_shell_energy_density_position</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.thick_shell_energy_density_position" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.thick_shell_energy_density_position">
+<span class="sig-name descname"><span class="pre">thick_shell_energy_density_position</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.thick_shell_energy_density_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>unused</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_beams">
-<code class="sig-name descname">n_beams</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beams" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_beams">
+<span class="sig-name descname"><span class="pre">n_beams</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beams" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of beam elements</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_vars">
-<code class="sig-name descname">n_beam_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_vars">
+<span class="sig-name descname"><span class="pre">n_beam_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of state variables per beam element</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_materials">
-<code class="sig-name descname">n_beam_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_materials">
+<span class="sig-name descname"><span class="pre">n_beam_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of beam materials</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_history_vars">
-<code class="sig-name descname">n_beam_history_vars</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_history_vars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_beam_history_vars">
+<span class="sig-name descname"><span class="pre">n_beam_history_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_beam_history_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of beam history variables</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_airbags">
-<code class="sig-name descname">n_airbags</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_airbags" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_airbags">
+<span class="sig-name descname"><span class="pre">n_airbags</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_airbags" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of airbags</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_airbag_n_chambers">
-<code class="sig-name descname">has_airbag_n_chambers</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_airbag_n_chambers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_airbag_n_chambers">
+<span class="sig-name descname"><span class="pre">has_airbag_n_chambers</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_airbag_n_chambers" title="Permalink to this definition">¶</a></dt>
 <dd><p>if airbags have number of chambers var</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_road_surface">
-<code class="sig-name descname">has_rigid_road_surface</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_road_surface" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_road_surface">
+<span class="sig-name descname"><span class="pre">has_rigid_road_surface</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_road_surface" title="Permalink to this definition">¶</a></dt>
 <dd><p>if rigid road surface was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_body_data">
-<code class="sig-name descname">has_rigid_body_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_body_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_body_data">
+<span class="sig-name descname"><span class="pre">has_rigid_body_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_rigid_body_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if rigid body section was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_reduced_rigid_body_data">
-<code class="sig-name descname">has_reduced_rigid_body_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_reduced_rigid_body_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_reduced_rigid_body_data">
+<span class="sig-name descname"><span class="pre">has_reduced_rigid_body_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_reduced_rigid_body_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if the reduced set of rigid body data was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_sph_nodes">
-<code class="sig-name descname">n_sph_nodes</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_nodes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_sph_nodes">
+<span class="sig-name descname"><span class="pre">n_sph_nodes</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of sph nodes</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_sph_materials">
-<code class="sig-name descname">n_sph_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_sph_materials">
+<span class="sig-name descname"><span class="pre">n_sph_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_sph_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of sph materials</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_ale_materials">
-<code class="sig-name descname">n_ale_materials</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_materials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_ale_materials">
+<span class="sig-name descname"><span class="pre">n_ale_materials</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_materials" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of ale materials</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_ale_fluid_groups">
-<code class="sig-name descname">n_ale_fluid_groups</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_fluid_groups" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_ale_fluid_groups">
+<span class="sig-name descname"><span class="pre">n_ale_fluid_groups</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_ale_fluid_groups" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of ale fluid groups</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_cfd_data">
-<code class="sig-name descname">has_cfd_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_cfd_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_cfd_data">
+<span class="sig-name descname"><span class="pre">has_cfd_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_cfd_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if CFD-Data was written</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.has_multi_solver_data">
-<code class="sig-name descname">has_multi_solver_data</code><em class="property">: bool</em><em class="property"> = False</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_multi_solver_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_multi_solver_data">
+<span class="sig-name descname"><span class="pre">has_multi_solver_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_multi_solver_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.cfd_extra_data">
-<code class="sig-name descname">cfd_extra_data</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.cfd_extra_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.cfd_extra_data">
+<span class="sig-name descname"><span class="pre">cfd_extra_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.cfd_extra_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>if cfd data contains extra section</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.legacy_code_type">
-<code class="sig-name descname">legacy_code_type</code><em class="property">: int</em><em class="property"> = 6</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.legacy_code_type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.legacy_code_type">
+<span class="sig-name descname"><span class="pre">legacy_code_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.legacy_code_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>originally a code indicator but unused nowadays</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.unused_numst">
-<code class="sig-name descname">unused_numst</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.unused_numst" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.unused_numst">
+<span class="sig-name descname"><span class="pre">unused_numst</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.unused_numst" title="Permalink to this definition">¶</a></dt>
 <dd><p>unused and not explained in docs</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.print">
-<code class="sig-name descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.print" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.print" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the header</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.load_file">
-<code class="sig-name descname">load_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>lasso.io.BinaryBuffer.BinaryBuffer<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="lasso.dyna.D3plotHeader.D3plotHeader">lasso.dyna.D3plotHeader.D3plotHeader</a><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.load_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.load_file">
+<span class="sig-name descname"><span class="pre">load_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">lasso.io.BinaryBuffer.BinaryBuffer</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="lasso.dyna.D3plotHeader.D3plotHeader"><span class="pre">lasso.dyna.D3plotHeader.D3plotHeader</span></a><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.load_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load d3plot header from a d3plot file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -912,17 +923,29 @@ that is neccessary. Thus it is safe to use on huge files.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars">
-<em class="property">property </em><code class="sig-name descname">n_rigid_wall_vars</code><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.has_femzip_indicator">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">has_femzip_indicator</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.has_femzip_indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the femzip indicator can be found in the header</p>
+<p class="rubric">Notes</p>
+<p>Only use on raw files.</p>
+<p>If the header displays a femzip indicator then the file
+is femzipped. If you load the femzip file as such then
+this indicator will not be set, since femzip itself
+corrects the indicator again.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_rigid_wall_vars</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.n_rigid_wall_vars" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of rigid wall vars</p>
 <p class="rubric">Notes</p>
 <p>Depends on lsdyna version.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="lasso.dyna.D3plotHeader.D3plotHeader.compare">
-<code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="lasso.dyna.D3plotHeader.D3plotHeader">lasso.dyna.D3plotHeader.D3plotHeader</a></span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Tuple<span class="p">[</span>Any<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.compare" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lasso.dyna.D3plotHeader.D3plotHeader.compare">
+<span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lasso.dyna.D3plotHeader.D3plotHeader" title="lasso.dyna.D3plotHeader.D3plotHeader"><span class="pre">lasso.dyna.D3plotHeader.D3plotHeader</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lasso.dyna.D3plotHeader.D3plotHeader.compare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two headers and get the differences</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

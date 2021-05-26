@@ -409,7 +409,7 @@ class FemzipAPI:
 
         Notes
         -----
-            The `buffer` must have the size of at least 
+            The `buffer` must have the size of at least
             `buffer_info.size_activity`.
 
         Examples
@@ -557,7 +557,7 @@ class FemzipAPI:
         Notes
         -----
             This reports whether a file is currently
-            opened and how far it was processed. This 
+            opened and how far it was processed. This
             internal state is used to avoid internal
             conflicts and crashes, thus is useful for
             debugging.
@@ -876,7 +876,8 @@ class FemzipAPI:
                 file_metadata.variable_infos[i_var].var_size = array_size
 
             elif variable_category == FemzipVariableCategory.SHELL:
-                array_size = file_metadata.number_of_shell_elements - file_metadata.number_of_rigid_shell_elements
+                array_size = (file_metadata.number_of_shell_elements
+                              - file_metadata.number_of_rigid_shell_elements)
                 file_metadata.variable_infos[i_var].var_size = array_size
                 buffer_size_state += array_size
             elif variable_category == FemzipVariableCategory.SOLID:
@@ -922,15 +923,17 @@ class FemzipAPI:
 
         return buffer_size_state
 
-    def _decompose_read_variables_array(self,
-                                        n_parts: int,
-                                        n_rigid_walls: int,
-                                        n_rigid_wall_vars: int,
-                                        n_airbag_particles: int,
-                                        n_airbags: int,
-                                        all_vars_array: np.ndarray,
-                                        n_timesteps_read: int,
-                                        file_metadata: FemzipFileMetadata) -> Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]:
+    def _decompose_read_variables_array(
+            self,
+            n_parts: int,
+            n_rigid_walls: int,
+            n_rigid_wall_vars: int,
+            n_airbag_particles: int,
+            n_airbags: int,
+            all_vars_array: np.ndarray,
+            n_timesteps_read: int,
+            file_metadata: FemzipFileMetadata
+    ) -> Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]:
 
         # decompose array
         result_arrays: Dict[Tuple[int, str,
@@ -963,7 +966,8 @@ class FemzipAPI:
                                    variable_name, FemzipVariableCategory.NODE)] = var_array
 
             elif variable_category == FemzipVariableCategory.SHELL:
-                array_size = file_metadata.number_of_shell_elements - file_metadata.number_of_rigid_shell_elements
+                array_size = (file_metadata.number_of_shell_elements
+                              - file_metadata.number_of_rigid_shell_elements)
                 var_array = all_vars_array[:, var_pos:var_pos + array_size]
                 var_pos += array_size
                 result_arrays[(variable_index,
@@ -1021,14 +1025,16 @@ class FemzipAPI:
 
         return result_arrays
 
-    def read_variables(self,
-                       file_metadata: FemzipFileMetadata,
-                       n_parts: int,
-                       n_rigid_walls: int,
-                       n_rigid_wall_vars: int,
-                       n_airbag_particles: int,
-                       n_airbags: int,
-                       state_filter: Union[Set[int], None] = None) -> Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]:
+    def read_variables(
+        self,
+        file_metadata: FemzipFileMetadata,
+        n_parts: int,
+        n_rigid_walls: int,
+        n_rigid_wall_vars: int,
+        n_airbag_particles: int,
+        n_airbags: int,
+        state_filter: Union[Set[int], None] = None
+    ) -> Dict[Tuple[int, str, FemzipVariableCategory], np.ndarray]:
         """ Read specific variables from Femzip
 
         Parameters
@@ -1054,7 +1060,7 @@ class FemzipAPI:
         Notes
         -----
             Uses extended femzip library and requires a license
-            for 'FEMUNZIPLIB_DYNA'. Please contact sidact if 
+            for 'FEMUNZIPLIB_DYNA'. Please contact sidact if
             required.
         """
 
@@ -1079,8 +1085,10 @@ class FemzipAPI:
         logging.info(f"buffer_size_state: {buffer_size_state}")
 
         # specify which states to read
-        states_to_copy = {i_timestep for i_timestep in state_filter if i_timestep < n_timesteps + 1} \
-            if state_filter is not None \
+        states_to_copy = {
+            i_timestep for i_timestep in state_filter
+            if i_timestep < n_timesteps + 1
+        } if state_filter is not None \
             else{i_timestep for i_timestep in range(n_timesteps)}
         logging.info(f"states_to_copy: {states_to_copy}")
 

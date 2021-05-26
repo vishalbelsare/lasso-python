@@ -1,26 +1,22 @@
 
-import os
-import sys
-import glob
 import argparse
-import subprocess
+import glob
+import os
 
+from lasso.logging import str_error, str_info
 from lasso.utils.ConsoleColoring import ConsoleColoring
-from lasso.logging import str_warn, str_error, str_info
+
 from .settings import GRPC_DEFAULT_PORT
 
 # messages
 _msg_invalid_port = "Option --port is '{0}' but must be positive."
 _msg_no_site_packages = "Could not find a subdirectory 'site-packages' underneath '{0}'"
-_msg_multiple_site_packages = "Found multiple folders 'site-packages' underneath '{0}'. Please specify the path more specifically."
-_msg_site_packages_unspecified = "No '--python33-path' was specified. Assuming that all required packages are installed within ANSA."
-_msg_missing_library = "Can not find required library '{0}' in '{1}'"
+_msg_multiple_site_packages = ("Found multiple folders 'site-packages' underneath '{0}'. "
+                               "Please specify the path more specifically.")
+_msg_site_packages_unspecified = ("No '--python33-path' was specified. "
+                                  "Assuming that all required packages are installed within ANSA.")
 _msg_ansa_filepath_unspecified = "Filepath to ANSA unspecified. Trying '{0}'."
-_msg_import_error = '''{0}
 
-    Please see the installation guide at: 
-        https://lasso-gmbh.io/lasso-python/build/html/ansa/grpc.html
-'''
 
 def parse_args() -> argparse.Namespace:
     ''' Parses arguments when being run from the command line
@@ -31,7 +27,8 @@ def parse_args() -> argparse.Namespace:
         parsed command line arguments
     '''
 
-    header_title = 'GRPC Server for ANSA Remote Scripting from ' + ConsoleColoring.blue("LASSO GmbH") + '\n' + "-"*53
+    header_title = 'GRPC Server for ANSA Remote Scripting from ' + \
+        ConsoleColoring.blue("LASSO GmbH") + '\n' + "-"*53
 
     parser = argparse.ArgumentParser(
         description=header_title)
@@ -42,7 +39,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--python33-path',
                         type=str,
                         # required=True,
-                        help='Path to the python 3.3 installation whose site-packages contains packages for ANSA.')
+                        help=('Path to the python 3.3 installation whose'
+                              ' site-packages contains packages for ANSA.'))
     parser.add_argument('--port',
                         type=int,
                         default=GRPC_DEFAULT_PORT,
@@ -148,7 +146,7 @@ def get_ansa_server_command(
         os.environ["ANSA_GRPC_SITE_PACKAGES_PATH"] = site_packages_path
 
         # check if required libs are installed
-        required_libs = ["grpc*", "enum*", "protobuf3*", "google*"]
+        # required_libs = ["grpc*", "enum*", "protobuf3*", "google*"]
         # for required_lib_name in required_libs:
         #     if not glob.glob(os.path.join(site_packages_path, required_lib_name)):
         #         raise RuntimeError(str_error(_msg_import_error.format(
