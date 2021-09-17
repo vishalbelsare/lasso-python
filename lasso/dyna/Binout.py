@@ -153,12 +153,6 @@ class Binout:
         self.lsda = Lsda(self.filelist, "r")
         self.lsda_root = self.lsda.root
 
-        # if sys.version_info[0] < 3:
-        #    self.lsda_root = self.lsda.root
-        # else:
-        #    self.lsda_root = self.lsda.root.children[""]
-        # self.lsda_root = self.lsda.root
-
     def read(self, *path) -> Union[List[str], str, np.ndarray]:
         '''Read all data from Binout (top to low level)
 
@@ -208,88 +202,31 @@ class Binout:
 
         return self._decode_path(path)
 
-    def legend(self, db: str) -> pd.DataFrame:
-        """Legend as a pandas.DataFrame
-
-        Parameters
-        ----------
-        db : str
-            The database for the desired legend
-
-        Returns
-        -------
-        pandas.DataFrame
-            Legend with ID and title pairs
-
-        Raises
-        ------
-        ValueError
-            if specified database does not have a legend
-
-        Example
-        -------
-        >>> from lasso.dyna import Binout
-        >>> binout = Binout('path/to/binout')
-        >>> binout.legend('matsum')
-
-              id     title
-        0      1    Part 1
-        1      2    Part 2
-        2      3    Part 3
-        3      4    Part 4
-        4      5    Part 5
-        ...  ...       ...
-        94    95   Part 95
-        95    96   Part 96
-        96    97   Part 97
-        97    98   Part 98
-        98    99   Part 99
-        99   100  Part 100
-        """
-    
-        # validate legend exists
-        if 'legend' not in self.read(db):
-            raise ValueError(db + " has no legend")
-
-        legend = self.read(db, 'legend')
-
-        if 'legend_ids' in self.read(db):
-            id_field = 'legend_ids'
-        else:
-            id_field = 'ids'
-
-        # parse string into dataframe
-        return pd.DataFrame({
-            'id': self.read(db, id_field),
-            'title': [legend[i:i + 80].strip()
-                      for i in range(0, len(legend), 80)]
-        })
-
     def as_df(self, *args) -> pd.DataFrame:
-        """ read data and convert to pandas dataframe if possible 
-        
+        """ read data and convert to pandas dataframe if possible
+
         Parameters
         ----------
         path: Union[Tuple[str, ...], List[str], str]
             internal path in the folder structure of the binout
-        
+
         Returns
         -------
         df: pandas.DataFrame
             data converted to pandas dataframe
-        
+
         Raises
         ------
         ValueError
             if the data cannot be converted to a pandas dataframe
-        
+
         Examples
         --------
             >>> from lasso.dyna import Binout
             >>> binout = Binout('path/to/binout')
-            
+
             Read a time-dependent array.
-            
+
             >>> binout.as_df('glstat', 'eroded_kinetic_energy')
             time
             0.00000        0.000000
@@ -308,19 +245,19 @@ class Binout:
             Read a time and id-dependent array.
 
             >>> binout.as_df('secforc', 'x_force')
-                                  1             2             3  ...            33            34            35
-            time                                                 ...
-            0.00063    2.168547e-16  2.275245e-15 -3.118639e-14  ... -5.126108e-13  4.592941e-16  8.431434e-17
-            0.20034    3.514243e-04  3.797908e-04 -1.701294e-03  ...  2.530416e-11  2.755493e-07  2.117375e-05
-            0.40005    3.052490e-03  3.242951e-02 -2.699926e-02  ...  6.755315e-06 -2.608923e-03  3.919351e-03
-            0.60039   -1.299816e-02  4.930999e-02 -1.632376e-02  ...  8.941705e-05 -2.203455e-02  3.536490e-02
-            0.80010    1.178485e-02  4.904512e-02 -9.740204e-03  ...  5.648263e-05 -6.999854e-02  6.934055e-02
-            ...                 ...           ...           ...  ...           ...           ...           ...
-            119.00007  9.737679e-01 -8.833702e+00  1.298964e+01  ... -9.977377e-02  7.883521e+00 -5.353501e+00
-            119.20041  7.421170e-01 -8.849411e+00  1.253505e+01  ... -1.845916e-01  7.791409e+00 -4.988928e+00
-            119.40012  9.946615e-01 -8.541475e+00  1.188757e+01  ... -3.662228e-02  7.675800e+00 -4.889339e+00
-            119.60046  9.677638e-01 -8.566695e+00  1.130774e+01  ...  5.144208e-02  7.273052e+00 -5.142375e+00
-            119.80017  1.035165e+00 -8.040828e+00  1.124044e+01  ... -1.213450e-02  7.188395e+00 -5.279221e+00
+                                  1             2             3  ...            33            34
+            time                                                 .
+            0.00063    2.168547e-16  2.275245e-15 -3.118639e-14  ... -5.126108e-13  4.592941e-16
+            0.20034    3.514243e-04  3.797908e-04 -1.701294e-03  ...  2.530416e-11  2.755493e-07
+            0.40005    3.052490e-03  3.242951e-02 -2.699926e-02  ...  6.755315e-06 -2.608923e-03
+            0.60039   -1.299816e-02  4.930999e-02 -1.632376e-02  ...  8.941705e-05 -2.203455e-02
+            0.80010    1.178485e-02  4.904512e-02 -9.740204e-03  ...  5.648263e-05 -6.999854e-02
+            ...                 ...           ...           ...  ...           ...           ...
+            119.00007  9.737679e-01 -8.833702e+00  1.298964e+01  ... -9.977377e-02  7.883521e+00
+            119.20041  7.421170e-01 -8.849411e+00  1.253505e+01  ... -1.845916e-01  7.791409e+00
+            119.40012  9.946615e-01 -8.541475e+00  1.188757e+01  ... -3.662228e-02  7.675800e+00
+            119.60046  9.677638e-01 -8.566695e+00  1.130774e+01  ...  5.144208e-02  7.273052e+00
+            119.80017  1.035165e+00 -8.040828e+00  1.124044e+01  ... -1.213450e-02  7.188395e+00
         """
 
         data = self.read(*args)
@@ -342,8 +279,8 @@ class Binout:
 
             if args[0] == 'rcforc':
                 ids = [(str(i) + 'm') if j else (str(i) + 's')
-                    for i, j in zip(self.read('rcforc', 'ids'),
-                                    self.read('rcforc', 'side'))]
+                       for i, j in zip(self.read('rcforc', 'ids'),
+                                       self.read('rcforc', 'side'))]
             else:
                 ids = self.read(*args[:-1], 'ids')
 
@@ -396,8 +333,7 @@ class Binout:
 
             # an error is risen, if the path is not resolvable
             # this could be, because we want to read a var
-            except ValueError as err:
-
+            except ValueError:
                 return self._get_variable(path)
 
     def _get_symbol(self, symbol, path):
@@ -415,7 +351,7 @@ class Binout:
         '''
 
         # check
-        if symbol == None:
+        if symbol is None:
             raise ValueError("Symbol may not be none.")
 
         # no further path, return current symbol
@@ -428,7 +364,7 @@ class Binout:
             next_symbol_name = sub_path.pop(0)
 
             next_symbol = symbol.get(next_symbol_name)
-            if next_symbol == None:
+            if next_symbol is None:
                 raise ValueError("Cannot find: %s" % next_symbol_name)
 
             return self._get_symbol(next_symbol, sub_path)
@@ -451,7 +387,8 @@ class Binout:
         variable_name = self._str_to_bstr(path[-1])
 
         # var in metadata
-        if ("metadata" in dir_symbol.children) and (variable_name in dir_symbol.get("metadata").children):
+        if ("metadata" in dir_symbol.children) \
+           and (variable_name in dir_symbol.get("metadata").children):
             var_symbol = dir_symbol.get("metadata").get(variable_name)
             var_type = var_symbol.type
 
@@ -602,7 +539,7 @@ class Binout:
         hdf5_grp: Group
             group object in the HDF5, where all the data
             shall be saved into (of course in a tree like
-            manner) 
+            manner)
         compression: str
             compression technique (see h5py docs)
         path: Tuple[str, ...]

@@ -4018,7 +4018,7 @@ class D3plot:
             # stress
             if info.has_stresses:
                 try:
-                    array_dict[ArrayType.sph_stress] = sph_data[:, i_var:i_var + 6]\
+                    array_dict[ArrayType.sph_stress] = sph_data[:, i_var:i_var + n_particles*6]\
                         .reshape((n_states, n_particles, 6))
                 except Exception:
                     trb_msg = traceback.format_exc()
@@ -4086,7 +4086,7 @@ class D3plot:
             if info.has_strain_and_strainrate:
 
                 try:
-                    array_dict[ArrayType.sph_strain] = sph_data[:, i_var:i_var + 6]\
+                    array_dict[ArrayType.sph_strain] = sph_data[:, i_var:i_var + n_particles*6]\
                         .reshape((n_states, n_particles, 6))
                 except Exception:
                     trb_msg = traceback.format_exc()
@@ -4098,7 +4098,7 @@ class D3plot:
                     i_var += 6
 
                 try:
-                    array_dict[ArrayType.sph_strainrate] = sph_data[:, i_var:i_var + 6]\
+                    array_dict[ArrayType.sph_strainrate] = sph_data[:, i_var:i_var + n_particles*6]\
                         .reshape((n_states, n_particles, 6))
                 except Exception:
                     trb_msg = traceback.format_exc()

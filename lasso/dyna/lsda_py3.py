@@ -302,9 +302,8 @@ def _readsymboltable(lsda, f):
             (clen, cmd) = f.readcommand()
             clen = clen - f.commandsize - f.lengthsize
             if cmd == Lsda.CD:
-                # path = f.fp.read(clen)
-                # ss = lsda.cd(path, 1)
-                pass
+                path = f.fp.read(clen)
+                lsda.cd(path, 1)
             elif cmd == Lsda.VARIABLE:
                 _readentry(f, clen, lsda.cwd)
             else:   # is end of symbol table...get next part if there is one
