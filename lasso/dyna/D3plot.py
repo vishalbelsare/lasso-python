@@ -4027,7 +4027,7 @@ class D3plot:
                         msg.format("_read_states_sph, pressure",
                                    trb_msg))
                 finally:
-                    i_var += 6
+                    i_var += 6*n_particles
 
             # eff. plastic strain
             if info.has_plastic_strain:
@@ -4095,7 +4095,7 @@ class D3plot:
                         msg.format("_read_states_sph, strain",
                                    trb_msg))
                 finally:
-                    i_var += 6
+                    i_var += 6*n_particles
 
                 try:
                     array_dict[ArrayType.sph_strainrate] = sph_data[:, i_var:i_var + n_particles*6]\
@@ -4107,7 +4107,7 @@ class D3plot:
                         msg.format("_read_states_sph, strainrate",
                                    trb_msg))
                 finally:
-                    i_var += 6
+                    i_var += 6*n_particles
 
             # mass
             if info.has_mass:
